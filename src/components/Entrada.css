@@ -1,0 +1,19 @@
+.Entrada {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo {
+    font-size: 48px;
+    font-weight: bold;
+    padding-left: 10%;
+    padding-top: 10%;
+    color: #4A4A4D;
+}
+
+.subtexto {
+    font-size: 32px;
+    padding-left: 10%;
+    color: #4A4A4D;
+    white-space: nowrap;
+}
