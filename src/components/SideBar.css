@@ -1,0 +1,82 @@
+/*
+Usem esse css para ambas as sidebar, tanto a do diretor 
+quanto a do gestor já que ambas compartilham mesmas característcas
+
+*/
+
+
+.Sidebar {
+    height: 100vh;
+    width: 444px;
+    background-color: #FFFFFF;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.SideBarList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+    margin-top: 77px;
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
+}
+
+.SideBarList .Coluna {
+    width: 100%;
+    height: 49px;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: #4A4A4D;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+
+.SideBarList .Coluna:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.SideBarList #atual{
+    font-weight: bold ;
+}
+
+.Profile{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #F1FFE6;
+}
+
+.User{
+    color: #2FAF3B;
+    font-size: 48px ;
+}
+
+.Role{
+    font-weight: lighter;
+    font-size:24px
+}
+
+.Logout {
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: lighter;
+    color: #4A4A4D;
+}
+
+.Logout:hover {
+    color: #2FAF3B;
+}

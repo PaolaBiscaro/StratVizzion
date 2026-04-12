@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;700&display=swap');
+
+/*Explicação
+    Aqui fica todas as variáveis globais, tipo o fundo das páginas
+    que sempre vai ser o mesmo ou até mesmo as características da sidebar
+
+*/
+
+:root {
+    --color-background: #D9D9D9;
+    --font-family: 'Lexend Deca', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    font-family: var(--font-family);
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
