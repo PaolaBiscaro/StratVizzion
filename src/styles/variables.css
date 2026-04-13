@@ -25,3 +25,11 @@ body {
     width: 100vw;
 }
 
+.app-layout {
+    display: flex
+}
+
+.content{
+    flex: 1;
+    padding: 20px
+}
