@@ -80,3 +80,74 @@ quanto a do gestor já que ambas compartilham mesmas característcas
 .Logout:hover {
     color: #2FAF3B;
 }
+
+@media (max-width:1366px){
+.Sidebar {
+    min-height: 100vh;
+    width: 333px;
+    background-color: #FFFFFF;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.SideBarList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 49px;
+}
+
+.SideBarList .Coluna {
+    width: 100%;
+    height: 29px;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: #4A4A4D;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.SideBarList .Coluna:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.SideBarList #atual{
+    font-weight: bold ;
+}
+
+.Profile{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-color: #F1FFE6;
+}
+
+.User{
+    color: #2FAF3B;
+    font-size: 32px ;
+}
+
+
+.Logout {
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: lighter;
+    color: #4A4A4D;
+}
+
+}
