@@ -17,3 +17,21 @@
     color: #4A4A4D;
     white-space: nowrap;
 }
+
+@media (max-width:1366px){
+.titulo {
+    font-size: 32px;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-top: 3%;
+    color: #4A4A4D;
+}
+
+.subtexto {
+    font-size: 22px;
+    padding-left: 40px;
+    color: #4A4A4D;
+    white-space: nowrap;
+}
+
+}
