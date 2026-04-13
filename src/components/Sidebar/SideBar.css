@@ -6,7 +6,7 @@ quanto a do gestor já que ambas compartilham mesmas característcas
 
 
 .Sidebar {
-    height: 100vh;
+    min-height: 100vh;
     width: 444px;
     background-color: #FFFFFF;
     flex-shrink: 0;

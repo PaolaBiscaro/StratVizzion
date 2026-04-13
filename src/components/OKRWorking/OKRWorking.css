@@ -1,0 +1,16 @@
+.OKRChart {
+    background-color: #FFFFFF;
+    width: calc(100vw - 444px - 80px);
+    height: 488px;
+    border-radius: 10px;
+    margin-top: 2%;
+    margin-left: 40px;
+}
+
+.Titulo{
+    margin-top: 1% ;
+    margin-left: 1%;
+    font-size: 32px;
+    font-weight: bold;
+
+}

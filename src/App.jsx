@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/variables.css";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/Sidebar/SideBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
 
