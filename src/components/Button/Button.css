@@ -1,0 +1,43 @@
+.Button{
+   width: 259px;
+   height: 67px;
+   border-radius:20px ;
+    font-size: 24px;
+    font-weight: bold;
+
+}
+
+.Button--verde{
+    background-color:#128D5F ;
+    color: #FFFFFF;
+    border: none;
+} 
+
+.Button--branco{
+    background-color:#FFFFFF ;
+    color: #128D5F;
+    border: 2px solid #128D5F;
+}
+
+.Button--Verde{
+    background-color:#128D5F ;
+    color: #FFFFFF;
+    border: none;
+} 
+
+.Button--Branco{
+    background-color:#FFFFFF ;
+    color: #128D5F;
+    border: 2px solid #128D5F;
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .Button {
+        width: 157px;
+        height: 57px;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
