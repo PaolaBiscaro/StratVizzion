@@ -6,7 +6,7 @@ import Button from "./components/Button/Button";
 function App() {
   return (
     <div>
-      <Button texto={"Criar nova OKR"} url={"/TESTE"} variante="Branco"/>
+      <Button texto={"Criar nova OKR"} url={"/TESTE"} variante="branco"/>
     </div>
   );
 }
