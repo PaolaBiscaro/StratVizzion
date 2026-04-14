@@ -1,5 +1,6 @@
 import React from "react";
 import "./OKRWorking.css"
+import ArcChart from "../OKRChart/OKRChart";
 
 
 /*ANOTAÇÃO 
@@ -12,6 +13,7 @@ function OKRCHart(){
     return(
         <div className="OKRChart">
             <h3 className="Titulo">OKR - Objetivos e Resultados-Chave</h3>
+            <ArcChart></ArcChart>
         </div>
 
     );
