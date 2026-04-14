@@ -7,7 +7,7 @@ se o campo não for passado, ele de padrão vai ser verde
 ATENÇÃO- as variantes podem ser escritas também como "Verde" ou "Branco"
 */
 
-function BotaoVerde({texto, url, variante="verde"}){
+function Botao({texto, url, variante="verde"}){
     return(
         <div>
             <button className={`Button Button--${variante}`} onClick={() => { window.location.pathname =url }}>{texto}</button>
@@ -15,4 +15,4 @@ function BotaoVerde({texto, url, variante="verde"}){
     )
 }
 
-export default BotaoVerde;
+export default Botao;

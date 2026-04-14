@@ -3,7 +3,7 @@ import SideBar from "../components/Sidebar/SideBar";
 import Entrada from "../components/Entrada/Entrada";
 import OKRWorking from "../components/OKRWorking/OKRWorking";
 import OKRConcluded from "../components/OKRConcluded/OKRConcluded";
-
+import Button from "../components/Button/Button";
 
 function Home() {
   return (
@@ -11,11 +11,10 @@ function Home() {
       <SideBar />
       <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
         <Entrada userName="UserRequest" />
-        <OKRWorking/>
-        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}> 
-          <OKRConcluded/>
-        </div>
+        <OKRWorking />
+        <OKRConcluded />
       </div>
+      <Button texto="Criar nova OKR" url="/NovaOKR" variante="verde" />
     </div>
   );
 }

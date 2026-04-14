@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
 
 
+
 /*Explicação
   Usando a biblioteca React router eu consigo colocar várias páginas diferentes
   que direcionam aos arquivos, assim ao rodar npm run dev é possível cada arquivo
