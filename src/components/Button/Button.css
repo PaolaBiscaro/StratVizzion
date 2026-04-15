@@ -1,63 +1,42 @@
-.Button{
-    width: 259px;
-    height: 67px;
-    border-radius:20px ;
-    font-size: 24px;
+.Button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 40px;
-}
-
-.Button--verde{
-    background-color:#128D5F ;
-    color: #FFFFFF;
     border: none;
 
-} 
-
-.Button--branco{
-    background-color:#FFFFFF ;
-    color: #128D5F;
-    border: 2px solid #128D5F;
 }
 
-.Button--branco:hover{
-    background-color:#F5F5F5 ;
-    color: #0D6645;
-    border: 2px solid #0D6645
-}
-
-.Button--Verde{
-    background-color:#128D5F ;
+/* VARIANTES */
+.Button--verde {
+    background-color: #128D5F;
     color: #FFFFFF;
-    border: none;
 }
 
-.Button--Verde:hover{
+.Button--verde:hover {
     background-color: #0D6645;
-    color: #F5F5F5;
 }
 
-.Button--Branco{
-    background-color:#FFFFFF ;
+.Button--branco {
+    background-color: #FFFFFF;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--Branco:hover{
-    background-color:#F5F5F5 ;
+.Button--branco:hover {
+    background-color: #F5F5F5;
     color: #0D6645;
-    border: 2px solid #0D6645
 }
 
-@media (min-width: 1024px) and (max-width: 1366px) {
-    .Button {
-        width: 157px;
-        height: 57px;
-        border-radius: 20px;
-        font-size: 18px;
-    }
+.HomeDirector{
+    width: 259px;
+    height: 67px;
+    font-size: 24px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
 }
+
+
 

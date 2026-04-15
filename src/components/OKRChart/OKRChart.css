@@ -2,6 +2,7 @@
     position: relative;
     width: 200px;
     height: 110px;
+    transform: translateX(20%);
 }
 
 .arc-label {
@@ -17,7 +18,7 @@
 }
 
 .arc-percent {
-    font-size: 20px;
+    font-size: 22px;
     vertical-align: super;
 }
 
@@ -46,4 +47,10 @@
     font-size: 12px;
     text-align: center;
 
+}
+
+.destails{
+    width: 150px;
+    height: 34px;
+    font-size: 12px;
 }
