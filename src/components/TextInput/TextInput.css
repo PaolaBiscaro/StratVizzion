@@ -33,3 +33,19 @@ label {
 .input::placeholder{
     padding-left: 2%;    
 }
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .label{
+        font-size: 28px;
+    }
+
+    .TextInput{
+        padding-top: 2%;
+        padding-left: 5%;
+    }
+
+    .input{
+        width: 904px;
+    }
+
+}

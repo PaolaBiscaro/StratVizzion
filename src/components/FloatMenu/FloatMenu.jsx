@@ -3,7 +3,7 @@ import "./FloatMenu.css"
 
 function SelectMenu({opcoes = [], inside="Insert PlaceHolder Here", title="Insert Title here"}){
     return(
-    <div>
+    <div className="FloatMenu">
         <label className="Label">{title}</label>
         <select className="Select">
             <option value="" disabled selected>{inside}</option>
