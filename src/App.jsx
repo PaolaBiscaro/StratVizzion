@@ -1,14 +1,11 @@
 import React from "react";
 import "./styles/variables.css";
-import SideBar from "./components/SideBar";
-import Button from "./components/Button/Button";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div>
-      <Button texto={"Criar nova OKR"} url={"/TESTE"} variante="branco"/>
-    </div>
-  );
+  <Login />
+);
 }
 
 export default App;
