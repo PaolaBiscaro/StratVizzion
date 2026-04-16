@@ -25,3 +25,7 @@ body {
     width: 100vw;
 }
 
+::placeholder{
+    font-family: var(--font-family);
+}
+

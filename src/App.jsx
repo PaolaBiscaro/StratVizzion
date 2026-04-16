@@ -1,13 +1,15 @@
 import React from "react";
 import "./styles/variables.css";
-import SideBar from "./components/SideBar";
-import Button from "./components/Button/Button";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NewOKR from "./pages/NewOKR";
 
 function App() {
   return (
-    <div>
-      <Button texto={"Criar nova OKR"} url={"/TESTE"} variante="branco"/>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/NewOKR" element={<NewOKR/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
