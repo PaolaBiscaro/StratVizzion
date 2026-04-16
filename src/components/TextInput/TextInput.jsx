@@ -9,7 +9,7 @@ function TextInput({title="Title Request", inside="Insert inside text here", tam
     
     return(
         <div className="TextInput">
-            <label className="label" for>{title}</label>
+            <label className="label">{title}</label>
             <textarea type="text" placeholder={inside} className="input" style={{minHeight : tamanho, width: largura} } onInput={handleInput}></textarea>
         </div>
     )
