@@ -14,8 +14,8 @@ function NewOKR(){
             <TextInput title="Título da OKR" inside="EX:Aumentar a retenção de usuários ativos"/>
             <TextInput title="Descrição" inside="Contexto e Justificativa do objetivo..." tamanho="103px"/>
             <SelectMenu opcoes={[{value: "Q1", label:"Q1 2026"},{value: "Q2", label:"Q2 2026"},{value: "Q3", label:"Q3 2026"},{value: "Q4", label:"Q4 2026"}]} title="Ciclo" inside="-- Selecionar --" />
-            <Button texto={"Salvar"} url={"/nada"} className={"Salvar"}/>
-            <Button texto={"Limpar Campos"} url={"/nada"} variante="branco" className={"Limpar"}/> 
+            <Button texto={"Salvar"} className={"Salvar"}/>
+            <Button texto={"Limpar Campos"} variante="branco" className={"Limpar"}/> 
            </div>
         </div>
         );
