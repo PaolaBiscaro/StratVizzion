@@ -77,7 +77,13 @@
     .Limpar{
     position: fixed;
     bottom: 24px;
-    right: 150px;
+    right: 220px;
+
+    .Salvar{
+        position: fixed;
+        bottom: 24px;
+        right: 24px;   
+    }
 }
 }
 
