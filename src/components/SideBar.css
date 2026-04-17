@@ -81,16 +81,16 @@ quanto a do gestor já que ambas compartilham mesmas característcas
     color: #2FAF3B;
 }
 
-@media (max-width:1366px){
+@media (min-width: 1024px) and (max-width: 1366px) {
 .Sidebar {
     min-height: 100vh;
-    width: 333px;
+    width: 300px;
     background-color: #FFFFFF;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 22px;
 }
 
 .SideBarList {
@@ -100,7 +100,7 @@ quanto a do gestor já que ambas compartilham mesmas característcas
     margin-top: 35px;
     display: flex;
     flex-direction: column;
-    gap: 49px;
+    gap: 39px;
 }
 
 .SideBarList .Coluna {
@@ -113,7 +113,7 @@ quanto a do gestor já que ambas compartilham mesmas característcas
     color: #4A4A4D;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .SideBarList .Coluna:hover {
