@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #9fe3da, #7ed3c5);
+}
+
+/* CONTAINER */
+.cadastro-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.cadastro-card {
+  width: 1200px;
+  height: 700px;
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* IMAGEM */
+.cadastro-image {
+  width: 50%;
+  background: url("../assets/kaitlyn-baker-vZJdYl5JVXY-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(23, 156, 114, 0.65),
+    rgba(65, 199, 179, 0.45)
+  );
+}
+/* FORM */
+.cadastro-form {
+  width: 50%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cadastro-form h1 {
+  color: #179c72;
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+
+.cadastro-form label {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.cadastro-form input {
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #f2f2f2;
+}
+
+/* BOTÕES */
+.btn-primary {
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #179c72;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 30px;
+  background: white;
+  border: 2px solid #179c72;
+  color: #179c72;
+  cursor: pointer;
+}
+
+/* FUNDO */
+.bg-shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.4;
+}
+
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: #41c7b3;
+  top: -100px;
+  left: -100px;
+}
+
+.shape-2 {
+  width: 300px;
+  height: 300px;
+  background: #2fae9d;
+  bottom: -100px;
+  right: -100px;
+}
