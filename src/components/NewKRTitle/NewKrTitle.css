@@ -13,7 +13,7 @@
 
 .subtexto {
     font-size: 32px;
-    padding-left: 30px;
+    padding-left: 2%; /* Arrumar esse padding*/
     color: #4A4A4D;
     white-space: nowrap;
 }

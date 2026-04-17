@@ -6,6 +6,7 @@ import SelectMenu from "../components/FloatMenu/FloatMenu";
 import Button from "../components/Button/Button";
 
 function NewOKR() {
+    //Não sei dizer se essa é a forma mais otimizada ou boa prática fazer isso, por enqunato vou deixar aqui, qualquer coisa eu migro para outra pasta mais tarde
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [ciclo, setCiclo] = useState("");

@@ -1,7 +1,7 @@
 import React from "react";
 import "./TextInput.css"
 
-function TextInput({ title, inside, tamanho, value, onChange }) {//Permite adicionar tamanho, valor e até o que acontece se mudar
+function TextInput({ title, inside, tamanho, value, onChange, className }) {//Permite adicionar tamanho, valor e até o que acontece se mudar
   const handleInput = (e) => {
     e.target.style.height = "auto";
     e.target.style.height = e.target.scrollHeight + "px";
@@ -10,9 +10,9 @@ function TextInput({ title, inside, tamanho, value, onChange }) {//Permite adici
   return (
     <div className="FloatMenu">
       <label className="Label">{title}</label>
-      <textarea
+      <textarea 
         placeholder={inside}
-        className="input"
+        className= {` input ${className}`} 
         style={{ minHeight: tamanho || "64px" }}
         value={value}
         onChange={onChange}
