@@ -97,7 +97,7 @@ quanto a do gestor já que ambas compartilham mesmas característcas
     height: auto;
     padding: 0;
     width: 100%;
-    margin-top: 35px;
+    margin-top: 29px;
     display: flex;
     flex-direction: column;
     gap: 39px;
@@ -105,7 +105,7 @@ quanto a do gestor já que ambas compartilham mesmas característcas
 
 .SideBarList .Coluna {
     width: 100%;
-    height: 29px;
+    height: 28px;
     list-style-type: none;
     margin: 0;
     display: flex;
