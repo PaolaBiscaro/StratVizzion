@@ -63,7 +63,7 @@
 .Limpar{
     position: fixed;
     bottom: 24px;
-    right: 200px;
+    right: 300px;
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
@@ -74,5 +74,10 @@
         font-size: 18px;
         font-weight: bold;
     }
+    .Limpar{
+    position: fixed;
+    bottom: 24px;
+    right: 150px;
+}
 }
 

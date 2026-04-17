@@ -1,18 +1,25 @@
 import React from "react";
 import "./TextInput.css"
 
-function TextInput({title="Title Request", inside="Insert inside text here", tamanho="64px"}){
-    const handleInput = (e) => {
+function TextInput({ title, inside, tamanho, value, onChange }) {//Permite adicionar tamanho, valor e até o que acontece se mudar
+  const handleInput = (e) => {
     e.target.style.height = "auto";
     e.target.style.height = e.target.scrollHeight + "px";
   };
-    
-    return(
-        <div className="TextInput">
-            <label className="label">{title}</label>
-            <textarea type="text" placeholder={inside} className="input" style={{minHeight : tamanho} } onInput={handleInput}></textarea>
-        </div>
-    )
+
+  return (
+    <div className="FloatMenu">
+      <label className="Label">{title}</label>
+      <textarea
+        placeholder={inside}
+        className="input"
+        style={{ minHeight: tamanho || "64px" }}
+        value={value}
+        onChange={onChange}
+        onInput={handleInput}
+      />
+    </div>
+  );
 }
 
 export default TextInput
