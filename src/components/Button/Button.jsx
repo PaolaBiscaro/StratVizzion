@@ -20,4 +20,4 @@ function BotaoVerde({ texto, url, variante = "verde", className, onClick }) {//P
   );
 }
 
-export default Botao;
+export default BotaoVerde;
