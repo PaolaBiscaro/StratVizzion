@@ -74,16 +74,5 @@
         font-size: 18px;
         font-weight: bold;
     }
-    .Limpar{
-    position: fixed;
-    bottom: 24px;
-    right: 220px;
-
-    .Salvar{
-        position: fixed;
-        bottom: 24px;
-        right: 24px;   
-    }
-}
 }
 
