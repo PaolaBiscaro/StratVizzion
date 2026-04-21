@@ -7,6 +7,7 @@ import Button from "./components/Button/Button";
 function App() {
   return (
     <div className="app-layout">
+      <SideBar/>
       {/* <Button texto={"Criar nova OKR"} url={"/TESTE"} variante="branco"/> */}
       <div className="content-homemanager">
       <HomeManager/>
