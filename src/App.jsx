@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="app-layout">
       <SideBar />
-      <div className="content">
+      <div className="content-homemanager">
       <HomeManager/>
       </div>
     </div>
