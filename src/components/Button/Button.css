@@ -1,0 +1,66 @@
+.Button{
+   width: 259px;
+   height: 67px;
+   border-radius:20px ;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.Button--verde{
+    background-color:#128D5F ;
+    color: #FFFFFF;
+    border: none;
+}
+
+.Button--verde:hover{
+    background-color: #0D6645;
+    color: #F5F5F5;
+}
+
+.Button--branco{
+    background-color:#FFFFFF ;
+    color: #128D5F;
+    border: 2px solid #128D5F;
+}
+
+.Button--branco:hover{
+    background-color:#F5F5F5 ;
+    color: #0D6645;
+    border: 2px solid #0D6645
+}
+
+.Button--Verde{
+    background-color:#128D5F ;
+    color: #FFFFFF;
+    border: none;
+}
+
+.Button--Verde:hover{
+    background-color: #0D6645;
+    color: #F5F5F5;
+}
+
+.Button--Branco{
+    background-color:#FFFFFF ;
+    color: #128D5F;
+    border: 2px solid #128D5F;
+}
+
+.Button--Branco:hover{
+    background-color:#F5F5F5 ;
+    color: #0D6645;
+    border: 2px solid #0D6645
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .Button {
+        width: 157px;
+        height: 57px;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
