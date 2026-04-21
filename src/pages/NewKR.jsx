@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideBar from "../components/SideBar";
+import SideBar from "../components/Sidebar/SideBar";
 import KRTitle from "../components/NewKRTitle/NewKRTitle";
 import TextInput from "../components/TextInput/TextInput";
 import SelectMenu from "../components/FloatMenu/FloatMenu";

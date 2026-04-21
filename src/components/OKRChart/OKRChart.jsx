@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
-import { PieChart, Pie } from "recharts";
 import "./OKRChart.css";
 import Button from "../Button/Button";
+import { PieChart, Pie } from "recharts";
 
 function ArcChart({
   value = 86,
