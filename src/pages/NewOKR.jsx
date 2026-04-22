@@ -29,6 +29,8 @@ function NewOKR() {
           inside="EX:Aumentar a retenção de usuários ativos"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
+          toolId={"titulo"}
+          toolText={"Digite o objetivo final que você deseja EX: Aumentar retenção de usuários ativos"}
         />
         <TextInput
           title="Descrição"
@@ -36,6 +38,8 @@ function NewOKR() {
           tamanho="103px"
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
+          toolId={"descricao"}
+          toolText={"Descreva os objetivos da sua meta, o contexto atual e o porque atingir essa meta"}
         />
         <div style={{ display: "flex", gap: "3px" }}>
           <SelectMenu
@@ -44,6 +48,14 @@ function NewOKR() {
             inside="-- Selecionar --"
             value={ciclo}
             onChange={(e) => setCiclo(e.target.value)}
+            toolId={"ciclo"}
+            toolText={`Insira até que trimestre a sua OKR deve ser entregue,
+              Primeiro Trimestre (Q1) - Janeiro, Fevereiro, Março,
+              Segundo Trimestre (Q2) - Abril, Maio, Junho,
+              Terceiro Trimestre (Q3) - Julho,Agosto, Setembro,
+              Quarto Trimestre (Q4) - Outubro, Novembro, Dezembro`
+
+            }
           />
           <SelectMenu
             opcoes={[{ value: "2026", label: "2026" }, { value: "2027", label: "2027" }, { value: "2028", label: "2028" }, { value: "2029", label: "2029" }, { value: "2030", label: "2030" }]}
@@ -51,6 +63,8 @@ function NewOKR() {
             inside="-- Selecionar --"
             value={ano}
             onChange={(e) => setAno(e.target.value)}
+            toolId={"ano"}
+            toolText={"Escolha até que ano a sua OKR deve ser entregue"}
           />
         </div>
         <Button texto="Salvar" className="Salvar" />

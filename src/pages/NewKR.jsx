@@ -32,12 +32,16 @@ function NewKR(){
             inside="-- Selecionar --"
             value={OKR}
             onChange={(e) => setAno(e.target.value)}
+            toolId={"okr"}
+            toolText={"Escolha qual OKR essa Key Result faz parte"}
           />
             <TextInput
             title="Título do Key Result"
             inside="EX: Aumentar DAU de 50k para 75k"
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
+            toolId={"titulokr"}
+            toolText={"Digite qual é a Key Result a ser concluida para concluir a OKR"}
             />
 
             <TextInput
@@ -46,6 +50,8 @@ function NewKR(){
             tamanho="103px"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
+            toolId={"contextokr"}
+            toolText={"Digite o contexto atual e porquê essa Key Result ajuda a concluir a OKR"}
             />
 
             <div style={{ display: "flex", gap: "3px" }}>
@@ -56,6 +62,8 @@ function NewKR(){
                     value={valor}
                     onChange={(e) => setValor(e.target.value)}
                     className={"Valor"}
+                    toolId={"valor"}
+                    toolText={"Digite o Orçamento Inicial dessa Key Result"}
                 />
 
                 <TextInput
@@ -65,6 +73,8 @@ function NewKR(){
                     value={meta}
                     onChange={(e) => setMeta(e.target.value)}
                     className={"Valor"}
+                    toolId={"meta"}
+                    toolText={"Digite qual a meta de orçamento dessa Key Result"}
                 />
 
             </div>

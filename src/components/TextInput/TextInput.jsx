@@ -1,7 +1,8 @@
 import React from "react";
 import "./TextInput.css"
+import TooltipIcon from "../Tooltip/Tooltip";
 
-function TextInput({ title, inside, tamanho, value, onChange, className }) {//Permite adicionar tamanho, valor e até o que acontece se mudar
+function TextInput({ title, inside, tamanho, value, onChange, className, toolText, toolId }) {
   const handleInput = (e) => {
     e.target.style.height = "auto";
     e.target.style.height = e.target.scrollHeight + "px";
@@ -9,10 +10,13 @@ function TextInput({ title, inside, tamanho, value, onChange, className }) {//Pe
 
   return (
     <div className="FloatMenu">
-      <label className="Label">{title}</label>
-      <textarea 
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <label className="Label">{title}</label>
+        <TooltipIcon id={toolId} texto={toolText} />
+      </div>
+      <textarea
         placeholder={inside}
-        className= {` input ${className}`} 
+        className={`input ${className}`}
         style={{ minHeight: tamanho || "64px" }}
         value={value}
         onChange={onChange}
@@ -22,4 +26,4 @@ function TextInput({ title, inside, tamanho, value, onChange, className }) {//Pe
   );
 }
 
-export default TextInput
+export default TextInput;
