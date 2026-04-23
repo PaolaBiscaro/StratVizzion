@@ -2,11 +2,11 @@ import React from "react";
 import "./styles/variables.css";
 import NewOKR from "./pages/NewOKR";
 import NewKR from "./pages/NewKR";
-import SideBar from "./components/Sidebar/SideBar";
 import HomeManager from "./features/homeManager";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
 import Manager from "./features/homeManager/index"
+import OKRDetails from "./pages/OKRDetails";
 
 
 
@@ -25,6 +25,7 @@ function App() {
           <Route path="/NewKR" element={<NewKR />} />
           <Route path="/home" element={<Home />} />
           <Route path="/HomeManager" element={<Manager/>}/>
+          <Route path="/OKRDetails" element={<OKRDetails/>}/>
         </Routes>
 
       </BrowserRouter>
