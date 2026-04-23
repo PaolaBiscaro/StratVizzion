@@ -7,6 +7,7 @@ import HomeManager from "./features/homeManager";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
 import Manager from "./features/homeManager/index"
+import ProfileConfiguration from "./pages/ProfileConfiguration";
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/NewKR" element={<NewKR />} />
           <Route path="/home" element={<Home />} />
           <Route path="/HomeManager" element={<Manager/>}/>
+          <Route path="/ProfileConfiguration" element={<ProfileConfiguration />} />
         </Routes>
 
       </BrowserRouter>

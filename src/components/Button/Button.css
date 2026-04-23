@@ -55,13 +55,11 @@
 }
 
 .Salvar{
-    position: fixed;
     bottom: 24px;
     right: 12px;
 }
 
 .Limpar{
-    position: fixed;
     bottom: 24px;
     right: 200px;
 }
@@ -70,6 +68,14 @@
     position: fixed;
     bottom: 24px;
     right: 12px;
+}
+
+.botoes-fixos {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 12px;
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {

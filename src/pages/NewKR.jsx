@@ -68,8 +68,10 @@ function NewKR(){
                 />
 
             </div>
-            <Button texto="Salvar" className="Salvar" />
-            <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
+            <div className="botoes-fixos">
+                <Button texto="Salvar" className="Salvar" />
+                <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
+            </div>
         </div>
 
         

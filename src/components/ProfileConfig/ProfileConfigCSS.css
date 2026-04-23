@@ -1,0 +1,257 @@
+.container {
+  flex: 1; 
+  padding: 70px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1{
+    font-size: 35px;
+}
+
+.header h3{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.headerDireita {
+  display: flex;
+  align-items: center;
+}
+
+.inputPesquisa {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    width: 250px;
+}
+
+.infoPessoais{
+    background-color: white;
+    width: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.infoPessoais .row1 {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  align-items: center; 
+  margin-bottom: 30px; 
+}
+
+.infoPessoais .grupoFoto {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+  flex: 1; 
+}
+
+.infoPessoais .avatarPlaceholder {
+  width: 100px;
+  height: 100px;
+  background-color: #558b2f; 
+  color: #ffffff;
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.infoPessoais .acoesFoto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infoPessoais .btnAlterarFoto {
+  padding: 8px 20px;
+  border: 1px solid #606061;
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+}
+
+.infoPessoais .btnAlterarFoto:hover {
+  background-color: #f0f0f0;
+}
+
+.infoPessoais .textoAjuda {
+  font-size: 12px;
+  color: #666;
+}
+
+.infoPessoais .row1 .coluna3 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.infoPessoais .row2 {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    margin-top: 15px; 
+}
+
+.infoPessoais .row2 .coluna1,
+.infoPessoais .row2 .coluna2 {
+    display: flex;
+    flex-direction: column; 
+    flex: 1; 
+    gap: 4px; 
+}
+
+.infoPessoais input {
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    height: 45px;
+    box-sizing: border-box; 
+}
+
+.infoPessoais .row3 {
+    margin-top: 15px; 
+}
+
+.infoPessoais .row3 .coluna1 {
+    display: flex;
+    flex-direction: column; 
+    gap: 4px;
+}
+
+.infoPessoais label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.infoPessoais .legenda{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+
+
+/* INTEGRAÇÃO COM JIRA */
+
+.integracaoJira {
+    background-color: white;
+    width: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.integracaoJira .legenda {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.integracaoJira .row1 .coluna1{
+    display: flex;
+    flex-direction: column; 
+    flex: 1; 
+    gap: 4px; 
+}
+.integracaoJira input {
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    height: 45px;
+    box-sizing: border-box; 
+}
+
+.integracaoJira label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.input-com-tooltip {
+  display: flex;
+  align-items: center; 
+  width: 100%; 
+}
+
+.input-com-tooltip input {
+  flex: 1;
+}
+
+.input-com-tooltip .tooltip-icon {
+  cursor: pointer;
+  margin-left: 10px; 
+  background-color: #606061; 
+  color: white; 
+  border-radius: 50%; 
+  width: 2em; 
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+/* Contato */
+
+.contato{
+
+    background-color: white;
+    width: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.contato .legenda {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contato .row1 .coluna1{
+    display: flex;
+    flex-direction: column; 
+    flex: 1; 
+    gap: 4px; 
+}
+
+.contato input {
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    height: 45px;
+    box-sizing: border-box; 
+}
+
+.contato label {
+    font-weight: bold;
+    font-size: 18px;
+}
