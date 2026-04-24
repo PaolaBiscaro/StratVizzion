@@ -8,7 +8,7 @@ function OKRInfo(){
     return(
         <div className="info">
             <OKRHeader/>
-            <OKRProgressBar progress={100}/>
+            <OKRProgressBar progress={50}/>
             <OKRFooter/>
         </div>
     );
