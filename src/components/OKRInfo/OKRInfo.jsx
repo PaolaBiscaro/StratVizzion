@@ -3,8 +3,7 @@ import "./OKRInfo.css";
 
 function OKRInfo(){
     return(
-        <div className="Info">
-
+        <div className="info">
         </div>
     );
 }

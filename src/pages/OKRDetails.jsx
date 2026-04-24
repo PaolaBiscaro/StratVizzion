@@ -7,14 +7,14 @@ import OKRInfo from "../components/OKRInfo/OKRInfo";
 
 function OKRDetails(){
     return(
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
       <SideBar />
-      <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, width: "100%", alignItems: "flex-start" }}>
         <OKRRoute />
         <OKRInfo/>
+      </div>
     </div>
-    </div>
-        );
+    );
 }
 
 
