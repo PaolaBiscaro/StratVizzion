@@ -2,6 +2,8 @@ import React from "react";
 import SideBar from "../components/Sidebar/SideBar";
 import OKRRoute from "../components/OKRDetailsTitle/OKRRoute";
 import OKRInfo from "../components/OKRInfo/OKRInfo";
+import Warning from "../components/WarningPanel/Warning";
+
 
 // Cada OKR deve ter sua própria página de Detalhes!
 
@@ -12,6 +14,7 @@ function OKRDetails(){
       <div style={{ display: "flex", flexDirection: "column", flex: 1, width: "100%", alignItems: "flex-start" }}>
         <OKRRoute />
         <OKRInfo/>
+        <Warning/>
       </div>
     </div>
     );

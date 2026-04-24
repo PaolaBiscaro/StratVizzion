@@ -1,0 +1,12 @@
+.panel{
+    background-color: #FFFFFF;
+    width: 97%;
+    min-height: 290px;
+    margin-top: 1%;
+    box-sizing: border-box;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 20px;
+}
