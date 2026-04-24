@@ -1,0 +1,13 @@
+.OKRHeader{
+    padding-left: 2%;
+    padding-top: 3%;
+    font-size: 28px;
+    color: #4A4A4D ;
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .OKRHeader{
+        font-size: 20px;
+    }
+
+}
