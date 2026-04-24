@@ -10,3 +10,24 @@
     gap: 8px;
     padding-bottom: 20px;
 }
+
+@media (max-width: 1366px) {
+    .panel{
+        height: 250px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 1280px) {
+    .panel {
+        height: 230px;
+        width: 93%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .panel {
+        height: 220px;
+        width: 90%;
+    }
+}

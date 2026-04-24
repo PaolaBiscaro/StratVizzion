@@ -1,0 +1,20 @@
+.graphics-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.graphics-chart {
+    width: 60%;
+}
+
+.graphics-message {
+    flex: 1;
+    font-size: 16px;
+    color: #4A4A4D;
+    text-align: center;
+    padding: 10px;
+}
