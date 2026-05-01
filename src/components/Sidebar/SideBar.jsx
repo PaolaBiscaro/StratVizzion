@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DirectorSideBarData } from "./DirectorSideBarData";
 import "./SideBar.css";
 import { FiLogOut } from "react-icons/fi";//Biblioteca de ícones
+import { SearchUser } from "../../services/userService";
 
 /* Explicação
     A SideBarData contém uma lista com todos as guias da side bar
@@ -29,11 +30,17 @@ import { FiLogOut } from "react-icons/fi";//Biblioteca de ícones
 
 
 function SideBar() {
+   const [user, setUser] = useState({ name: "Carregando...", role: "role_request" });
+
+    useEffect(() => {
+        SearchUser(1).then(setUser);
+    }, []);
+
   return (
     <div className="Sidebar">
       <div className="Profile"></div>
-      <h1 className="User">User Request</h1>
-      <h2 className="Role">Role Request</h2>
+      <h1 className="User">{user.name}</h1>
+      <h2 className="Role">{user.role}</h2>
       <ul className="SideBarList">
         {DirectorSideBarData.map((val, key) => {
           return (

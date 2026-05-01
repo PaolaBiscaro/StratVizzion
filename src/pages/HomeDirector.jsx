@@ -15,7 +15,7 @@ function Home() {
         <OKRWorking/>
         <OKRConcluded />
       </div>
-      <Button  texto="Criar nova OKR" url="/NovaOKR" variante="verde" className={"HomeDirector"} />
+      <Button  texto="Criar nova OKR" url="/NewOKR" variante="verde" className={"HomeDirector"} />
     </div>
   );
 }
