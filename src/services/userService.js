@@ -1,4 +1,4 @@
-import { toUserResponse } from "./dtos/userDTO";
+import { toUserResponse } from "./dtos/Response/userResponseDTO";
 
 export async function buscarUsuario(id) {
     const response = await fetch("iNSERIR API AQUI");
