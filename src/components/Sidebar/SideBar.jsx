@@ -38,17 +38,9 @@ function SideBar() {
 
   return (
     <div className="Sidebar">
-<<<<<<< HEAD
       <div className="Profile"></div>
       <h1 className="User">{user.name}</h1>
       <h2 className="Role">{user.role}</h2>
-=======
-      <div className="Profile" onClick={() => { window.location.pathname = "/ProfileConfiguration" }} style={{cursor: "pointer"}}>
-        
-      </div>
-      <h1 className="User">User Request</h1>
-      <h2 className="Role">Role Request</h2>
->>>>>>> 728a2aa4bb42f6127450ef90454ace5beccab4b4
       <ul className="SideBarList">
         {DirectorSideBarData.map((val, key) => {
           return (

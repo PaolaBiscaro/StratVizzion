@@ -8,7 +8,6 @@ import Button from "../components/Button/Button";
 import MainTitle from "../components/MainTitle/MainTitle";
 
 function NewOKR() {
-    //Não sei dizer se essa é a forma mais otimizada ou boa prática fazer isso, por enqunato vou deixar aqui, qualquer coisa eu migro para outra pasta mais tarde
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [ciclo, setCiclo] = useState("");
@@ -23,20 +22,23 @@ function NewOKR() {
 
   const handleSave = async () => {
     try {
-      await criarOKR({ title: titulo, description: descricao});
+      await criarOKR({
+        title: titulo,
+        description: descricao,
+        cycle_id: `${ciclo}-${ano}`,
+      });
       limparCampos();
     } catch (error) {
       console.error(error);
     }
   };
 
-
   return (
     <div className="page-layout">
       <SideBar />
 
       <main>
-        <MainTitle title={"Cadastrar novo OKR"}  subtitle={"Defina o objetivo para a sua empresa"}/>
+        <MainTitle title={"Cadastrar novo OKR"} subtitle={"Defina o objetivo para a sua empresa"} />
         <TextInput
           title="Título da OKR"
           inside="EX:Aumentar a retenção de usuários ativos"
