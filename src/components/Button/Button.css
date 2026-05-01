@@ -1,81 +1,82 @@
-.Button{
-   width: 259px;
-   height: 67px;
-   border-radius:20px ;
-    font-size: 24px;
+.Button {
+    width: 190px;
+    height: 100%;
+    border-radius: 15px;
+    font-size: 18px;
     font-weight: bold;
+    padding: 15px;
     cursor: pointer;
 
 }
 
-.Button--verde{
-    background-color:#128D5F ;
+.Button--verde {
+    background-color: #128D5F;
     color: #FFFFFF;
     border: none;
 }
 
-.Button--verde:hover{
+.Button--verde:hover {
     background-color: #0D6645;
     color: #F5F5F5;
 }
 
-.Button--branco{
-    background-color:#FFFFFF ;
+.Button--branco {
+    background-color: #FFFFFF;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--branco:hover{
-    background-color:#F5F5F5 ;
+.Button--branco:hover {
+    background-color: #F5F5F5;
     color: #0D6645;
     border: 2px solid #0D6645
 }
 
-.Button--Verde{
-    background-color:#128D5F ;
+.Button--Verde {
+    background-color: #128D5F;
     color: #FFFFFF;
     border: none;
 }
 
-.Button--Verde:hover{
+.Button--Verde:hover {
     background-color: #0D6645;
     color: #F5F5F5;
 }
 
-.Button--Branco{
-    background-color:#FFFFFF ;
+.Button--Branco {
+    background-color: #FFFFFF;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--Branco:hover{
-    background-color:#F5F5F5 ;
+.Button--Branco:hover {
+    background-color: #F5F5F5;
     color: #0D6645;
     border: 2px solid #0D6645
 }
 
-.Salvar{
+.Salvar {
     bottom: 24px;
     right: 12px;
 }
 
-.Limpar{
+.Limpar {
     bottom: 24px;
     right: 200px;
 }
 
-.HomeDirector{
+.HomeDirector {
     position: fixed;
     bottom: 24px;
     right: 12px;
 }
 
 .botoes-fixos {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  gap: 12px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 12px;
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {

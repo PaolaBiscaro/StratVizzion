@@ -1,40 +1,40 @@
-import { useState } from "react";
-import { FiSearch } from "react-icons/fi";
-import "./SearchBar.css";
+    import { useState } from "react";
+    import { FiSearch } from "react-icons/fi";
+    import { useSearch } from "../../context/SearchContext";
+    import "./SearchBar.css";
 
-function SearchBar({ onSearch }) {
+    function SearchBar() {
+        const [input, setInput] = useState("");
+        const { setBusca } = useSearch();
 
-    const [termo, setTermo] = useState("");
+        function handleChange(e) {
+            const valor = e.target.value;
+            setInput(valor);
+            setBusca(valor); 
+        }
 
-    const handleChange = (e) => {
-        const valor = e.target.value;
-        setTermo(valor);
+        return (
+            <div className="headerDireita">
+                <div className="iconRobotWrapper">
+                    <img src="src/assets/icons/bot.png" alt="Robô" className="iconRobot"/>
+                </div>
 
-        if (onSearch) onSearch(valor); 
-    };
+                <div className="searchWrapper">
+                    <input
+                        type="text"
+                        className="inputPesquisa"
+                        placeholder="Pesquise algo..."
+                        value={input}
+                        onChange={handleChange}
+                    />
 
-    return (
-        <div className="headerDireita">
-            <div className="iconRobotWrapper">
-                <img src="src/assets/icons/bot.png" alt="Robô" className="iconRobot"/>
+                    <FiSearch
+                        className="iconSearch"
+                        onClick={() => setBusca(input)}
+                    />
+                </div>
             </div>
+        );
+    }
 
-            <div className="searchWrapper">
-                <input
-                    type="text"
-                    className="inputPesquisa"
-                    placeholder="Pesquise algo..."
-                    value={termo}
-                    onChange={handleChange}
-                />
-
-                <FiSearch
-                    className="iconSearch"
-                    onClick={() => onSearch && onSearch(termo)}
-                />
-            </div>
-        </div>
-    );
-}
-
-export default SearchBar;
+    export default SearchBar;

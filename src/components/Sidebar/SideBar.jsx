@@ -31,7 +31,9 @@ import { FiLogOut } from "react-icons/fi";//Biblioteca de ícones
 function SideBar() {
   return (
     <div className="Sidebar">
-      <div className="Profile"></div>
+      <div className="Profile" onClick={() => { window.location.pathname = "/ProfileConfiguration" }} style={{cursor: "pointer"}}>
+        
+      </div>
       <h1 className="User">User Request</h1>
       <h2 className="Role">Role Request</h2>
       <ul className="SideBarList">
