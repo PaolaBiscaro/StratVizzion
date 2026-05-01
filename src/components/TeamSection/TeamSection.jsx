@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/TeamSection.css";
+import "./TeamSection.css";
 
 // O card define o "contrato": eu preciso de nomeEquipe, membros e cliente.
 const TeamSection = ({ nomeEquipe, membros, cliente }) => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import TeamSection from "./components/TeamSection.jsx";
-import { getEquipes, getOKR } from "../../services/data/api_mock.js";
-import OKRMonitoring from "./components/OKRMonitoring.jsx";
-import "./styles/main.css";
-import SideBar from '../../components/Sidebar/SideBar.jsx';
+import TeamSection from "../components/TeamSection/TeamSection.jsx";
+import { getEquipes, getOKR } from "../services/data/api_mock.js";
+import OKRMonitoring from "../components/OKRMonitoring/OKRMonitoring.jsx";
+import SideBar from '../components/Sidebar/SideBar.jsx';
+import MainTitle from '../components/MainTitle/MainTitle.jsx';
 
 
 const EquipesPage = () => {
@@ -18,9 +18,11 @@ return (
   <div className="page-layout">
     <SideBar />
 
-    <main className="main-hm">
-      <h1 className='title-welcome-hm'>Olá, Kaio!</h1>
-      <p className='subtitle-hm'>Acompanhe o desenvolvimento dos seus times</p>
+    <main>
+      <MainTitle 
+      title={"Olá, Kaio!"} 
+      subtitle={"Acompanhe o desenvolvimento dos seus times"}
+      />
 
       <div className="container-cards">
         {listaParaExibirEquipes.map((equipe) => (
@@ -39,7 +41,7 @@ return (
           onClick={() => setShowOKR(!showOKR)}
           style={{ cursor: 'pointer' }}
         >
-          <h2 className="main-title-okr">Andamento das OKR</h2>
+          <h2 className="title-card">Andamento das OKR</h2>
           <span className="toggle-icon-okr">
             {showOKR ? "▲" : "▼"}
           </span>

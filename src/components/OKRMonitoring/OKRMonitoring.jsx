@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/OKRMonitoring.css";
+import "./OKRMonitoring.css";
 
 
 const OKRMonitoring = ({ id, porcentagem, prazo, descricao }) => {

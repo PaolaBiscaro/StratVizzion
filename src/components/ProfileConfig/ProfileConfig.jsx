@@ -12,8 +12,8 @@ export default function ProfileConfig() {
     <div className="container">
         <div className="header">
             <div className="headerEsquerda">
-                <h1>Edição de Perfil</h1>
-                <h3>Dados que aparecem no seu perfil dentro do sistema.</h3>
+                {/* <h1>Edição de Perfil</h1>
+                <h3>Dados que aparecem no seu perfil dentro do sistema.</h3> */}
             </div>
 
             <div className="headerDireita">
