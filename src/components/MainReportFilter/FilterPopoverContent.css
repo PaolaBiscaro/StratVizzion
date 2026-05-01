@@ -1,0 +1,55 @@
+.title-popover {
+    color: #4A4A4D;
+    font-weight: bold;
+}
+
+
+.popover-inner {
+    background-color: #ffffff;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.filter-select {
+
+    /* Ativa a nova engine de estilização */
+    &,
+    &::picker(select) {
+        appearance: base-select;
+    }
+
+    &:focus {
+        outline: none;
+        border: 2px solid #128D5F;
+
+
+    }
+
+    padding: 10px 10px;
+    background-color: #128D5F;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+
+::picker(select) {
+    background-color: #ffffff;
+    border: none;
+}
+
+option {
+    padding: 10px;
+    color: #0b2e13;
+    background-color: #ffffff;
+}
+
+option:hover {
+    background-color: #b9f0c6 !important;
+}
+
+option:checked {
+    background-color: #b9f0c6;
+}
