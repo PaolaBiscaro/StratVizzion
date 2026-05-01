@@ -1,29 +1,30 @@
 .OKRChart {
     background-color: #FFFFFF;
-    width: calc(100vw - 444px - 80px);
-    height: 488px;
+    width: calc(100vw - 260px - 60px); 
+    height: auto;
     border-radius: 10px;
-    /* margin-top: 2%; */
     padding: 20px;
-    /* margin-left: 40px; */
+    display: flex;
+    flex-direction: column;
 }
 
-.Titulo{
-    margin-top: 1% ;
-    margin-left: 1%;
-    font-size: 32px;
+.title-card {
+    font-size: 20px;
     font-weight: bold;
-
+    margin-bottom: 12px;
 }
-/* 
-@media (max-width:1366px){
-.OKRChart {
-    background-color: #FFFFFF;
-    width: calc(100vw - 444px - 80px);
-    height: 344px;
-    border-radius: 10px;
-    margin-top: 2%;
-    margin-left: 40px;
 
+.okr-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;              /* 👈 era 24px, aumenta conforme quiser */
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 16px 8px;      /* 👈 adiciona padding vertical e horizontal */
 }
-} */
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .OKRChart {
+        width: calc(100vw - 300px - 48px); 
+    }
+}

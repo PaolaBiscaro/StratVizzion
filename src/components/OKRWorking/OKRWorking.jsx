@@ -8,14 +8,18 @@ import ArcChart from "../OKRChart/OKRChart";
     que vai ser receber o componente dos gráficos
 */
 
-function OKRCHart(){
 
-    return(
+
+function OKRCHart() {
+    return (
         <div className="OKRChart">
             <h3 className="title-card">OKR - Objetivos e Resultados-Chave</h3>
-            <ArcChart></ArcChart>
+            <div className="okr-cards"> {/* 👈 envolve os cards */}
+                <ArcChart />
+                <ArcChart />
+                <ArcChart />
+            </div>
         </div>
-
     );
 }
 
