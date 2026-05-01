@@ -3,8 +3,9 @@
     width: calc(100vw - 444px - 80px);
     height: 488px;
     border-radius: 10px;
-    margin-top: 2%;
-    margin-left: 40px;
+    /* margin-top: 2%; */
+    padding: 20px;
+    /* margin-left: 40px; */
 }
 
 .Titulo{
@@ -14,7 +15,7 @@
     font-weight: bold;
 
 }
-
+/* 
 @media (max-width:1366px){
 .OKRChart {
     background-color: #FFFFFF;
@@ -25,4 +26,4 @@
     margin-left: 40px;
 
 }
-}
+} */

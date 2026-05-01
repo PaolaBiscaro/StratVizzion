@@ -12,7 +12,7 @@ function OKRCHart(){
 
     return(
         <div className="OKRChart">
-            <h3 className="Titulo">OKR - Objetivos e Resultados-Chave</h3>
+            <h3 className="title-card">OKR - Objetivos e Resultados-Chave</h3>
             <ArcChart></ArcChart>
         </div>
 

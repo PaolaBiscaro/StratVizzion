@@ -4,6 +4,7 @@ import OKRTitle from "../components/NewOkrTitle/NewOKRTitle";
 import TextInput from "../components/TextInput/TextInput";
 import SelectMenu from "../components/FloatMenu/FloatMenu";
 import Button from "../components/Button/Button";
+import MainTitle from "../components/MainTitle/MainTitle";
 
 function NewOKR() {
     //Não sei dizer se essa é a forma mais otimizada ou boa prática fazer isso, por enqunato vou deixar aqui, qualquer coisa eu migro para outra pasta mais tarde
@@ -20,10 +21,11 @@ function NewOKR() {
   };
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="page-layout">
       <SideBar />
-      <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <OKRTitle />
+
+      <main>
+        <MainTitle title={"Cadastrar novo OKR"}  subtitle={"Defina o objetivo para a sua empresa"}/>
         <TextInput
           title="Título da OKR"
           inside="EX:Aumentar a retenção de usuários ativos"
@@ -57,7 +59,7 @@ function NewOKR() {
           <Button texto="Salvar" className="Salvar" />
           <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
         </div>
-      </div>
+      </main>
     </div>
   );
 }
