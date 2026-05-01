@@ -22,6 +22,7 @@ function App() {
   return (
     
 <BrowserRouter>
+
         <Routes>
           <Route path="/NewOKR" element={<NewOKR />} />
           <Route path="/NewKR" element={<NewKR />} />
