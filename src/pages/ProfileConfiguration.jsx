@@ -9,8 +9,14 @@ export default function ProfileConfiguration() {
     }
 
     return (
+    // Precisa colocar as seguintes classes:
+    //<div className="page-layout">
+    //  <SideBar />
+
+    //  <main>
+    //     <MainTitle title={"Seu titulo"}  subtitle={"Seu subtitulo"}/>
+
         <div style={{ display: "flex", width: "100vw", minHeight: "100vh" }}>
-            
             <SideBar />
 
             <div style={{ flex: 1, display: "flex", flexDirection: "column", overflowY: "scroll", padding: "20px" }}>

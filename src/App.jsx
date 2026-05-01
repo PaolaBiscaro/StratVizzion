@@ -3,10 +3,10 @@ import "./styles/variables.css";
 import NewOKR from "./pages/NewOKR";
 import NewKR from "./pages/NewKR";
 import SideBar from "./components/Sidebar/SideBar";
-import HomeManager from "./features/homeManager";
+import HomeManager from "./pages/HomeManager";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
-import Manager from "./features/homeManager/index"
+import Manager from "./pages/HomeManager"
 import ProfileConfiguration from "./pages/ProfileConfiguration";
 
 
@@ -20,6 +20,7 @@ import ProfileConfiguration from "./pages/ProfileConfiguration";
 
 function App() {
   return (
+    
 <BrowserRouter>
         <Routes>
           <Route path="/NewOKR" element={<NewOKR />} />

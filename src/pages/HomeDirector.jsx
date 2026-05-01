@@ -5,17 +5,28 @@ import OKRWorking from "../components/OKRWorking/OKRWorking";
 import OKRConcluded from "../components/OKRConcluded/OKRConcluded";
 import ArcChart from "../components/OKRChart/OKRChart";
 import Button from "../components/Button/Button";
+import MainTitle from "../components/MainTitle/MainTitle";
 
 function Home() {
   return (
-    <div style={{ display: "flex" }}>
+    <div className="page-layout">
       <SideBar />
-      <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <Entrada userName="UserRequest" />
-        <OKRWorking/>
+      <main >
+        <MainTitle
+          title={"Olá, UserRequest!"}
+          subtitle={"Acompanhe o desenvolvimento de seus projetos"}
+        />
+
+        {/* <Entrada userName="UserRequest" /> */}
+        
+        <OKRWorking />
+          
+       
         <OKRConcluded />
-      </div>
-      <Button  texto="Criar nova OKR" url="/NovaOKR" variante="verde" className={"HomeDirector"} />
+
+      </main>
+      <Button texto="Criar nova OKR" url="/NovaOKR" variante="verde" className={"HomeDirector"} />
+
     </div>
   );
 }
