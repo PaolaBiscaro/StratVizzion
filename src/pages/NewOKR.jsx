@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { criarOKR } from "../services/okrService"; 
 import SideBar from "../components/Sidebar/SideBar";
 import OKRTitle from "../components/NewOkrTitle/NewOKRTitle";
 import TextInput from "../components/TextInput/TextInput";
@@ -18,6 +19,16 @@ function NewOKR() {
     setCiclo("");
     setAno("");
   };
+
+  const handleSave = async () => {
+    try {
+      await criarOKR({ title: titulo, description: descricao});
+      limparCampos();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <div style={{ display: "flex" }}>
@@ -54,7 +65,7 @@ function NewOKR() {
           />
         </div>
         <div className="botoes-fixos">
-          <Button texto="Salvar" className="Salvar" />
+          <Button texto="Salvar" className="Salvar" onClick={handleSave} />
           <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
         </div>
       </div>
