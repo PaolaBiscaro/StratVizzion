@@ -43,15 +43,26 @@
 .button--Branco:hover {
     background-color: #F5F5F5;
     color: #0D6645;
-    border: 2px solid #0D6645;
+    border: 2px solid #0D6645
 }
 
-.botoes-fixos {
+.Limpar{
     position: fixed;
     bottom: 24px;
-    right: 24px;
-    display: flex;
-    gap: 12px;
+    right: 200px;
+}
+
+.HomeDirector{
+    position: fixed;
+    bottom: 24px;
+    right: 12px;
+}
+
+.details {
+    width: 168px;
+    height: 34px;
+    font-size: 14px;
+    border-radius: 12px;
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
