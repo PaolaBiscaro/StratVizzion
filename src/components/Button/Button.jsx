@@ -7,17 +7,15 @@ se o campo não for passado, ele de padrão vai ser verde
 ATENÇÃO- as variantes podem ser escritas também como "Verde" ou "Branco"
 */
 
-function BotaoVerde({ texto, url, variante = "verde", className, onClick }) {//Permite adicionar tamanho, valor e até o que acontece se clicar se necessário, como uma função de apagar ou um post
+function Button({ texto, url, variante = "verde", className, onClick }) {
   return (
-    <div>
-      <button
-        className={`Button Button--${variante} ${className}`}
-        onClick={onClick || (() => { window.location.pathname = url })}
-      >
-        {texto}
-      </button>
-    </div>
+    <button
+      className={`button button--${variante} ${className ?? ""}`}
+      onClick={onClick || (() => { window.location.pathname = url })}
+    >
+      {texto}
+    </button>
   );
 }
 
-export default BotaoVerde;
+export default Button;

@@ -67,6 +67,8 @@ function NewOKR() {
           inside="EX: Aumentar a retenção de usuários ativos"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
+          toolId={"titulo"}
+          toolText={"Digite o objetivo final que você deseja EX: Aumentar retenção de usuários ativos"}
         />
         <FormTextarea
           title="Descrição"
@@ -74,6 +76,8 @@ function NewOKR() {
           tamanho="103px"
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
+          toolId={"descricao"}
+          toolText={"Descreva os objetivos da sua meta, o contexto atual e o porque atingir essa meta"}
         />
         <FormSelect title="Selecione um Título" />
 
