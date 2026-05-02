@@ -32,28 +32,26 @@ function NewKR() {
         setValor("");
         setMeta("");
     };
+
     return (
-        
         <div className="page-layout">
             <SideBar />
+            <AutoHighlighter />
 
-                <AutoHighlighter />
-                <main id="content">
-                    <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        width: "100%",
-                        marginBottom: "40px"
-                    }}>
-                        <MainTitle
-                            title="Cadastrar nova Key Result"
-                            subtitle="Defina os resultados chave para seu time"
-                        />
-
-                        <SearchBar onSearch={(valor) => setBusca(valor)} />
-                    </div>
-
+            <main id="content" style={{ paddingBottom: "100px" }}>
+                <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    marginBottom: "40px"
+                }}>
+                    <MainTitle
+                        title="Cadastrar nova Key Result"
+                        subtitle="Defina os resultados chave para seu time"
+                    />
+                    <SearchBar onSearch={(valor) => setBusca(valor)} />
+                </div>
 
                 <FormSelect
                     className={"OKR"}
@@ -87,7 +85,6 @@ function NewKR() {
                         onChange={(e) => setValor(e.target.value)}
                         className="Valor"
                     />
-
                     <FormInput
                         title="Meta"
                         inside="Ex: R$200.000 ou 100"
@@ -96,18 +93,14 @@ function NewKR() {
                         className="Valor"
                     />
                 </div>
-                <div className="botoes-fixos">
-                    <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
-                    <Button texto="Salvar" className="Salvar" />
-                    
-                </div>
             </main>
-        </div>
 
+            <div className="botoes-fixos">
+                <Button texto="Limpar Campos" variante="branco" className="Limpar" onClick={limparCampos} />
+                <Button texto="Salvar" className="Salvar" />
+            </div>
+        </div>
     );
 }
-//Select menu precisa de um get para pegar todas as okr
-
-
 
 export default NewKR;
