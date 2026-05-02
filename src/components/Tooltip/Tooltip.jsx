@@ -2,10 +2,10 @@ import React from "react";
 import { Tooltip } from "react-tooltip";
 import "./Tooltip.css";
 
-function TooltipIcon({ id, texto }) {
+function TooltipIcon({ id, text }) {
   return (
     <>
-      <span className="tooltip-icon" data-tooltip-id={id} data-tooltip-content={texto}>
+      <span className="tooltip-icon" data-tooltip-id={id} data-tooltip-content={text}>
         ?
       </span>
       <Tooltip id={id} />
