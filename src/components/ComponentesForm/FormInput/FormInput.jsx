@@ -1,6 +1,7 @@
 import React from "react";
 import "./FormInput.css"
 import "../../../styles/variables.css"
+import TooltipIcon from "../../Tooltip/Tooltip";
 
 
 // function FormInput({ title, inside, value }) {//Permite adicionar tamanho, valor e até o que acontece se mudar
@@ -24,11 +25,14 @@ import "../../../styles/variables.css"
 //   );
 // }
 
-function FormInput({ title, inside, value, onChange, className}) { 
+function FormInput({ title, inside, value, onChange, className, toolid, tooltext}) { 
   return (
     /* Concatenamos a classe padrão com a classe que vem por fora */
     <div className={`float-menu-formInput ${className || ""}`}>
-      <label className="label-formInput">{title}</label>
+      <div>
+        <label className="label-formInput">{title}</label>
+        <TooltipIcon id={toolid} text={tooltext}/>
+      </div>
       <input 
         placeholder={inside}
         className="input-formInput" 

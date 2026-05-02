@@ -8,73 +8,91 @@
     cursor: pointer;
 }
 
-.Button--verde {
-    background-color: #128D5F;
+.Button--verde{
+    background-color:#128D5F ;
     color: #FFFFFF;
     border: none;
 }
 
-.Button--verde:hover {
+.Button--verde:hover{
     background-color: #0D6645;
     color: #F5F5F5;
 }
 
-.Button--branco {
-    background-color: #FFFFFF;
+.Button--branco{
+    background-color:#FFFFFF ;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--branco:hover {
-    background-color: #F5F5F5;
+.Button--branco:hover{
+    background-color:#F5F5F5 ;
     color: #0D6645;
-    border: 2px solid #0D6645;
+    border: 2px solid #0D6645
 }
 
-/* 👇 unifica as classes duplicadas (verde/Verde, branco/Branco) */
-.Button--Verde {
-    background-color: #128D5F;
+.Button--Verde{
+    background-color:#128D5F ;
     color: #FFFFFF;
     border: none;
 }
 
-.Button--Verde:hover {
+.Button--Verde:hover{
     background-color: #0D6645;
     color: #F5F5F5;
 }
 
-.Button--Branco {
-    background-color: #FFFFFF;
+.Button--Branco{
+    background-color:#FFFFFF ;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--Branco:hover {
-    background-color: #F5F5F5;
+.Button--Branco:hover{
+    background-color:#F5F5F5 ;
     color: #0D6645;
-    border: 2px solid #0D6645;
+    border: 2px solid #0D6645
 }
 
-.HomeDirector {
+.Salvar{
     position: fixed;
     bottom: 24px;
     right: 12px;
 }
 
-.botoes-fixos {
+.Limpar{
     position: fixed;
     bottom: 24px;
-    right: 24px;
-    display: flex;
-    gap: 12px;
+    right: 200px;
+}
+
+.HomeDirector{
+    position: fixed;
+    bottom: 24px;
+    right: 12px;
+}
+
+.details {
+    width: 168px;
+    height: 34px;
+    font-size: 14px;
+    border-radius: 12px;
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
     .Button {
-        width: 157px;
-        height: 57px;
-        border-radius: 20px;
+        width: 180px;
+        height: 54px;
         font-size: 18px;
-        font-weight: bold;
+    }
+
+    .details {
+        width: 130px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .Limpar {
+        right: 210px;
     }
 }
