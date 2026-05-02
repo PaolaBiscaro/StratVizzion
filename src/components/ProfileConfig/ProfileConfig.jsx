@@ -6,7 +6,6 @@ import { SiJira } from "react-icons/si";
 
 /*Tem que estalar a biblioteca para o tooltip funcionar: npm install react-tooltip*/
 
-
 export default function ProfileConfig() {
     return (
 

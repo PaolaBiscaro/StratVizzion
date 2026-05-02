@@ -42,6 +42,12 @@ main {
     font-family: var(--font-family);
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+    width: 100%;
+}
 
 
 .page-layout {
@@ -69,6 +75,18 @@ font-size: 1.5rem;
 
 .title-card:hover{
      color: #146A4A; 
+}
+
+
+.form input {
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    height: 45px;
+    box-sizing: border-box; 
 }
 
 
