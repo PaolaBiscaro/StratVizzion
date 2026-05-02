@@ -1,0 +1,55 @@
+
+.float-menu-formInput{
+    margin-top: 15px;
+    display: flex; 
+    flex-direction: column;
+    line-height: 1.8;
+    width: 100%;
+}
+
+.label-formInput{
+    font-weight: bold;
+    font-size: 18px;
+    color: #4A4A4D;
+}
+
+.input-formInput{
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    height: 45px;
+    box-sizing: border-box;  
+}
+
+.input-formInput::placeholder{
+    font-size: 13px;
+}
+
+.Valor {
+    flex: 1; 
+    min-width: 200px; 
+}
+
+/* 
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .label{
+        font-size: 28px;
+    }
+
+    .TextInput{
+        padding-top: 2%;
+        padding-left: 5%;
+    }
+
+    .input{
+        width: 663px;
+    }
+
+    .Valor{
+        width:331px ;
+    }
+
+} */

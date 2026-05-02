@@ -1,0 +1,54 @@
+.headerDireita {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconRobotWrapper {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconRobot {
+    width: 40px;
+    height: 40px;
+}
+
+/* Wrapper da Pesquisa */
+.searchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.inputPesquisa {
+    width: 425px; /* Ou o tamanho que preferir */
+    height: 60px;
+    padding: 0 45px 0 20px; /* Espaço extra na direita para o ícone não atropelar o texto */
+    border-radius: 50px; /* Formato de pílula */
+    border: 1px solid #eee;
+    outline: none;
+    font-size: 16px;
+    color: #999;
+    background-color: white;
+    transition: border 0.3s;
+}
+
+.inputPesquisa:focus {
+    border-color: #00D182;
+}
+
+/* Ícone da Lupa */
+.iconSearch {
+    position: absolute;
+    right: 15px; /* Fixa na direita dentro do input */
+    color: #00D182;
+    font-size: 30px;
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.float-menu-formTextarea {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.8;
+    width: 100%;
+}
+
+.label-formTextarea {
+    font-weight: bold;
+    font-size: 18px;
+    color: #4A4A4D;
+}
+
+.textarea-formInput {
+    width: 100%; 
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #606061;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical; 
+    font-family: inherit; 
+}
+
+.textarea-formInput::placeholder {
+    font-size: 13px;
+    color: #999;
+}

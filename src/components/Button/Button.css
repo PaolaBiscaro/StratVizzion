@@ -1,52 +1,72 @@
 .Button {
-    width: 239px;
-    height: 67px;
-    border-radius: 20px;
-    font-size: 24px;
+    width: 190px;
+    height: 50px; /* 👈 era 100%, agora fixo */
+    border-radius: 15px;
+    font-size: 18px;
     font-weight: bold;
+    padding: 15px;
     cursor: pointer;
 }
 
-.Button--verde,
-.Button--Verde {
-    background-color: #128D5F;
+.Button--verde{
+    background-color:#128D5F ;
     color: #FFFFFF;
     border: none;
 }
 
-.Button--verde:hover,
-.Button--Verde:hover {
+.Button--verde:hover{
     background-color: #0D6645;
     color: #F5F5F5;
 }
 
-.Button--branco,
-.Button--Branco {
-    background-color: #FFFFFF;
+.Button--branco{
+    background-color:#FFFFFF ;
     color: #128D5F;
     border: 2px solid #128D5F;
 }
 
-.Button--branco:hover,
-.Button--Branco:hover {
-    background-color: #F5F5F5;
+.Button--branco:hover{
+    background-color:#F5F5F5 ;
     color: #0D6645;
-    border: 2px solid #0D6645;
+    border: 2px solid #0D6645
 }
 
-.Salvar {
+.Button--Verde{
+    background-color:#128D5F ;
+    color: #FFFFFF;
+    border: none;
+}
+
+.Button--Verde:hover{
+    background-color: #0D6645;
+    color: #F5F5F5;
+}
+
+.Button--Branco{
+    background-color:#FFFFFF ;
+    color: #128D5F;
+    border: 2px solid #128D5F;
+}
+
+.Button--Branco:hover{
+    background-color:#F5F5F5 ;
+    color: #0D6645;
+    border: 2px solid #0D6645
+}
+
+.Salvar{
     position: fixed;
     bottom: 24px;
     right: 12px;
 }
 
-.Limpar {
+.Limpar{
     position: fixed;
     bottom: 24px;
-    right: 290px;
+    right: 200px;
 }
 
-.HomeDirector {
+.HomeDirector{
     position: fixed;
     bottom: 24px;
     right: 12px;
