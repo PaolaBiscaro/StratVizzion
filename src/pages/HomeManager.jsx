@@ -4,9 +4,13 @@ import { getEquipes, getOKR } from "../services/data/api_mock.js";
 import OKRMonitoring from "../components/OKRMonitoring/OKRMonitoring.jsx";
 import SideBar from '../components/Sidebar/SideBar.jsx';
 import MainTitle from '../components/MainTitle/MainTitle.jsx';
+import SearchBar from "../components/SearchBar/SearchBar";
+import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
+import { useSearch } from "../context/SearchContext";
 
 
 const EquipesPage = () => {
+  const { setBusca } = useSearch();
   const listaParaExibirEquipes = getEquipes();
   const listaParaExibirOkr = getOKR();
 
@@ -18,11 +22,23 @@ return (
   <div className="page-layout">
     <SideBar />
 
-    <main>
-      <MainTitle 
-      title={"Olá, Kaio!"} 
-      subtitle={"Acompanhe o desenvolvimento dos seus times"}
-      />
+    
+      <AutoHighlighter />
+                <main id="content">
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        marginBottom: "40px"
+                    }}>
+                        <MainTitle
+                            title="Olá, Kaio!"
+                            subtitle="Acompanhe o desenvolvimento dos seus times"
+                        />
+
+                        <SearchBar onSearch={(valor) => setBusca(valor)} />
+                    </div>
 
       <div className="container-cards">
         {listaParaExibirEquipes.map((equipe) => (
@@ -57,6 +73,8 @@ return (
                   porcentagem={okr.porcentagem}
                   prazo={okr.prazo}
                   descricao={okr.descricao}
+                  botao={"Adicionar KeyResult"}
+                  rota={"/NewKR"}
                 />
               ))}
             </div>

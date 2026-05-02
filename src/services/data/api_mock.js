@@ -10,12 +10,14 @@ export const getEquipes = () => {
 
 export const getOKR = () => {
   return [
-    { id: "OKR_0001", porcentagem: 86, prazo: "29/03/2027", descricao: "Atingir R$ 500 mil em Novos Negócios até o final do trimestre." },
-    { id: "OKR_0002", porcentagem: 20, prazo: "30/04/2027", descricao: "Reduzir o custo por aquisição (CPA) de R$45 para R$28" },
-    { id: "OKR_0003", porcentagem: 1, prazo: "30/05/2027", descricao: "Atingir taxa de conversão do onboarding de 40% para 62%" },
-  { id: "OKR_0001", porcentagem: 50, prazo: "29/03/2027", descricao: "Atingir R$ 500 mil em Novos Negócios até o final do trimestre." },
+    { id: "OKR_0001", porcentagem: 70, prazo: "01/04/2027", descricao: "Atingir R$ 500 mil em Novos Negócios até o final do trimestre.", status: "0" },
+    { id: "OKR_0002", porcentagem: 20, prazo: "30/04/2027", descricao: "Reduzir o custo por aquisição (CPA) de R$45 para R$28", status: "0" },
+    { id: "OKR_0003", porcentagem: 1, prazo: "30/05/2027", descricao: "Atingir taxa de conversão do onboarding de 40% para 62%", status: "1" },
+  { id: "OKR_0004", porcentagem: 50, prazo: "29/03/2027", descricao: "Aumentar a taxa de conversão de clientes em 10%", status: "1" },
+  
   ];
 };
+
 const listaParaExibirOkr = getOKR();
 const listaParaExibirEquipes = getEquipes();
 
