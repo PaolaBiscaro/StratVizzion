@@ -1,18 +1,32 @@
+
 import React from "react";
-import { getAllProjetos, getEquipes } from "../../services/data/api_mock.js";
+import { getAllProjetos, getOKR } from "../../services/data/api_mock.js";
 import './FilterPopoverContent.css'
 
-function FilterPopoverContent({ tipo }) {
+
+// Adicionado 'valorAtual' às props
+function FilterPopoverContent({ tipo, onSelectProject, valorAtual }) {
+
     
+    const handleChange = (e) => {
+        if (onSelectProject) {
+            onSelectProject(e.target.value); 
+        }
+        
+    };
+
     const renderConteudo = () => {
         switch (tipo) {
-            case 'progresso_projeto':
-               { const projetos = getAllProjetos(); 
+            case 'progresso_projeto': {
+                const projetos = getAllProjetos(); 
                 return (
                     <div className="popover-inner">
                         <p className="title-popover">Selecione o Projeto:</p>
-                        <select className="filter-select ">
-                            <option value="">Escolha um projeto...</option>
+                        <select 
+                            className="filter-select" 
+                            onChange={handleChange}
+                            value={valorAtual} 
+                        >
                             {projetos.map(proj => (
                                 <option key={proj.key} value={proj.key}>
                                     {proj.key} - {proj.name}
@@ -20,20 +34,43 @@ function FilterPopoverContent({ tipo }) {
                             ))}
                         </select>
                     </div>
-                );}
+                );
+            }
 
-            case 'equipes':
-                {const equipes = getEquipes();
+            case 'okr_geral': {
+                const okrs = getOKR() || []; 
                 return (
                     <div className="popover-inner">
-                        <p>Selecione a Equipe:</p>
-                        <ul className="filter-list">
-                            {equipes.map(eq => (
-                                <li key={eq.id}>{eq.nome}</li>
+                        <p className="title-popover">Configuração de OKR</p>
+                        
+                        {/* Checkbox para Selecionar Todas */}
+                        <label className="checkbox-item" style={{marginBottom: '15px', borderBottom: '1px solid #eee', paddingBottom: '10px'}}>
+                            <input 
+                                type="checkbox" 
+                                checked={valorAtual === 'TODAS'} 
+                                onChange={() => onSelectProject(valorAtual === 'TODAS' ? '' : 'TODAS')} 
+                            />
+                            <span>Selecionar Todas</span>
+                        </label>
+
+    
+                        <p style={{fontSize: '12px'}}>Ou escolha uma específica:</p>
+                        <select 
+                            className="filter-select" 
+                            onChange={handleChange}
+                            value={valorAtual}
+                            disabled={valorAtual === 'TODAS'}
+                        >
+                            <option value="">Selecione uma OKR...</option>
+                            {okrs.map(okr => (
+                                <option key={okr.id} value={okr.id}>
+                                    {okr.id} - {okr.descricao.substring(0, 30)}...
+                                </option>
                             ))}
-                        </ul>
+                        </select>
                     </div>
-                );}
+                );
+            }
 
             default:
                 return <p>Selecione uma opção válida.</p>;

@@ -72,27 +72,75 @@ export const getOKR = () => {
   ];
 };
 
+
+export const keyResults = () => {
+  return [
+    {
+      id: "KR_001",
+      okrId: "OKR_0005",
+      titulo: "Reduzir a taxa de erros e correções em 50%",
+      descricao: "A taxa atualmente se encontra em 1 erro a cada 10 homologações; a meta é chegarmos a 1 erro a cada 20 homologações.",
+      v_inicial: 10,
+      v_final: 20
+
+    },
+
+    {
+      id: "KR_002",
+      okrId: "OKR_0005",
+      titulo: "Reduzir o Lead Time de novas funcionalidades em 15%",
+      descricao: "O tempo entre a definição do requisito e o deploy em produção é de 20 dias; a meta é otimizar o fluxo para 17 dias.",
+      v_inicial: 20,
+      v_final: 17
+    },
+
+    {
+      id: "KR_003",
+      okrId: "OKR_0003",
+      titulo: "Melhorar a performance de carregamento do dashboard em 30%",
+      descricao: "O tempo médio atual de carregamento (LCP) é de 3,5 segundos; a meta é atingir 2,45 segundos para otimizar a experiência do usuário final.",
+      v_inicial: 3.5,
+      v_final: 2.45
+    },
+
+    {
+      id: "KR_004",
+      okrId: "OKR_0002",
+      titulo: "Reduzir o tempo médio de primeira resposta (FRT) em 20%",
+      descricao: "Atualmente, o suporte leva em média 5 horas para o primeiro contato; a meta é reduzir para 4 horas através da automação de triagem.",
+      v_inicial: 5,
+      v_final: 4
+    }
+  ]
+}
+
+
 export const todasTarefasPendentes = () => {
   return [
     {
       key: "PROJA-01",
       summary: "Refatorar componente de filtro",
-      status: "To Do", assignee: "Paola",
-      projectKey: "Projeto A"
+      status: "To Do",
+      assignee: "Paola",
+      projectKey: "Projeto A",
+      kr: "OKR_0005"
+
     },
     {
       key: "PROJA-02",
       summary: "Ajustar alinhamento do eixo Y no CSS",
       status: "In Progress",
       assignee: "Clara Almeida",
-      projectKey: "Projeto A"
+      projectKey: "Projeto A",
+      kr: "OKR_0004"
     },
     {
       key: "PROJA-03",
       summary: "Integrar mock de OKRs",
       status: "To Do",
       assignee: "Maria Lopes",
-      projectKey: "Projeto A"
+      projectKey: "Projeto A",
+      kr: "OKR_0003"
     },
 
     {
@@ -100,28 +148,33 @@ export const todasTarefasPendentes = () => {
       summary: "Definir metas para o Q3",
       status: "To Do",
       assignee: "João",
-      projectKey: "Projeto B"
+      projectKey: "Projeto B",
+      kr: "OKR_0003"
     },
     {
       key: "PROJB-02",
       summary: "Corrigir cálculo de porcentagem",
       status: "In Progress",
       assignee: "Marcos Batista",
-      projectKey: "Projeto B"
+      projectKey: "Projeto B",
+      kr: "OKR_0003"
     },
 
-    { key: "PROJC-01", 
-      summary: "Treinar modelo de linguagem", 
-      status: "To Do", 
-      assignee: "Noelle da Cruz", 
-      projectKey: "Projeto C" 
+    {
+      key: "PROJC-01",
+      summary: "Treinar modelo de linguagem",
+      status: "To Do",
+      assignee: "Noelle da Cruz",
+      projectKey: "Projeto C",
+      kr: "OKR_0001"
     },
-    { 
-      key: "PROJC-02", 
-      summary: "Configurar webhooks da API", 
-      status: "To Do", 
-      assignee: "Diego Pereira", 
-      projectKey: "Projeto C" 
+    {
+      key: "PROJC-02",
+      summary: "Configurar webhooks da API",
+      status: "To Do",
+      assignee: "Diego Pereira",
+      projectKey: "Projeto C",
+      kr: "OKR_0005"
     }
   ];
 }

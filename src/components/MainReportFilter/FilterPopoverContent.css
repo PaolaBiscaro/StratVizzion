@@ -1,20 +1,21 @@
 .title-popover {
     color: #4A4A4D;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 
 
 .popover-inner {
     background-color: #ffffff;
-    margin-right: 20px;
     padding: 20px;
     border-radius: 10px;
+    margin:  0 0 10px 0 ;
 
 }
 
 .filter-select {
 
-    /* Ativa a nova engine de estilização */
+    /* Ativa a estilização */
     &,
     &::picker(select) {
         appearance: base-select;
@@ -23,27 +24,31 @@
     &:focus {
         outline: none;
         border: 2px solid #128D5F;
+        font-size: 13px;
 
 
     }
 
     padding: 10px 10px;
-    background-color: #128D5F;
-    color: white;
+    background-color: #fff;
+    color: #128D5F;
     border-radius: 6px;
     cursor: pointer;
+     font-size: 13px;
 
 }
 
 ::picker(select) {
-    background-color: #ffffff;
-    border: none;
+    background-color: #e9e9e9;
+    border: #479259 solid 1px;
+   
 }
 
 option {
     padding: 10px;
     color: #0b2e13;
     background-color: #ffffff;
+    font-size: 13px;
 }
 
 option:hover {

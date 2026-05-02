@@ -29,7 +29,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/HomeManager" element={<Manager/>}/>
           <Route path="/ProfileConfiguration" element={<ProfileConfiguration />} />
-          <Route path="/GenerateReport" element={<GenerateReport />} />
+          <Route path="/relatorio" element={<GenerateReport />} />
         </Routes>
 
       </BrowserRouter>

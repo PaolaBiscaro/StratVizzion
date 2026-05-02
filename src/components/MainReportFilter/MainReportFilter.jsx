@@ -1,66 +1,141 @@
 import React, { useState } from "react";
 import './MainReportFilter.css'
-import { getEquipes, getOKR, getProjetos } from "../../services/data/api_mock";
+import { getOKR, getProjetos, todasTarefasPendentes, keyResults } from "../../services/data/api_mock";
 import FilterPopoverContent from "./FilterPopoverContent";
+import Button from "../Button/Button";
+
+const FIELD_LABELS = {
+    equipes: "Equipes",
+    okr_geral: "Visão geral das OKR",
+    progresso_projeto: "Progresso do projeto",
+    todos_projetos: "Todos os projetos",
+    historico_okr: "Histórico de OKR",
+    key_results: "Key Results"
+};
 
 function MainReportFilter() {
     const [selectedItems, setSelectedItems] = useState({});
+    const [projetoSelecionado, setProjetoSelecionado] = useState("Projeto A");
+    const [okrSelecionada, setOkrSelecionada] = useState("TODAS");
+    const todasAsInformacoesProjetos = getProjetos();
 
+    // Dados para os outros campos que não dependem da seleção específica
     const mock_data = {
-        equipes: getEquipes(),
-        okrs: getOKR(),
-        progresso_projeto: getProjetos(),
-        pendencias: [],
-        todos_projetos: [],
-        historico_okr: []
-    }
+        okr_geral: (getOKR() || []).filter(okr => okr.status !== "Concluído"),
+        todos_projetos: getProjetos(),
+        historico_okr: getOKR(),
+        progresso_projeto: todasTarefasPendentes(),
+        key_results: keyResults()
+    };
 
     const handleCheckboxChange = (id) => {
         setSelectedItems((prev) => ({
             ...prev,
-            [id]: !prev[id] // Inverte o valor (true/false)
+            [id]: !prev[id]
         }));
     };
 
     const enviarParaAPI = () => {
-        const payload = Object.keys(selectedItems)
-            .filter(key => selectedItems[key] === true)
-            .map(key => ({
-                id: key,
-                selected: 1,
-                data: mock_data[key] || []
-            }));
+        const payload = Object.keys(FIELD_LABELS).map(key => {
+            const isSelected = !!selectedItems[key];
+            let dataToSend = [];
 
-        console.log("Enviando para API:", payload);
+            if (isSelected) {
+                if (key === 'progresso_projeto') {
+                    const infoProjeto = todasAsInformacoesProjetos[projetoSelecionado];
+                    const tarefasDoProjeto = todasTarefasPendentes().filter(
+                        tarefa => tarefa.projectKey === projetoSelecionado
+                    );
+                    dataToSend = infoProjeto ? [{ ...infoProjeto, tarefas: tarefasDoProjeto }] : [];
+
+                } else if (key === 'okr_geral') {
+
+                    const anexarKRs = (okr) => {
+                        const krsRelacionadas = keyResults().filter(kr => kr.okrId === okr.id);
+                        return { ...okr, key_results: krsRelacionadas };
+                    };
+
+                    if (okrSelecionada === 'TODAS') {
+                        dataToSend = mock_data.okr_geral.map(okr => anexarKRs(okr));
+                    } else {
+                        const especifica = mock_data.okr_geral.find(o => o.id === okrSelecionada);
+                    dataToSend = especifica ? [anexarKRs(especifica)] : [];
+                    }
+
+                } else if (key === 'equipes') {
+                    if (selectedItems['progresso_projeto']) {
+                        const p = todasAsInformacoesProjetos[projetoSelecionado];
+                        dataToSend = p ? [{ nome_projeto: p.name, membros: p.members }] : [];
+                    }
+
+                } else {
+                    dataToSend = mock_data[key] || [];
+                }
+            }
+
+            return {
+                selected_field: FIELD_LABELS[key],
+                selected: isSelected ? 1 : 0,
+                data: dataToSend
+            };
+        });
+        console.log("Dados da API:", payload);
     };
+
 
     return (
         <div className="container-filter">
-            <div className="row">
+            <div className="row-filter">
                 <div className="popover-filter">
+                    {/* Popover de seleção do projeto específico */}
                     {selectedItems['progresso_projeto'] && (
-                        <FilterPopoverContent tipo="progresso_projeto" />
+                        <FilterPopoverContent
+                            tipo="progresso_projeto"
+                            onSelectProject={setProjetoSelecionado}
+                            valorAtual={projetoSelecionado}
+                        />
                     )}
-                </div>
 
+                    {/* Popover dinamico das equipes */}
+                    {selectedItems['equipes'] && (
+                        <div className="popover-inner">
+                            <p className="status-equipe">
+                                {selectedItems['progresso_projeto']
+                                    ? `Equipe: ${todasAsInformacoesProjetos[projetoSelecionado]?.name || projetoSelecionado}`
+                                    : "Todas as Equipes"}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Popover para seleção das okr */}
+                    {selectedItems['okr_geral'] && (
+                        <FilterPopoverContent
+                            tipo="okr_geral"
+                            onSelectProject={setOkrSelecionada}
+                            valorAtual={okrSelecionada}
+                        />
+                    )}
+
+
+                </div>
 
                 <div className="report-popover">
                     <h3 className="popover-title">Dados Inclusos</h3>
 
                     <div className="popover-content">
+
                         <label className="checkbox-item">
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheckboxChange('equipes')}
-                            />
-                            <span>Equipes</span>
+                            <input type="checkbox" onChange={() => handleCheckboxChange('equipes')} />
+
+                            <span>Adicionar Equipes</span>
                         </label>
 
                         <label className="checkbox-item">
                             <input
                                 type="checkbox"
-                                onChange={() => handleCheckboxChange('okr_geral')}
-                            />
+                                checked={!!selectedItems['okr_geral']}
+                                onChange={() => handleCheckboxChange('okr_geral')} />
+
                             <span>Visão geral das OKR</span>
                         </label>
 
@@ -70,47 +145,37 @@ function MainReportFilter() {
                                 checked={!!selectedItems['progresso_projeto']}
                                 onChange={() => handleCheckboxChange('progresso_projeto')}
                             />
+
                             <span>Progresso do projeto</span>
                         </label>
 
-
-
-                        <label className="checkbox-item">
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheckboxChange('pendencias')}
-                            />
+                        {/* <label className="checkbox-item">
+                            <input type="checkbox" onChange={() => handleCheckboxChange('pendencias')} />
                             <span>Projetos Pendentes</span>
-                        </label>
+                        </label> */}
 
                         <label className="checkbox-item">
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheckboxChange('todos_projetos')}
-                            />
+                            <input type="checkbox" onChange={() => handleCheckboxChange('todos_projetos')} />
+
                             <span>Todos os projetos</span>
                         </label>
 
                         <label className="checkbox-item">
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheckboxChange('historico_okr')}
-                            />
+                            <input type="checkbox" onChange={() => handleCheckboxChange('historico_okr')} />
+
                             <span>Histórico de OKR</span>
                         </label>
 
                         <label className="checkbox-item">
-                            <input
-                                type="checkbox"
-                                onChange={() => handleCheckboxChange('historico_okr')}
-                            />
-                            <span>Retirar comentários da I.A.</span>
-                        </label>
-                    </div>
+                            <input type="checkbox" onChange={() => handleCheckboxChange('key_results')} />
 
-                    <button onClick={enviarParaAPI} className="btn-gerar">
-                        Confirmar Seleção
-                    </button>
+                            <span>Todas as Key Results</span>
+                        </label>
+
+                    </div>
+                    <div className="format-button">
+                        <Button texto="Confirmar Seleção" className="Salvar" onClick={enviarParaAPI} />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,13 @@
+.pdf-view{
+    align-items: start;
+}
+
+.format-button-pdf .visualizar {
+    padding: 4px 10px;
+    font-size: 13px;
+    width: auto;
+    height: 35px;
+   margin: 10px 0
+
+}
+
