@@ -6,26 +6,11 @@ import { SiJira } from "react-icons/si";
 
 /*Tem que estalar a biblioteca para o tooltip funcionar: npm install react-tooltip*/
 
-
 export default function ProfileConfig() {
-  return (
-    <div className="container">
-        <div className="header">
-            <div className="headerEsquerda">
-                {/* <h1>Edição de Perfil</h1>
-                <h3>Dados que aparecem no seu perfil dentro do sistema.</h3> */}
-            </div>
+    return (
 
-            <div className="headerDireita">
-                <input
-                type="text"
-                className="inputPesquisa"
-                placeholder="Pesquise algo..."
-                />
-            </div>
-        </div>
+    <div className="container">
             <div className="corpo">
-                
                 <div className="infoPessoais">
                     <div className="legenda"> 
                         <FiUser style={{color: "#00D182", width: "24px", height: "24px"}}/>

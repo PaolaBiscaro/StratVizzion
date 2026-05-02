@@ -1,46 +1,11 @@
-.container {
-  flex: 1; 
-  padding: 70px;
-  width: 100%;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.header h1{
-    font-size: 35px;
-}
-
-.header h3{
-    font-size: 20px;
-    font-weight: normal;
-}
-
-.headerDireita {
-  display: flex;
-  align-items: center;
-}
-
-.inputPesquisa {
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 14px;
-    width: 250px;
-}
 
 .infoPessoais{
     background-color: white;
     width: 100%;
     padding: 50px;
     border-radius: 20px;
-    margin-top: 30px;
 }
 
 .infoPessoais .row1 {

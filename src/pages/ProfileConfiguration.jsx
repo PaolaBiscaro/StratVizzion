@@ -1,35 +1,46 @@
 import SideBar from "../components/Sidebar/SideBar";
 import ProfileConfig from "../components/ProfileConfig/ProfileConfig";
 import Button from "../components/Button/Button";
+import MainTitle from "../components/MainTitle/MainTitle";
+import SearchBar from "../components/SearchBar/SearchBar";
+import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
+import { useSearch } from "../context/SearchContext";
 
 export default function ProfileConfiguration() {
-
-    function limparCampos() {
-        console.log("limpou!");
-    }
+    const { setBusca } = useSearch();
 
     return (
-    // Precisa colocar as seguintes classes:
-    //<div className="page-layout">
-    //  <SideBar />
-
-    //  <main>
-    //     <MainTitle title={"Seu titulo"}  subtitle={"Seu subtitulo"}/>
-
-        <div style={{ display: "flex", width: "100vw", minHeight: "100vh" }}>
+        <div className="page-layout">
             <SideBar />
 
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", overflowY: "scroll", padding: "20px" }}>
-                
-                <ProfileConfig />
+                <AutoHighlighter />
+                <main id="content">
+                    <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        marginBottom: "40px"
+                    }}>
+                        <MainTitle
+                            title="Edição de Perfil"
+                            subtitle="Dados que aparecem no seu perfil dentro do sistema"
+                        />
 
-                <div className="botoes-fixos">
-                    <Button texto="Cancelar" variante="branco" className="Limpar" onClick={limparCampos} /> 
-                    <Button texto="Salvar alterações" className="Salvar" />
-                </div>
+                        <SearchBar onSearch={(valor) => setBusca(valor)} />
+                    </div>
 
+                    <div style={{ display: "flex", width: "100%", minHeight: "100vh" }}>
+                        <div style={{ flex: 1 }}>
+                            <ProfileConfig />
+
+                            <div className="botoes-fixos">
+                                <Button texto="Cancelar" variante="branco" className="Limpar" />
+                                <Button texto="Salvar alterações" className="Salvar" />
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
-
-        </div>
     );
 }
