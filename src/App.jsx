@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/HomeDirector";
 import Manager from "./pages/HomeManager"
 import ProfileConfiguration from "./pages/ProfileConfiguration";
+import KRDetails from "./pages/KRDetails";
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/HomeManager" element={<Manager/>}/>
           <Route path="/ProfileConfiguration" element={<ProfileConfiguration />} />
+          <Route path="/KRDetails" element={<KRDetails />} />
         </Routes>
 
       </BrowserRouter>

@@ -1,0 +1,30 @@
+.kr-tag{
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+    gap: 10px;
+    align-items: center;
+}
+
+.kr-tag-name{
+    background-color: #128D5F;
+    padding: 5px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.kr-tag-title{
+    color: #4A4A4D;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.kr-tag-okr{
+    color: #4A4A4D;
+    font-weight: 500;
+    font-size: 12px;
+    display: flex;
+    margin-left: auto;
+}
