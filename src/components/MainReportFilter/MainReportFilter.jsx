@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './MainReportFilter.css'
-import { getOKR, getProjetos, todasTarefasPendentes, keyResults } from "../../services/data/api_mock";
+import { getProjetos } from "../../services/data/api_mock";
 import FilterPopoverContent from "./FilterPopoverContent";
 import Button from "../Button/Button";
 
@@ -19,14 +19,6 @@ function MainReportFilter() {
     const [okrSelecionada, setOkrSelecionada] = useState("TODAS");
     const todasAsInformacoesProjetos = getProjetos();
 
-    // Dados para os outros campos que não dependem da seleção específica
-    const mock_data = {
-        okr_geral: (getOKR() || []).filter(okr => okr.status !== "Concluído"),
-        todos_projetos: getProjetos(),
-        historico_okr: getOKR(),
-        progresso_projeto: todasTarefasPendentes(),
-        key_results: keyResults()
-    };
 
     const handleCheckboxChange = (id) => {
         setSelectedItems((prev) => ({
@@ -38,48 +30,29 @@ function MainReportFilter() {
     const enviarParaAPI = () => {
         const payload = Object.keys(FIELD_LABELS).map(key => {
             const isSelected = !!selectedItems[key];
-            let dataToSend = [];
+            let filter = null;
 
             if (isSelected) {
                 if (key === 'progresso_projeto') {
-                    const infoProjeto = todasAsInformacoesProjetos[projetoSelecionado];
-                    const tarefasDoProjeto = todasTarefasPendentes().filter(
-                        tarefa => tarefa.projectKey === projetoSelecionado
-                    );
-                    dataToSend = infoProjeto ? [{ ...infoProjeto, tarefas: tarefasDoProjeto }] : [];
-
-                } else if (key === 'okr_geral') {
-
-                    const anexarKRs = (okr) => {
-                        const krsRelacionadas = keyResults().filter(kr => kr.okrId === okr.id);
-                        return { ...okr, key_results: krsRelacionadas };
+                    filter = {
+                        key: projetoSelecionado,
+                        name: todasAsInformacoesProjetos[projetoSelecionado]?.name || "Projeto não encontrado"
                     };
-
-                    if (okrSelecionada === 'TODAS') {
-                        dataToSend = mock_data.okr_geral.map(okr => anexarKRs(okr));
-                    } else {
-                        const especifica = mock_data.okr_geral.find(o => o.id === okrSelecionada);
-                    dataToSend = especifica ? [anexarKRs(especifica)] : [];
-                    }
-
-                } else if (key === 'equipes') {
-                    if (selectedItems['progresso_projeto']) {
-                        const p = todasAsInformacoesProjetos[projetoSelecionado];
-                        dataToSend = p ? [{ nome_projeto: p.name, membros: p.members }] : [];
-                    }
-
-                } else {
-                    dataToSend = mock_data[key] || [];
+                } else if (key === 'okr_geral' && okrSelecionada !== 'TODAS') {
+                    filter = {
+                        okr: okrSelecionada
+                    };
                 }
             }
+
 
             return {
                 selected_field: FIELD_LABELS[key],
                 selected: isSelected ? 1 : 0,
-                data: dataToSend
+                ...(filter && { filter })
             };
         });
-        console.log("Dados da API:", payload);
+        console.log("Dados da API:", JSON.stringify(payload, null, 2));
     };
 
 
