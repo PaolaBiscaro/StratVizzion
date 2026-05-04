@@ -1,0 +1,24 @@
+.kr-subtag {
+    display: flex;
+    width: 100%;
+    gap: 30px; 
+    align-items: center;
+    margin-top: -10px; 
+}
+
+.kr-subtag-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #5F6368; 
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.kr-icon {
+    color: #128D5F; 
+}
+
+.kr-subtag-item p, .kr-subtag-item span {
+    margin: 0;
+}

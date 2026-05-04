@@ -10,6 +10,8 @@ import Manager from "./pages/HomeManager"
 import ProfileConfiguration from "./pages/ProfileConfiguration";
 import GenerateReport from "./pages/GenerateReport";
 import ViewKeyResults from './pages/ViewKeyResults'
+import KRDetails from "./pages/KRDetails";
+
 
 
 /*Explicação

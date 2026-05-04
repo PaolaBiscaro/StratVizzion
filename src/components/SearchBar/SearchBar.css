@@ -6,8 +6,8 @@
 
 .iconRobotWrapper {
     background-color: white;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -15,11 +15,10 @@
 }
 
 .iconRobot {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
-/* Wrapper da Pesquisa */
 .searchWrapper {
     position: relative;
     display: flex;
@@ -28,10 +27,10 @@
 }
 
 .inputPesquisa {
-    width: 425px; /* Ou o tamanho que preferir */
-    height: 60px;
-    padding: 0 45px 0 20px; /* Espaço extra na direita para o ícone não atropelar o texto */
-    border-radius: 50px; /* Formato de pílula */
+    width: 425px;
+    height: 50px;
+    padding: 0 45px 0 20px; 
+    border-radius: 50px; 
     border: 1px solid #eee;
     outline: none;
     font-size: 16px;
@@ -44,10 +43,9 @@
     border-color: #00D182;
 }
 
-/* Ícone da Lupa */
 .iconSearch {
     position: absolute;
-    right: 15px; /* Fixa na direita dentro do input */
+    right: 15px;
     color: #00D182;
     font-size: 30px;
     cursor: pointer;

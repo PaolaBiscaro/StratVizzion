@@ -1,0 +1,22 @@
+.filter-tab {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: white;
+    color: #4A4A4D;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-family: var(--font-family);
+}
+
+.filter-tab.active {
+    background-color: #128D5F; 
+    color: white;
+}
+
+.filter-tab:hover:not(.active) {
+    background-color: #f0f0f0;
+}

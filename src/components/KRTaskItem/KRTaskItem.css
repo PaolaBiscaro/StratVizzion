@@ -1,0 +1,93 @@
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    height: 70px;
+}
+
+.task-completed {
+    background: #F8FBFF;
+}
+
+.task-left, .task-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.checkbox-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #C0C0C0;
+    margin-top: 3px;
+}
+
+.icon-checked { 
+    color: #A0A0A0; 
+}
+
+.dot {
+    width: 6px; 
+    height: 6px; 
+    border-radius: 100%; 
+}
+
+.task-badge {
+    background: #128D5F;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.task-completed .task-badge { 
+    background: #5F6368; 
+}
+
+.task-text { 
+    color: #4A4A4D; 
+    font-size: 16px; 
+    margin: 0; 
+}
+
+.text-strikethrough { 
+    text-decoration: 
+    line-through; color: #A0A0A0; 
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;             
+    align-items: center;       
+    justify-content: center;    
+    width: 120px;              
+    height: 32px;              
+    padding: 0;                
+    box-sizing: border-box;
+}
