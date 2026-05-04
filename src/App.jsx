@@ -9,7 +9,7 @@ import Home from "./pages/HomeDirector";
 import Manager from "./pages/HomeManager"
 import ProfileConfiguration from "./pages/ProfileConfiguration";
 import GenerateReport from "./pages/GenerateReport";
-import ViewKeyResults from './pages/ViewKeyResults'
+import ViewKeyResults from './pages/ViewKeyResults';
 import KRDetails from "./pages/KRDetails";
 
 
@@ -33,6 +33,7 @@ function App() {
         <Route path="/ProfileConfiguration" element={<ProfileConfiguration />} />
         <Route path="/relatorio" element={<GenerateReport />} />
         <Route path="/ViewKeyResults" element={<ViewKeyResults />} />
+        <Route path="/KRDetails" element={<KRDetails />} />
 
 
       </Routes>
