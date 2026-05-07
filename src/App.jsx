@@ -11,6 +11,8 @@ import ProfileConfiguration from "./pages/ProfileConfiguration";
 import GenerateReport from "./pages/GenerateReport";
 import ViewKeyResults from './pages/ViewKeyResults';
 import KRDetails from "./pages/KRDetails";
+import Cadastro from "./pages/Cadastro";
+import Login from "./pages/Login";
 
 
 
@@ -26,6 +28,8 @@ function App() {
 
     <BrowserRouter>
       <Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Cadastro" element={<Cadastro/>} />
         <Route path="/NewOKR" element={<NewOKR />} />
         <Route path="/NewKR" element={<NewKR />} />
         <Route path="/home" element={<Home />} />
