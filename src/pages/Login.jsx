@@ -5,51 +5,67 @@ import "../styles/Login.css";
 function Login() {
   const navigate = useNavigate();
 
-  return (
-    <div className="login-container">
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/Home");
+  };
 
-      {/* FORMAS DE FUNDO */}
+  return (
+    <div className="login-page">
+
       <div className="background-shape shape-1"></div>
       <div className="background-shape shape-2"></div>
 
-      <div className="login-card">
-        
-        {/* LADO ESQUERDO - IMAGEM */}
-        <div className="login-image-side">
-          <div className="login-overlay"></div>
-          <div className="circle circle-top"></div>
-          <div className="circle circle-bottom"></div>
+      <div className="login-container">
+        <div className="login-card">
+
+
+          <div className="login-image-side">
+            <div className="login-overlay"></div>
+
+            <div className="circle circle-top"></div>
+            <div className="circle circle-bottom"></div>
+          </div>
+
+
+          <div className="login-form-side">
+            <h1>Iniciar Sessão</h1>
+
+            <form className="login-form" onSubmit={handleLogin}>
+              <label>Email</label>
+              <input
+                type="email"
+                placeholder="Digite seu email"
+              />
+
+              <label>Senha</label>
+              <input
+                type="password"
+                placeholder="Digite sua senha"
+              />
+
+              <a href="#" className="forgot-password">
+                Esqueceu sua senha?
+              </a>
+
+              <button
+                type="submit"
+                className="btn-primary"
+              >
+                Iniciar Sessão
+              </button>
+
+              <button
+                type="button"
+                className="btn-secondary"
+                onClick={() => navigate("/cadastro")}
+              >
+                Cadastrar-se
+              </button>
+            </form>
+          </div>
+
         </div>
-
-        {/* LADO DIREITO - FORM */}
-        <div className="login-form-side">
-          <h1>Iniciar Sessão</h1>
-
-          <form className="login-form">
-            <label>Email</label>
-            <input type="email" placeholder="Digite seu email" />
-
-            <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
-
-            <a href="#" className="forgot-password">
-              Esqueceu sua senha?
-            </a>
-
-            <button type="submit" className="btn-primary">
-              Iniciar Sessão
-            </button>
-
-            <button
-              type="button"
-              className="btn-secondary"
-              onClick={() => navigate("/cadastro")}
-            >
-              Cadastrar-se
-            </button>
-          </form>
-        </div>
-
       </div>
     </div>
   );

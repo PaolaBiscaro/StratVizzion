@@ -1,7 +1,12 @@
-body {
-  margin: 0;
+
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(135deg, #9fe3da, #8dd8cd);
+  position: relative;
+  overflow: hidden;
 }
 
 .login-container {
@@ -10,6 +15,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .login-card {
@@ -25,6 +32,7 @@ body {
   z-index: 2;
 }
 
+
 .login-image-side {
   position: relative;
   width: 50%;
@@ -36,7 +44,7 @@ body {
   overflow: hidden;
 }
 
-.overlay {
+.login-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -67,12 +75,15 @@ body {
   right: 25px;
 }
 
+
+
 .login-form-side {
   width: 50%;
   padding: 70px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: white;
 }
 
 .login-form-side h1 {
@@ -102,6 +113,10 @@ body {
   outline: none;
 }
 
+.login-form input:focus {
+  border: 2px solid #179c72;
+}
+
 .forgot-password {
   font-size: 14px;
   color: #888;
@@ -109,6 +124,12 @@ body {
   margin-bottom: 24px;
   text-decoration: none;
 }
+
+.forgot-password:hover {
+  color: #179c72;
+}
+
+
 
 .btn-primary,
 .btn-secondary {
@@ -141,6 +162,7 @@ body {
   background: #f7fffc;
 }
 
+
 .background-shape {
   position: fixed;
   border-radius: 50%;
@@ -163,4 +185,30 @@ body {
   background: #2fae9d;
   bottom: -100px;
   right: -100px;
+}
+
+
+
+@media (max-width: 900px) {
+  .login-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .login-image-side,
+  .login-form-side {
+    width: 100%;
+  }
+
+  .login-image-side {
+    height: 220px;
+  }
+
+  .login-form-side {
+    padding: 40px 30px;
+  }
+
+  .login-form-side h1 {
+    font-size: 36px;
+  }
 }

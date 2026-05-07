@@ -5,44 +5,75 @@ import "../styles/Cadastro.css";
 function Cadastro() {
   const navigate = useNavigate();
 
+  const handleCadastro = (e) => {
+    e.preventDefault();
+
+    // lógica de cadastro aqui
+
+    navigate("/");
+  };
+
   return (
-    <div className="cadastro-container">
+    <div className="cadastro-page">
+
+
       <div className="bg-shape shape-1"></div>
       <div className="bg-shape shape-2"></div>
 
-      <div className="cadastro-card">
-        <div className="cadastro-image">
-          <div className="overlay"></div>
-        </div>
+      <div className="cadastro-container">
+        <div className="cadastro-card">
 
-        <div className="cadastro-form">
-          <h1>Criar Conta</h1>
 
-          <form>
-            <label>Nome</label>
-            <input type="text" placeholder="Digite seu nome" />
+          <div className="cadastro-image">
+            <div className="overlay"></div>
+          </div>
 
-            <label>Email</label>
-            <input type="email" placeholder="Digite seu email" />
+          {/* FORM */}
+          <div className="cadastro-form">
+            <h1>Criar Conta</h1>
 
-            <label>Senha</label>
-            <input type="password" placeholder="Digite sua senha" />
+            <form onSubmit={handleCadastro}>
+              <label>Nome</label>
+              <input
+                type="text"
+                placeholder="Digite seu nome"
+              />
 
-            <label>Confirmar Senha</label>
-            <input type="password" placeholder="Confirme sua senha" />
+              <label>Email</label>
+              <input
+                type="email"
+                placeholder="Digite seu email"
+              />
 
-            <button className="btn-primary" type="submit">
-              Cadastrar
-            </button>
+              <label>Senha</label>
+              <input
+                type="password"
+                placeholder="Digite sua senha"
+              />
 
-            <button
-              className="btn-secondary"
-              type="button"
-              onClick={() => navigate("/")}
-            >
-              Voltar para Login
-            </button>
-          </form>
+              <label>Confirmar Senha</label>
+              <input
+                type="password"
+                placeholder="Confirme sua senha"
+              />
+
+              <button
+                className="btn-primary"
+                type="submit"
+              >
+                Cadastrar
+              </button>
+
+              <button
+                className="btn-secondary"
+                type="button"
+                onClick={() => navigate("/")}
+              >
+                Voltar para Login
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
