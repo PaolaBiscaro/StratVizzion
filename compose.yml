@@ -1,0 +1,12 @@
+services:
+  stratvizzion:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+# compose faz com que rode a aplicação

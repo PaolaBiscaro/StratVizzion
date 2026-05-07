@@ -6,7 +6,7 @@ import "./OKRConcluded.css"
 function OKRConclued(){
     return(
     <div className="OKRConcluded">
-        <h3 className="Titulo">OKR Concluídas</h3>
+        <h3 className="title-card">OKR Concluídas</h3>
 
     </div>    
     )

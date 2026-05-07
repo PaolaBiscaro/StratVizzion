@@ -1,0 +1,23 @@
+.selection-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap; 
+}
+
+
+.selection-box > div:first-child {
+    flex: 1 1 500px;
+    min-width: 300px; 
+}
+
+
+.selection-box > .container-filter {
+    flex: 0 0 auto; 
+    width: fit-content; 
+    min-width: 350px; 
+    justify-content: flex-end;
+}
