@@ -8,7 +8,7 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/Home");
+    navigate("/home-director");
   };
 
   return (
@@ -68,6 +68,7 @@ function Login() {
               <button
                 type="submit"
                 className="btn-primary"
+                
               >
                 Iniciar Sessão
               </button>
