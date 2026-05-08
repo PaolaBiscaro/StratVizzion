@@ -1,75 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Cadastro.css";
+import { FiLock, FiMail, FiUser } from "react-icons/fi";
+import "../styles/variables.css"
 
 function Cadastro() {
   const navigate = useNavigate();
 
+  // Estados para controlar os inputs
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+
   const handleCadastro = (e) => {
     e.preventDefault();
-
-    // lógica de cadastro aqui
-
-    navigate("/");
+    // Aqui entrará a lógica para salvar o usuário futuramente
+    navigate("/"); // Manda de volta pro login após cadastrar
   };
 
   return (
     <div className="cadastro-page">
-
-
-      <div className="bg-shape shape-1"></div>
-      <div className="bg-shape shape-2"></div>
-
       <div className="cadastro-container">
         <div className="cadastro-card">
 
-
-          <div className="cadastro-image">
-            <div className="overlay"></div>
+          {/* LADO ESQUERDO */}
+          <div className="cadastro-image-side">
+            <div className="cadastro-content-left">
+              <div className="cadastro-main-text">
+                <div className="cadastro-logo-area">
+                  <img src="src/assets/imgs/stratvizzion2.png" alt="Logo StratVizzion" />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* FORM */}
-          <div className="cadastro-form">
-            <h1>Criar Conta</h1>
+          {/* LADO DIREITO */}
+          <div className="cadastro-form-side">
+            <div className="cadastro-form-header">
+              <h2>Crie sua conta</h2>
+              <p>Preencha os dados abaixo para começar.</p>
+            </div>
 
-            <form onSubmit={handleCadastro}>
-              <label>Nome</label>
-              <input
-                type="text"
-                placeholder="Digite seu nome"
-              />
+            <form className="cadastro-form" onSubmit={handleCadastro}>
+              
+              <div className="cadastro-input-group">
+                <span className="cadastro-input-icon"><FiUser style={{color: "#433f3f"}}/></span>
+                <input
+                  type="text"
+                  placeholder="Nome completo"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                />
+              </div>
 
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="Digite seu email"
-              />
+              <div className="cadastro-input-group">
+                <span className="cadastro-input-icon"><FiMail style={{color: "#433f3f"}}/></span>
+                <input
+                  type="email"
+                  placeholder="E-mail corporativo"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
 
-              <label>Senha</label>
-              <input
-                type="password"
-                placeholder="Digite sua senha"
-              />
+              <div className="cadastro-input-group">
+                <span className="cadastro-input-icon"><FiLock style={{color: "#433f3f"}} /></span>
+                <input
+                  type="password"
+                  placeholder="Crie uma senha"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  required
+                />
+              </div>
 
-              <label>Confirmar Senha</label>
-              <input
-                type="password"
-                placeholder="Confirme sua senha"
-              />
+              <div className="cadastro-input-group" style={{marginBottom: "35px"}}>
+                <span className="cadastro-input-icon"><FiLock style={{color: "#433f3f"}} /></span>
+                <input
+                  type="password"
+                  placeholder="Confirme sua senha"
+                  value={confirmaSenha}
+                  onChange={(e) => setConfirmaSenha(e.target.value)}
+                  required
+                />
+              </div>
 
-              <button
-                className="btn-primary"
-                type="submit"
-              >
-                Cadastrar
+              <button type="submit" className="cadastro-btn-primary">
+                Finalizar Cadastro
               </button>
 
               <button
-                className="btn-secondary"
                 type="button"
-                onClick={() => navigate("/")}
+                className="cadastro-btn-secondary"
+                onClick={() => navigate("/Login")}
               >
-                Voltar para Login
+                Já tenho uma conta
               </button>
             </form>
           </div>
