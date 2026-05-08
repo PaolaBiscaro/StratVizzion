@@ -11,20 +11,20 @@ import React from "react";
 export const ManagerSideBarData = [
     {
         title:"Home",
-        link:"/home"
+        link:"/home-manager"
     },
     {
         title:"Definir KR",
-        link:"/definirkr"
+        link:"/nova-kr"
     },
     {
         title:"Visualizar Key Result",
-        link:"/viewKeyResult"
+        link:"/visualizar-kr"
     },
-    {
-        title:"Relatório",
-        link:"/relatorio"
-    },
+    // {
+    //     title:"Relatório",
+    //     link:"/meu-perfil-manager"
+    // },
 ]
 
 
