@@ -31,7 +31,7 @@ function FormInput({ title, inside, value, onChange, className, toolid, tooltext
     <div className={`float-menu-formInput ${className || ""}`}>
       <div>
         <label className="label-formInput">{title}</label>
-        <TooltipIcon id={toolid} text={tooltext}/>
+        {tooltext && <TooltipIcon id={toolid} text={tooltext} />}
       </div>
       <input 
         placeholder={inside}

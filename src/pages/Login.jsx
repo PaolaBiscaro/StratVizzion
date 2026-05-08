@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import { FiLock, FiMail } from "react-icons/fi";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,37 +13,53 @@ function Login() {
 
   return (
     <div className="login-page">
-
-      <div className="background-shape shape-1"></div>
-      <div className="background-shape shape-2"></div>
-
       <div className="login-container">
         <div className="login-card">
 
-
           <div className="login-image-side">
-            <div className="login-overlay"></div>
+            <div className="content-left">
+              <div className="main-text">
+                <h1>
+                  Onde a execução<br />
+                  encontra a<br />
+                  <span className="highlight">Estratégia.</span>
+                </h1>
+                <p>
+                Transforme cada pequena conquista em visão de futuro. No StratVizzion, ajudamos você a traduzir o progresso das suas KRs no sucesso das suas OKRs.
+                </p>
+              </div>
 
-            <div className="circle circle-top"></div>
-            <div className="circle circle-bottom"></div>
+              <div className="logo-area">
+                <img src="src/assets/imgs/stratvizzion.png" alt="" srcset="" />
+              </div>
+            </div>
           </div>
 
-
           <div className="login-form-side">
-            <h1>Iniciar Sessão</h1>
+            <div className="form-header">
+              <h2>Bem-Vindo!</h2>
+              <p>Acompanhe o valor gerado em cada KR.</p>
+            </div>
 
             <form className="login-form" onSubmit={handleLogin}>
-              <label>Email</label>
-              <input
-                type="email"
-                placeholder="Digite seu email"
-              />
+              
+              <div className="input-group">
+                <span className="input-icon"><FiMail style={{color: "#433f3f"}}/></span>
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  required
+                />
+              </div>
 
-              <label>Senha</label>
-              <input
-                type="password"
-                placeholder="Digite sua senha"
-              />
+              <div className="input-group">
+                <span className="input-icon"><FiLock style={{color: "#433f3f"}} /></span>
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  required
+                />
+              </div>
 
               <a href="#" className="forgot-password">
                 Esqueceu sua senha?

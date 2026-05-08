@@ -1,145 +1,200 @@
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 .login-page {
   min-height: 100vh;
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #9fe3da, #8dd8cd);
-  position: relative;
-  overflow: hidden;
+  background: #ffffff;
 }
 
 .login-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  position: relative;
-  z-index: 1;
+  width: 100%;
+  height: 100vh; /* Ocupa 100% da altura da tela */
 }
 
+/* O card principal que vai segurar os dois lados */
 .login-card {
-  width: 1200px;
-  max-width: 100%;
-  min-height: 680px;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex; /* É isso aqui que coloca um lado do lado do outro */
+}
+
+/* =========================================
+   LADO ESQUERDO (VERDE)
+   ========================================= */
+.login-image-side {
+  width: 50%; /* Exatamente metade da tela */
+  background-image: url('../assets/imgs/imagem-login.png'); 
+  background-size: cover; /* Faz a imagem cobrir todo o espaço sem achatar ou distorcer */
+  background-position: left center;
+  background-repeat: no-repeat;
   display: flex;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px 60px;
+  color: white;
+  position: relative;
+}
+
+/* Textos da esquerda */
+.content-left {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-
-.login-image-side {
-  position: relative;
-  width: 50%;
-  background: linear-gradient(
-    135deg,
-    rgba(23, 156, 114, 0.65),
-    rgba(65, 199, 179, 0.45)
-  );
-  overflow: hidden;
+.main-text {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.login-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(23, 156, 114, 0.65),
-    rgba(65, 199, 179, 0.45)
-  );
+.main-text h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
 }
 
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(65, 199, 179, 0.55);
-  z-index: 1;
+.main-text p{
+  color: white;
+  font-weight: 300;
+  width: 100%;
 }
 
-.circle-top {
-  width: 320px;
-  height: 320px;
-  top: -70px;
-  left: -70px;
+.highlight {
+  background-color: white;
+  color: #179c72;
+  padding: 2px 15px;
+  display: inline-block;
+  margin-top: 5px;
 }
 
-.circle-bottom {
-  width: 120px;
-  height: 120px;
-  bottom: 25px;
-  right: 25px;
+.main-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 480px;
+  opacity: 0.95;
+  margin-top: 25px;
 }
 
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
 
+.logo-area img {
+  width: 250px;
+}
 
+/* =========================================
+   LADO DIREITO (BRANCO)
+   ========================================= */
 .login-form-side {
-  width: 50%;
-  padding: 70px 60px;
+  width: 50%; /* A outra metade da tela */
+  background-color: #ffffff; /* Printado de branco! */
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: white;
+  padding: 0 120px; /* Espaçamento interno para o formulário não grudar nas bordas */
 }
 
-.login-form-side h1 {
-  font-size: 46px;
+.form-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.form-header h2 {
   color: #179c72;
-  margin-bottom: 35px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.form-header p {
+  color: #888;
+  font-size: 1rem;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
-.login-form label {
-  margin-bottom: 8px;
-  font-size: 16px;
-  color: #333;
+/* Inputs */
+.input-group {
+  position: relative;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 20px;
+  font-size: 1.1rem;
+  z-index: 2;
 }
 
 .login-form input {
-  padding: 16px;
-  margin-bottom: 20px;
+  width: 100%;
+  padding: 16px 20px 16px 55px; 
   border: none;
   border-radius: 30px;
-  background: #f1f1f1;
-  font-size: 15px;
+  background: #f4f4f4;
+  font-size: 1rem;
+  font-family: inherit;
   outline: none;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
 }
 
 .login-form input:focus {
-  border: 2px solid #179c72;
+  background: #fff;
+  box-shadow: 0 0 0 2px #179c72;
 }
 
 .forgot-password {
-  font-size: 14px;
-  color: #888;
+  font-size: 0.9rem;
+  color: #aaa;
   text-align: center;
-  margin-bottom: 24px;
-  text-decoration: none;
+  margin-bottom: 35px;
+  text-decoration: underline;
 }
 
 .forgot-password:hover {
   color: #179c72;
 }
 
-
-
+/* Botões */
 .btn-primary,
 .btn-secondary {
-  padding: 14px;
+  padding: 16px;
   border-radius: 30px;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  margin-bottom: 14px;
-  transition: 0.2s;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
 }
 
 .btn-primary {
@@ -149,66 +204,46 @@
 }
 
 .btn-primary:hover {
-  transform: scale(1.02);
+  background: #13835f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(23, 156, 114, 0.25);
 }
 
 .btn-secondary {
   background: white;
   color: #179c72;
-  border: 2px solid #8fd9c7;
+  border: 2px solid #179c72;
 }
 
 .btn-secondary:hover {
-  background: #f7fffc;
+  background: #f2fbf8;
+  transform: translateY(-2px);
 }
 
-
-.background-shape {
-  position: fixed;
-  border-radius: 50%;
-  z-index: 0;
-  filter: blur(80px);
-  opacity: 0.4;
-}
-
-.shape-1 {
-  width: 400px;
-  height: 400px;
-  background: #41c7b3;
-  top: -100px;
-  left: -100px;
-}
-
-.shape-2 {
-  width: 300px;
-  height: 300px;
-  background: #2fae9d;
-  bottom: -100px;
-  right: -100px;
-}
-
-
-
-@media (max-width: 900px) {
+/* =========================================
+   RESPONSIVO (Celulares)
+   ========================================= */
+@media (max-width: 968px) {
   .login-card {
-    flex-direction: column;
-    min-height: auto;
+    flex-direction: column; /* Empilha um em cima do outro no celular */
+    height: auto;
   }
 
   .login-image-side,
   .login-form-side {
-    width: 100%;
+    width: 100%; /* Passa a ocupar 100% da largura */
   }
 
   .login-image-side {
-    height: 220px;
+    padding: 50px 30px;
+    min-height: 400px;
   }
 
   .login-form-side {
-    padding: 40px 30px;
+    padding: 50px 30px;
   }
 
-  .login-form-side h1 {
-    font-size: 36px;
+  .main-text h1 {
+    font-size: 2.5rem;
   }
 }
