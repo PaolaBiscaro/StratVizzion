@@ -75,7 +75,7 @@ return (
                   prazo={okr.prazo}
                   descricao={okr.descricao}
                   botao={"Adicionar KeyResult"}
-                  rota={"/NewKR"}
+                  rota={"/nova-kr"}
                 />
               ))}
             </div>
