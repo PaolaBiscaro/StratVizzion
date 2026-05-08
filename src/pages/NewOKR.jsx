@@ -13,6 +13,12 @@ import Modal from "../components/ComponentesForm/Modal/modal";
 
 function NewOKR() {
   const { setBusca } = useSearch();
+  const cycleOptions = [
+    { value: "Q1", label: "Q1" },
+    { value: "Q2", label: "Q2" },
+    { value: "Q3", label: "Q3" },
+    { value: "Q4", label: "Q4" },
+  ];
 
   const [titulo, setTitulo] = useState("");
   const [cycleTitle, setCicloTitulo] = useState("");
@@ -67,8 +73,8 @@ function NewOKR() {
           inside="EX: Aumentar a retenção de usuários ativos"
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
-          toolId={"titulo"}
-          toolText={"Digite o objetivo final que você deseja EX: Aumentar retenção de usuários ativos"}
+          toolid={"titulo-okr"}
+          tooltext={"Informe o objetivo principal da OKR. Exemplo: aumentar retencao, receita ou satisfacao do cliente."}
         />
         <FormTextarea
           title="Descrição"
@@ -76,10 +82,17 @@ function NewOKR() {
           tamanho="103px"
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
-          toolId={"descricao"}
-          toolText={"Descreva os objetivos da sua meta, o contexto atual e o porque atingir essa meta"}
+          toolid={"descricao-okr"}
+          tooltext={"Descreva o contexto atual, a justificativa da meta e o resultado esperado no fim do ciclo."}
         />
-        <FormSelect title="Selecione um Título" />
+        <FormInput
+          title="Título do Ciclo"
+          inside="EX: Ciclo Comercial 2026"
+          value={cycleTitle}
+          onChange={(e) => setCicloTitulo(e.target.value)}
+          toolid={"titulo-ciclo-principal"}
+          tooltext={"Nome do ciclo ao qual a OKR pertence. Exemplo: Ciclo de Crescimento 2026."}
+        />
 
         <div className="ciclo">
           <button onClick={() => setIsOpen(true)} className="text-button">
@@ -92,9 +105,31 @@ function NewOKR() {
           onClose={() => setIsOpen(false)}
           title="Criar novo Ciclo"
         >
-          <FormInput title="Titulo do Ciclo" />
-          <FormSelect title="Ciclo" />
-          <FormInput title="Ano" />
+          <FormInput
+            title="Titulo do Ciclo"
+            inside="EX: Ciclo de Produto"
+            value={cycleTitle}
+            onChange={(e) => setCicloTitulo(e.target.value)}
+            toolid={"titulo-ciclo-modal"}
+            tooltext={"Defina um nome para identificar este ciclo. Exemplo: Ciclo de Produto 2026."}
+          />
+          <FormSelect
+            title="Ciclo"
+            inside="-- Selecione o trimestre --"
+            value={ciclo}
+            onChange={(e) => setCiclo(e.target.value)}
+            opcoes={cycleOptions}
+            toolid={"ciclo-trimestre"}
+            tooltext={"Selecione o trimestre do ciclo: Q1, Q2, Q3 ou Q4."}
+          />
+          <FormInput
+            title="Ano"
+            inside="EX: 2026"
+            value={ano}
+            onChange={(e) => setAno(e.target.value)}
+            toolid={"ano-ciclo"}
+            tooltext={"Informe o ano de referencia do ciclo. Exemplo: 2026."}
+          />
           <Button texto="Criar novo Ciclo" />
         </Modal>
 
