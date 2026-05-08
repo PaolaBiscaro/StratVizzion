@@ -1,7 +1,11 @@
 import React from "react";
 import "./OKRHeader.css"
 
-function OKRHeader({titleRequest="Title Request", descRequest="Desc Request", cycleRequest="Cycle Request"}){
+function OKRHeader({
+    titleRequest = "Title Request",
+    descRequest = "Desc Request",
+    cycleRequest = "Cycle Request"
+}) {
     return(
         <div className="OKRHeader">
             <p><strong>Titulo:</strong> {titleRequest}</p>

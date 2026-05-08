@@ -1,10 +1,23 @@
 import React from "react";
 import "./OKRFooter.css"
 
-function OKRFooter({footerRequest="Insert AI Footer request here"}){
+const defaultIaAlerts = [
+    "Exemplo: Status geral do KR (atrasado, no prazo, adiantado).",
+    "Exemplo: Principal risco detectado pela IA.",
+    "Exemplo: Recomendacao de acao para o proximo ciclo."
+];
+
+function OKRFooter({ iaAlerts = defaultIaAlerts }) {
+    const alerts = Array.isArray(iaAlerts) ? iaAlerts : [iaAlerts];
+
     return(
         <div className="footer">
-            <p>{footerRequest}</p>
+            <p className="footer-ia-title"><strong>Avisos IA</strong></p>
+            <ul className="footer-ia-list">
+                {alerts.map((alert, index) => (
+                    <li key={`ia-alert-${index}`}>{alert}</li>
+                ))}
+            </ul>
         </div>
     )
 }

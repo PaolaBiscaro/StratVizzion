@@ -1,0 +1,150 @@
+.okr-details-page {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.okr-details-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 14px;
+    gap: 10px;
+}
+
+.okr-details-main .okr-route-title {
+    margin: 0;
+}
+
+.okr-details-main .okr-route-title h1 {
+    margin: 0 0 4px;
+    font-size: 1.7rem;
+    line-height: 1.1;
+}
+
+.okr-details-main .okr-route-title h2 {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.okr-details-main .info {
+    width: 100%;
+    margin: 0;
+    min-height: 210px;
+    padding-bottom: 12px;
+}
+
+.okr-details-bottom {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(600px, 1.7fr);
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+}
+
+.okr-details-warning,
+.okr-details-graphics {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.okr-details-main .panel {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.okr-details-main .warning-content {
+    padding: 16px;
+    gap: 8px;
+}
+
+.okr-details-main .warning-title {
+    font-size: 28px;
+}
+
+.okr-details-main .warning-message {
+    font-size: 14px;
+    line-height: 1.45;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.okr-details-main .alert {
+    width: 170px;
+    height: 44px;
+    font-size: 16px;
+}
+
+.okr-details-main .graphics-content {
+    gap: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.9fr);
+    align-items: stretch;
+}
+
+.okr-details-main .graphics-chart {
+    width: 100%;
+    min-width: 0;
+    min-height: 270px;
+}
+
+.okr-details-main .graphics-message {
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 0;
+}
+
+.okr-details-main .graphics-message-panel {
+    min-height: 0;
+    overflow-y: auto;
+}
+
+@media (max-width: 1366px), (max-height: 800px) {
+    .okr-details-main {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .okr-details-main .info {
+        min-height: 180px;
+    }
+
+    .okr-details-main .okr-route-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .okr-details-main .okr-route-title h2 {
+        font-size: 0.85rem;
+    }
+
+    .okr-details-main .warning-title {
+        font-size: 24px;
+    }
+
+    .okr-details-main .alert {
+        width: 150px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .okr-details-bottom {
+        grid-template-columns: minmax(230px, 0.75fr) minmax(500px, 1.6fr);
+    }
+
+    .okr-details-main .graphics-content {
+        grid-template-columns: minmax(0, 1.2fr) minmax(200px, 0.85fr);
+    }
+
+    .okr-details-main .graphics-chart {
+        min-height: 245px;
+    }
+}

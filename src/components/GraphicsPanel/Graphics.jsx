@@ -3,7 +3,7 @@ import Panel from "../Panel/Panel";
 import LineChartOKR from "../LinechartsOKR/LinechartsOKR";
 import "./Graphics.css"
 
-function GraphicsPanel({ statusMessage = "Insert IA Status message here" }) {
+function GraphicsPanel({ statusDetail = "Espaço reservado para mensagens geradas por IA." }) {
     return (
         <Panel>
             <div className="graphics-content">
@@ -15,7 +15,12 @@ function GraphicsPanel({ statusMessage = "Insert IA Status message here" }) {
                         ]}
                     />
                 </div>
-                <span className="graphics-message">{statusMessage}</span>
+
+                <div className="graphics-side">
+                    <div className="graphics-message-panel">
+                        <span>{statusDetail}</span>
+                    </div>
+                </div>
             </div>
         </Panel>
     );

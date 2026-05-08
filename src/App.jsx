@@ -13,6 +13,7 @@ import ViewKeyResults from './pages/ViewKeyResults';
 import KRDetails from "./pages/KRDetails";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
+import OKRDetails from "./pages/OKRDetails"
 
 
 
@@ -38,7 +39,7 @@ function App() {
         <Route path="/relatorio" element={<GenerateReport />} />
         <Route path="/visualizar-kr" element={<ViewKeyResults />} />
         <Route path="/kr-detalhada" element={<KRDetails />} />
-        <Route path="/okr-detalhada" element={<Home />} /> {/*Precisa verificar essa tela */}
+        <Route path="/okr-detalhada" element={<OKRDetails />} /> {/*Precisa verificar essa tela */}
 
 
       </Routes>

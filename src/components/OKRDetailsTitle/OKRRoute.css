@@ -1,8 +1,18 @@
-.title{
+.okr-route-title{
     display: flex;
     flex-direction: column;
     white-space: nowrap;
-    padding-left: 5%;
+    padding-left: 0;
+    margin-left: 0;
+    align-self: flex-start;
+}
+
+.okr-route-title h1 {
+    margin: 0;
+}
+
+.okr-route-title h2 {
+    margin: 2px 0 0;
 }
 
 

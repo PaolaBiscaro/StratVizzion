@@ -4,23 +4,34 @@ import OKRRoute from "../components/OKRDetailsTitle/OKRRoute";
 import OKRInfo from "../components/OKRInfo/OKRInfo";
 import Warning from "../components/WarningPanel/Warning";
 import GraphicsPanel from "../components/GraphicsPanel/Graphics";
-
+import "../styles/OKRDetails.css";
 
 // Cada OKR deve ter sua própria página de Detalhes!
 
-function OKRDetails(){
-    return(
-    <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
-      <SideBar />
-      <div style={{ display: "flex", flexDirection: "column", flex: 1, width: "100%", alignItems: "flex-start", overflowY: "auto"  }}>
-        <OKRRoute />
-        <OKRInfo/>
-        <Warning/>
-        <GraphicsPanel/>
-      </div>
-    </div>
+function OKRDetails() {
+    return (
+        <div className="okr-details-page">
+            <SideBar
+                typeUser={"Director"}
+                nameUser={"Paulo"}
+            />
+
+            <main className="okr-details-main">
+                <OKRRoute />
+                <OKRInfo />
+
+                <div className="okr-details-bottom">
+                    <div className="okr-details-warning">
+                        <Warning />
+                    </div>
+
+                    <div className="okr-details-graphics">
+                        <GraphicsPanel />
+                    </div>
+                </div>
+            </main>
+        </div>
     );
 }
-
 
 export default OKRDetails;

@@ -1,7 +1,36 @@
 .footer{
     display: flex;
+    flex-direction: column;
     padding-left: 2%;
     padding-top: 1%;
     color:#4A4A4D ;
     font-size: 20px;
+    line-height: 1.35;
+}
+
+.footer p {
+    font-size: 1.05rem;
+    line-height: 1.45;
+}
+
+.footer-ia-title {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    color: #355364;
+}
+
+.footer-ia-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.footer-ia-list li {
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: #4A4A4D;
+}
+
+.footer-ia-list li:last-child {
+    margin-bottom: 0;
 }

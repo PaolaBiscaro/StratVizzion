@@ -1,14 +1,14 @@
 .info {
     background-color: #FFFFFF;
     width: 97%;
-    min-height: 290px;
+    min-height: 320px;
     margin-top: 2%;
     box-sizing: border-box;
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding-bottom: 20px;
+    gap: 12px;
+    padding-bottom: 24px;
 }
 h1,h2{
     color: #4A4A4D; ;
@@ -16,21 +16,24 @@ h1,h2{
 
 @media (max-width: 1366px) {
     .info {
-        height: 250px;
+        min-height: 250px;
+        height: auto;
         width: 90%;
     }
 }
 
 @media (max-width: 1280px) {
     .info {
-        height: 230px;
+        min-height: 230px;
+        height: auto;
         width: 93%;
     }
 }
 
 @media (max-width: 1024px) {
     .info {
-        height: 220px;
+        min-height: 220px;
+        height: auto;
         width: 90%;
     }
 }
