@@ -1,0 +1,28 @@
+.OKRHeader{
+    padding-left: 2%;
+    padding-top: 2%;
+    font-size: 26px;
+    line-height: 1.35;
+    color: #4A4A4D ;
+}
+
+.OKRHeader p {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.OKRHeader p:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+    .OKRHeader{
+        font-size: 23px;
+    }
+
+    .OKRHeader p {
+        font-size: 1.05rem;
+    }
+
+}
