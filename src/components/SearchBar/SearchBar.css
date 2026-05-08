@@ -1,0 +1,52 @@
+.headerDireita {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.iconRobotWrapper {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconRobot {
+    width: 30px;
+    height: 30px;
+}
+
+.searchWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.inputPesquisa {
+    width: 425px;
+    height: 50px;
+    padding: 0 45px 0 20px; 
+    border-radius: 50px; 
+    border: 1px solid #eee;
+    outline: none;
+    font-size: 16px;
+    color: #999;
+    background-color: white;
+    transition: border 0.3s;
+}
+
+.inputPesquisa:focus {
+    border-color: #00D182;
+}
+
+.iconSearch {
+    position: absolute;
+    right: 15px;
+    color: #00D182;
+    font-size: 30px;
+    cursor: pointer;
+}

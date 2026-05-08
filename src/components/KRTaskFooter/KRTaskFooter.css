@@ -1,0 +1,18 @@
+.task-footer {
+    position: fixed; /* Fixa o elemento na tela */
+    bottom: 0;      /* Cola no fundo */
+    left: 260px;    /* ATENÇÃO: Ajuste esse valor para a largura da sua SideBar */
+    right: 0;       /* Estica até a borda direita */
+    
+    display: flex;
+    gap: 40px;
+    background-color: #F2F2F2; /* Cor de fundo para não ficar transparente ao rolar */
+    padding: 15px 40px;        /* Aumentei o padding para dar respiro */
+    z-index: 1000;             /* Garante que ele fique por cima das tarefas */
+}
+
+.task-footer span {
+    color: #5F6368;
+    font-size: 13px;
+    font-weight: 500;
+}

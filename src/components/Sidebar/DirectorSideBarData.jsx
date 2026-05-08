@@ -12,19 +12,19 @@ import React from "react";
 export const DirectorSideBarData = [
     {
         title:"Home",
-        link:"/home"
+        link:"/home-director"
     },
     {
-        title:"Dashboard",
-        link:"/dashboard"
-    },
-    {
-        title:"RoadMap",
-        link:"/roadmap"
-    },
-    {
-        title:"Relatório",
+        title:"Gerar Relatório",
         link:"/relatorio"
+    },
+    {
+        title:"Nova OKR",
+        link:"/nova-okr"
+    },
+    {
+        title:"Meu Perfil",
+        link:"/meu-perfil"
     }
 ]
 

@@ -1,0 +1,76 @@
+.container-filter {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding-top: 35px;
+  min-width: 350px;
+}
+
+.row-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.report-popover {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px 35px 20px 35px;
+  align-items: flex-end;
+  width: fit-content;
+}
+
+.popover-title {
+  color: #128D5F;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+
+}
+
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  cursor: pointer;
+  color: #4A4A4D;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.checkbox-item:hover {
+  color: #146A4A;
+
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #146A4A;
+  border-radius: 4px;
+}
+
+/*Formatação do componente Button para essa tela*/
+.format-button .Salvar {
+  padding: 4px 10px;
+  font-size: 13px;
+  width: auto;
+  height: 35px;
+  margin: 35px 0px 10px 0px;
+}
+
+.status-equipe {
+  color: #146A4A;
+  font-weight: bold
+}
