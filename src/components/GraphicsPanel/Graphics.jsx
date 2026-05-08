@@ -3,17 +3,17 @@ import Panel from "../Panel/Panel";
 import LineChartOKR from "../LinechartsOKR/LinechartsOKR";
 import "./Graphics.css"
 
-function GraphicsPanel({ statusDetail = "Espaço reservado para mensagens geradas por IA." }) {
+const defaultChartData = [
+    { mes: "Jan", real: 10, meta: 5 },
+    { mes: "Fev", real: 20, meta: 15 },
+];
+
+function GraphicsPanel({ statusDetail = "Espaço reservado para mensagens geradas por IA.", chartData = defaultChartData }) {
     return (
         <Panel>
             <div className="graphics-content">
                 <div className="graphics-chart">
-                    <LineChartOKR
-                        data={[
-                            { mes: "Jan", real: 10, meta: 5 },
-                            { mes: "Fev", real: 20, meta: 15 },
-                        ]}
-                    />
+                    <LineChartOKR data={chartData} />
                 </div>
 
                 <div className="graphics-side">

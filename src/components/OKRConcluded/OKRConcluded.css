@@ -1,11 +1,37 @@
 .OKRConcluded {
     background-color: #FFFFFF;
     /* width: calc(100vw - 444px - 80px); */
-    height: 144px;
+    min-height: 144px;
     border-radius: 10px;
     margin-top: 2%;
     /* margin-left: 40px; */
     padding: 20px;
+}
+
+.okr-concluded-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.okr-concluded-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border: 1px solid #D9E0E6;
+    border-radius: 8px;
+    background: #F9FBFC;
+}
+
+.okr-concluded-item span {
+    font-size: 0.92rem;
+    color: #4A4A4D;
+}
+
+.okr-concluded-empty {
+    margin-top: 10px;
 }
 
 

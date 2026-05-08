@@ -16,6 +16,8 @@ import { useSearch } from "../context/SearchContext";
 function Home() {
 
   const listaParaExibirOkr = getOKR();
+  const okrsConcluidas = listaParaExibirOkr.filter((okr) => okr.porcentagem >= 100 || okr.status === "Concluído");
+  const okrsEmMonitoramento = listaParaExibirOkr.filter((okr) => !(okr.porcentagem >= 100 || okr.status === "Concluído"));
   const { setBusca } = useSearch();
 
   return (
@@ -49,15 +51,15 @@ function Home() {
           <div className="content-wrapper-okr">
 
             <div className="cards-row-okr">
-              {listaParaExibirOkr.map((okr) => (
+              {okrsEmMonitoramento.map((okr) => (
                 <OKRMonitoring
                   key={okr.id}
                   id={okr.id}
                   porcentagem={okr.porcentagem}
-                  prazo={okr.prazo}
+                  prazo={`${okr.ciclo}/${okr.ano}`}
                   descricao={okr.descricao}
                   botao={"Ver detalhes"}
-                  rota={"/OKRDetails"}
+                  rota={`/okr-detalhada/${okr.id}`}
                 />
               ))}
 
@@ -65,10 +67,10 @@ function Home() {
           </div>
         </div>
 
-        <OKRConcluded />
+        <OKRConcluded okrs={okrsConcluidas} />
 
       </main>
-      <Button texto="Criar nova OKR" url="/NewOKR" variante="verde" className={"HomeDirector"} />
+      <Button texto="Criar nova OKR" url="/nova-okr" variante="verde" className={"HomeDirector"} />
 
     </div>
   );
