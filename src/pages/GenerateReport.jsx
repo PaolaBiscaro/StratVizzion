@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MainTitle from "../components/MainTitle/MainTitle";
 import SideBar from '../components/Sidebar/SideBar';
 import MainReportFilter from '../components/MainReportFilter/MainReportFilter'
@@ -12,10 +12,11 @@ import '../styles/GenerateReport.css'
 
 const GenerateReport = () => {
     const { setBusca } = useSearch();
+    const [pdfGerado, setPdfGerado] = useState(null);
 
     return (
         <div className="page-layout">
-            <SideBar />
+            <SideBar typeUser={"Director"} nameUser={"Paulo"}/>
 
             <AutoHighlighter />
             <main id="content">
@@ -37,8 +38,8 @@ const GenerateReport = () => {
                 <p>Pré-visualização da impressão</p>
 
                 <div className='selection-box'>
-                    <PDFViewer/>
-                    <MainReportFilter />
+                    <PDFViewer base64Data={pdfGerado}/>
+                    <MainReportFilter onPdfGenerated={setPdfGerado} />
                 </div>
             </main>
 

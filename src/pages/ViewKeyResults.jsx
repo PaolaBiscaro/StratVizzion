@@ -1,69 +1,67 @@
-import React, { useState } from 'react'; // CORREÇÃO 1: Importar o useState
+import React, { useState } from 'react';
 import SideBar from '../components/Sidebar/SideBar.jsx';
 import MainTitle from '../components/MainTitle/MainTitle.jsx';
 import SearchBar from "../components/SearchBar/SearchBar";
-import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
-import { useSearch } from "../context/SearchContext";
 import { FiltersBar } from '../components/FiltersBar/FiltersBar.jsx';
+import "../styles/ViewKeyResults.css";
 
-const KR_FILTER_CONFIGS = [
-    { key: 'title', label: 'Título', type: 'text' },
-    { key: 'status', label: 'Status', type: 'select', options: ['Aberto', 'Em Foco', 'Concluído'] },
-    { key: 'owner', label: 'Responsável', type: 'select', options: ['Time A', 'Time B'] },
-];
+// Seus componentes criados anteriormente
+import FilterTab from "../components/FilterTab/FilterTab";
+import KRTag from "../components/KRTag/KRTag";
+import KRSubTag from "../components/KRSubTag/KRSubTag";
 
 const ViewKeyResults = () => {
-    const { setBusca } = useSearch();
     const [filters, setFilters] = useState({});
-
-    const data = [];
-
-    const handleFilterChange = (key, value) => {
-        setFilters(prev => ({ ...prev, [key]: value }));
-    };
-
-    const filteredKRs = data.filter(kr => {
-        return Object.entries(filters).every(([key, value]) => {
-            if (!value) return true;
-  
-            return String(kr[key] || "").toLowerCase().includes(String(value).toLowerCase());
-        });
-    });
+    
+    // Dados fictícios baseados na sua imagem
+    const data = [
+        { id: 1, name: "KR-02", title: "Aumentar DAU de 50k para 75k até 30/jun", okr: "OKR001", deadline: "25 Jun 2026", value: "61k", goal: "75k", progress: 60 },
+        { id: 2, name: "KR-02", title: "Aumentar DAU de 50k para 75k até 30/jun", okr: "OKR001", deadline: "25 Jun 2026", value: "61k", goal: "75k", progress: 60 },
+        { id: 3, name: "KR-02", title: "Aumentar DAU de 50k para 75k até 30/jun", okr: "OKR001", deadline: "25 Jun 2026", value: "61k", goal: "75k", progress: 60 },
+    ];
 
     return (
         <div className="page-layout">
-            <SideBar />
-            <AutoHighlighter />
-            <main id="content">
-                <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    marginBottom: "40px"
-                }}>
-                    <MainTitle
-                        title="Gestão de Key Results"
-                        subtitle="Analise o progresso e evolução dos seus resultados-chave."
+            <SideBar typeUser="Manager" nameUser={"Paulo"} />
+            <main id="content" className="view-kr-container">
+                <div className="header-section">
+                    <MainTitle 
+                        title="Visualizar Key Results" 
+                        subtitle="Analise o progresso e evolução dos seus resultados-chave." 
                     />
-                    <SearchBar onSearch={(valor) => setBusca(valor)} />
+                    <SearchBar onSearch={(valor) => console.log(valor)} />
                 </div>
 
-                <div className='filter-kr'>
-                    <FiltersBar
-                        configs={KR_FILTER_CONFIGS}
-                        values={filters}
-                        onChange={handleFilterChange}
-                    />
+                {/* Linha de Filtros (Pills verdes/brancos) */}
+                <div className='filter-tabs-row'>
+                    <FilterTab label="Todas" count={6} isActive={true} />
+                    <button className="btn-filter-secondary">Agrupar por OKR</button>
+                    <button className="btn-filter-secondary">A - Z</button>
+                    <button className="btn-filter-secondary">Dt. Conclusão</button>
+                    <button className="btn-filter-secondary">Porcentagem</button>
                 </div>
 
-                {/* Exemplo de uso: Use filteredKRs para renderizar sua lista/tabela */}
-                <div className="results-container">
-                    {filteredKRs.map(kr => (
-                        <div key={kr.id}>{kr.title}</div>
+                <div className="results-list">
+                    {data.map(kr => (
+                        <div key={kr.id} className="kr-card-container">
+                            <div className="kr-card-top">
+                                <KRTag name={kr.name} title={kr.title} okr={kr.okr} />
+                                <KRSubTag deadline={kr.deadline} value={kr.value} goal={kr.goal} />
+                            </div>
+                            
+                            {/* Barra de Progresso Customizada */}
+                            <div className="progress-section">
+                                <div className="progress-track">
+                                    <div 
+                                        className="progress-fill" 
+                                        style={{ width: `${kr.progress}%` }}
+                                    ></div>
+                                </div>
+                                <span className="progress-label">{kr.progress}%</span>
+                            </div>
+                        </div>
                     ))}
                 </div>
-
             </main>
         </div>
     );

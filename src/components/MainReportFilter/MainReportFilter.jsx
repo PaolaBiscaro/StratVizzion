@@ -13,7 +13,7 @@ const FIELD_LABELS = {
     key_results: "Key Results"
 };
 
-function MainReportFilter() {
+function MainReportFilter({ onPdfGenerated }) {
     const [selectedItems, setSelectedItems] = useState({});
     const [projetoSelecionado, setProjetoSelecionado] = useState("Projeto A");
     const [okrSelecionada, setOkrSelecionada] = useState("TODAS");
@@ -27,33 +27,78 @@ function MainReportFilter() {
         }));
     };
 
-    const enviarParaAPI = () => {
-        const payload = Object.keys(FIELD_LABELS).map(key => {
-            const isSelected = !!selectedItems[key];
-            let filter = null;
+    const enviarParaAPI = async () => {
+    // 1. O payload que o Python espera (List[dict])
+    const payload = Object.keys(FIELD_LABELS).map(key => {
+        const isSelected = !!selectedItems[key];
+        return {
+            selected_field: FIELD_LABELS[key],
+            selected: isSelected ? 1 : 0,
+            filter: [], // Pode ser o projetoSelecionado se necessário
+            dados_banco: todasAsInformacoesProjetos // Seus dados do mock
+        };
+    });
 
-            if (isSelected) {
-                if (key === 'progresso_projeto') {
-                    filter = {
-                        key: projetoSelecionado,
-                        name: todasAsInformacoesProjetos[projetoSelecionado]?.name || "Projeto não encontrado"
-                    };
-                } else if (key === 'okr_geral' && okrSelecionada !== 'TODAS') {
-                    filter = {
-                        okr: okrSelecionada
-                    };
-                }
-            }
-
-
-            return {
-                selected_field: FIELD_LABELS[key],
-                selected: isSelected ? 1 : 0,
-                ...(filter && { filter })
-            };
+    try {
+        console.log("Enviando dados para o motor IA...");
+        const response = await fetch('http://127.0.0.1:8000/api/v1/gerar-relatorio', {
+            method: 'POST', // OBRIGATÓRIO ser POST
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
         });
-        console.log("Dados da API:", JSON.stringify(payload, null, 2));
-    };
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.detail || "Erro no servidor");
+        }
+
+        const resultado = await response.json();
+
+        if (resultado.pdf_base64) {
+            // Converter Base64 para PDF e baixar
+            // const linkSource = `data:application/pdf;base64,${resultado.pdf_base64}`;
+            // const downloadLink = document.createElement("a");
+            // downloadLink.href = linkSource;
+            // downloadLink.download = "Relatorio_Executivo.pdf";
+            // downloadLink.click();
+            // console.log("Relatório gerado com sucesso!");
+            onPdfGenerated(resultado.pdf_base64);
+                alert("Relatório gerado! Clique em Visualizar.");
+        }
+    } catch (error) {
+        console.error("Erro na comunicação:", error);
+        alert("Erro: " + error.message);
+    }
+};
+    // const enviarParaAPI = () => {
+    //     const payload = Object.keys(FIELD_LABELS).map(key => {
+    //         const isSelected = !!selectedItems[key];
+    //         let filter = null;
+
+    //         if (isSelected) {
+    //             if (key === 'progresso_projeto') {
+    //                 filter = {
+    //                     key: projetoSelecionado,
+    //                     name: todasAsInformacoesProjetos[projetoSelecionado]?.name || "Projeto não encontrado"
+    //                 };
+    //             } else if (key === 'okr_geral' && okrSelecionada !== 'TODAS') {
+    //                 filter = {
+    //                     okr: okrSelecionada
+    //                 };
+    //             }
+    //         }
+
+
+    //         return {
+    //             selected_field: FIELD_LABELS[key],
+    //             selected: isSelected ? 1 : 0,
+    //             ...(filter && { filter })
+    //         };
+    //     });
+    //     console.log("Dados da API:", JSON.stringify(payload, null, 2));
+    // };
 
 
     return (

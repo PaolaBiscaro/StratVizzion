@@ -30,14 +30,15 @@ function App() {
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro/>} />
-        <Route path="/NewOKR" element={<NewOKR />} />
-        <Route path="/NewKR" element={<NewKR />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/HomeManager" element={<Manager />} />
-        <Route path="/ProfileConfiguration" element={<ProfileConfiguration />} />
+        <Route path="/nova-okr" element={<NewOKR />} />
+        <Route path="/nova-kr" element={<NewKR />} />
+        <Route path="/home-manager" element={<Manager />} />
+        <Route path="/home-director" element={<Home />} />
+        <Route path="/meu-perfil" element={<ProfileConfiguration />} />
         <Route path="/relatorio" element={<GenerateReport />} />
-        <Route path="/ViewKeyResults" element={<ViewKeyResults />} />
-        <Route path="/KRDetails" element={<KRDetails />} />
+        <Route path="/visualizar-kr" element={<ViewKeyResults />} />
+        <Route path="/kr-detalhada" element={<KRDetails />} />
+        <Route path="/okr-detalhada" element={<Home />} /> {/*Precisa verificar essa tela */}
 
 
       </Routes>

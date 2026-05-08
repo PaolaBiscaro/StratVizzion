@@ -11,7 +11,7 @@ export default function ProfileConfiguration() {
 
     return (
         <div className="page-layout">
-            <SideBar />
+            <SideBar typeUser={"Director"} nameUser={"Paulo"}/>
 
                 <AutoHighlighter />
                 <main id="content">

@@ -1,0 +1,77 @@
+.view-kr-container {
+    background-color: #F8F9FA; /* Fundo levemente cinza como na foto */
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Estilização dos botões de filtro */
+.filter-tabs-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.btn-filter-secondary {
+    background: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Estilização do Card de KR */
+.kr-card-container {
+    background: white;
+    border-radius: 15px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.kr-card-top {
+    display: flex;
+    flex-direction: column; /* Um componente abaixo do outro */
+    gap: 8px;
+}
+
+/* Barra de Progresso conforme a imagem */
+.progress-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.progress-track {
+    flex: 1;
+    height: 35px;
+    background-color: #98E2C6; /* Verde clarinho do fundo */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #128D5F; /* Verde forte */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-label {
+    font-weight: bold;
+    color: #128D5F;
+    font-size: 16px;
+    width: 40px;
+}
