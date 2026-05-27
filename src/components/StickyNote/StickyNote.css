@@ -1,0 +1,82 @@
+.sticky-note {
+    background: #FFF9C4;
+    border: 1px solid #f0e68c;
+    border-radius: 6px;
+    padding: 10px;
+    position: relative;
+    min-width: 180px;
+    max-width: 280px;
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.10);
+    align-self: flex-start;
+}
+
+.sticky-pin {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 20px;
+    transform: rotate(15deg);
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.sticky-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sticky-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    position: relative;
+}
+
+.sticky-input {
+    flex: 1 1 auto;
+    resize: vertical;
+    min-height: 36px;
+    max-height: 160px;
+    padding: 6px 8px;
+    border: 1px solid #e6d985;
+    background: transparent;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #333;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.sticky-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.07);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.sticky-add.compact {
+    background: transparent;
+    border: 1px dashed rgba(0,0,0,0.08);
+    color: #333;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.sticky-note.compact .sticky-pin {
+    top: -8px;
+    font-size: 18px;
+}
