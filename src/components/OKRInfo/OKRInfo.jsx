@@ -1,25 +1,23 @@
 import React from "react";
 import OKRHeader from "./OKRHeader";
-import OKRProgressBar from "./OKRProgressbar";
-import OKRFooter from "./OKRFooter";
 import "./OKRInfo.css";
 
 function OKRInfo({
+    okrId,
     title,
     description,
     cycleLabel,
     progress,
-    iaAlerts = []
 }) {
-    return(
+    return (
         <div className="info">
             <OKRHeader
+                okrId={okrId}
                 titleRequest={title}
                 descRequest={description}
                 cycleRequest={cycleLabel}
+                progress={progress}
             />
-            <OKRProgressBar progress={progress} />
-            <OKRFooter iaAlerts={iaAlerts} />
         </div>
     );
 }
