@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { FiLock, FiMail } from "react-icons/fi";
+import { createLoginDTO } from "../utils/dtos/loginDTO";
 
 function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
+    const loginDTO = createLoginDTO({ email, senha });
+
+    console.log("Login DTO:", loginDTO);
     navigate("/home-director");
   };
 
@@ -48,6 +54,8 @@ function Login() {
                 <input
                   type="email"
                   placeholder="E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -57,6 +65,8 @@ function Login() {
                 <input
                   type="password"
                   placeholder="Senha"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
                   required
                 />
               </div>
