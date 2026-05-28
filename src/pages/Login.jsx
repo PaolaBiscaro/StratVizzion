@@ -11,10 +11,19 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const loginDTO = createLoginDTO({ email, senha });
+    try {
+      const loginDTO = createLoginDTO({ email, senha });
 
-    console.log("Login DTO:", loginDTO);
-    navigate("/home-director");
+      console.log("Login DTO:", loginDTO);
+      const routeByRole = {
+        Director: "/home-director",
+        Manager: "/home-manager",
+      };
+
+      navigate(routeByRole[loginDTO.role]);
+    } catch (error) {
+      window.alert(error.message);
+    }
   };
 
   return (
