@@ -19,7 +19,7 @@ function Home() {
 
   const [mostrarConcluidas, setMostrarConcluidas] = useState(false);
   const [ordenarMaior, setOrdenarMaior] = useState(false);
-  const [trimestre, setTrimestre] = useState("Q1");
+  const [trimestre, setTrimestre] = useState("Todos");
   const [ano, setAno] = useState("2026");
 
   let okrsFiltradas = listaParaExibirOkr.filter((okr) => {
@@ -60,10 +60,12 @@ function Home() {
             <KpiCards />
 
             <div className="home-chart-container">
+              <div className="home-chart-title-select">
               <select className="home-chart-select">
                 <option>Selecionar OKR</option>
               </select>
               <h4 className="home-chart-title">Evolução do OKR</h4>
+              </div>
               <LineChart />
             </div>
 
@@ -90,6 +92,7 @@ function Home() {
                       porcentagem={okr.porcentagem}
                       prazo={`${okr.ciclo}/${okr.ano}`}
                       descricao={okr.descricao}
+                      botao="Ver detalhes"
                     />
                   ))
                 ) : (

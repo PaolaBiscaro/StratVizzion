@@ -60,3 +60,46 @@
     font-weight: bold;
     font-size: 2rem;
 }
+
+.kpi-circle-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kpi-circle-container svg {
+    position: absolute;
+    transform: rotate(-90deg);
+}
+
+
+.circle-progress {
+    transition: stroke-dashoffset 1s ease-in-out;
+    animation: drawCircle 1.2s ease-out forwards;
+}
+
+@keyframes drawCircle {
+    from {
+        stroke-dashoffset: 283; 
+    }
+}
+.kpi-circle-text {
+    display: flex;
+    align-items: baseline; 
+    z-index: 1; 
+}
+
+.kpi-circle-done {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0F9D58;
+}
+
+.kpi-circle-total {
+    font-size: 22px;
+    color: #888;
+    margin-left: 2px;
+}

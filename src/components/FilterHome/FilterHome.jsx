@@ -11,7 +11,6 @@ function FilterHome({
 
     return (
         <div className="filter-bar-container">
-            {/* Botão de Concluídas vira um Toggle (liga/desliga) */}
             <button
                 className={`filter-btn filter-btn-simple ${mostrarConcluidas ? 'active' : ''}`}
                 onClick={() => setMostrarConcluidas(!mostrarConcluidas)}
@@ -19,7 +18,6 @@ function FilterHome({
                 Concluídas
             </button>
 
-            {/* Botão de Maior vira um Toggle (liga/desliga) */}
             <button
                 className={`filter-btn filter-btn-icon ${ordenarMaior ? 'active' : ''}`}
                 onClick={() => setOrdenarMaior(!ordenarMaior)}
@@ -27,8 +25,6 @@ function FilterHome({
                 <FiArrowUp className="filter-icon" />
                 Maior
             </button>
-
-            {/* Select Trimestre */}
             <div className="filter-select-wrapper">
                 <select
                     className="filter-select-home"
@@ -43,7 +39,6 @@ function FilterHome({
                 </select>
             </div>
 
-            {/* Select Ano */}
             <div className="filter-select-wrapper filter-select-green">
                 <select
                     className="filter-select-home"

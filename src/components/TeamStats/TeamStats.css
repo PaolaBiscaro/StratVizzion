@@ -1,0 +1,105 @@
+.team-stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.team-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team-stats-header h2 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.okr-select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.stats-cards-row {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    margin: 0 0 5px 0;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.stat-card .icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+}
+
+.stat-card.backlog {
+    background-color: white;
+    color: #333;
+}
+
+.stat-card.atrasadas {
+    background-color: #ffeaea;
+    color: #e63946;
+}
+
+.stat-card.atrasadas p {
+    color: #e63946;
+}
+
+.stat-card.concluidas {
+    background-color: #eafcf4;
+    color: #139f6f;
+}
+
+.stat-card.concluidas p {
+    color: #139f6f;
+}
+
+.progress-section-manager {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.progress-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-text span {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.progress-text strong {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+

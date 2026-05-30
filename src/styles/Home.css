@@ -42,11 +42,6 @@
     min-height: 250px;
 }
 
-.home-chart-title {
-    text-align: center;
-    color: #333;
-    margin-top: 0;
-}
 
 .home-okr-header {
     display: flex;
@@ -93,5 +88,29 @@
   gap: 24px;
   position: sticky;
   top: 0; 
-  height: 100vh; 
+}
+
+.home-chart-title-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    position: relative; 
+    margin-bottom: 16px;
+}
+
+.home-chart-select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+
+}
+
+.home-chart-title {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #333;
+    margin: 0; 
 }
