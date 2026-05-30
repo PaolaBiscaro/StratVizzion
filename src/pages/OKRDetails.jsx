@@ -3,67 +3,79 @@ import { useParams } from "react-router-dom";
 import SideBar from "../components/Sidebar/SideBar";
 import OKRRoute from "../components/OKRDetailsTitle/OKRRoute";
 import OKRInfo from "../components/OKRInfo/OKRInfo";
-import Warning from "../components/WarningPanel/Warning";
-import GraphicsPanel from "../components/GraphicsPanel/Graphics";
+import StickyNote from "../components/StickyNote/StickyNote";
+import KRSquadCards from "../components/KRSquadCards/KRSquadCards";
+import KRTable from "../components/KRTable/KRTable";
 import { getOKR } from "../services/data/api_mock";
 import "../styles/OKRDetails.css";
-
-// Cada OKR deve ter sua própria página de Detalhes!
 
 function OKRDetails() {
     const { okrId } = useParams();
     const okrList = getOKR();
     const selectedOkr = okrList.find((item) => item.id === okrId) || okrList[0];
 
-    const iaAlertsByStatus = {
+    const stickyNotesByStatus = {
         "Concluído": [
-            "A IA acha que esta tudo certo.",
-            "Parece que terminou mesmo.",
-            "Talvez so continuar olhando de vez em quando."
+            "OKR concluída com sucesso no ciclo.",
+            "Avaliar aprendizados para o próximo ciclo."
         ],
         "Em andamento": [
-            "A IA acha que esta indo, mas ainda falta bastante.",
-            "Pode atrasar se o time diminuir o ritmo.",
-            "Sugestao simples: focar no que da mais resultado."
+            "Informar a equipe de Marketing para antecipar a campanha, para 07/07/2026.",
+            "Não pode atrasar a funcionalidade Y, avisar o Robson"
         ],
         "Não iniciado": [
-            "A IA viu que ainda nao comecou.",
-            "Risco de atrasar e alto se continuar parado.",
-            "Melhor comecar logo com uma tarefa pequena."
+            "Risco alto: OKR ainda não foi iniciada.",
+            "Definir responsável e prazo de início urgente."
         ]
     };
 
-    const warningByStatus = {
-        "Concluído": "Alerta baixo: OKR concluida.",
-        "Em andamento": "Alerta medio: precisa manter ritmo.",
-        "Não iniciado": "Alerta alto: ainda nao comecou."
+    const notes = stickyNotesByStatus[selectedOkr.status] || stickyNotesByStatus["Em andamento"];
+
+    const squads = [
+        { squad: "Minha equipe de software", kr: "KR-01 - Atender as chamadas em pelo menos 5 minutos" },
+        { squad: "Minha equipe de software", kr: "" },
+        { squad: "Minha equipe de software", kr: "" },
+    ];
+
+    const mockKrsByOkr = {
+        OKR_0001: [
+            { id: "KR_001", status: "pendente" },
+            { id: "KR_002", status: "pendente" },
+            { id: "KR_003", status: "pendente" },
+            { id: "KR_004", status: "atraso" },
+            { id: "KR_005", status: "concluida" },
+        ],
+        OKR_0002: [
+            { id: "KR_006", status: "pendente" },
+            { id: "KR_007", status: "atraso" },
+            { id: "KR_008", status: "concluida" },
+        ],
+        OKR_0003: [
+            { id: "KR_009", status: "pendente" },
+            { id: "KR_010", status: "pendente" },
+            { id: "KR_011", status: "atraso" },
+            { id: "KR_012", status: "atraso" },
+            { id: "KR_013", status: "concluida" },
+            { id: "KR_014", status: "concluida" },
+        ],
+        OKR_0004: [
+            { id: "KR_015", status: "atraso" },
+            { id: "KR_016", status: "concluida" },
+        ],
+        OKR_0005: [
+            { id: "KR_017", status: "pendente" },
+            { id: "KR_018", status: "pendente" },
+            { id: "KR_019", status: "concluida" },
+            { id: "KR_020", status: "concluida" },
+        ],
     };
 
-    const chartByStatus = {
-        "Concluído": [
-            { mes: "Jan", real: 35, meta: 20 },
-            { mes: "Fev", real: 55, meta: 40 },
-            { mes: "Mar", real: 78, meta: 60 },
-            { mes: "Abr", real: 100, meta: 80 }
-        ],
-        "Em andamento": [
-            { mes: "Jan", real: 8, meta: 10 },
-            { mes: "Fev", real: 22, meta: 25 },
-            { mes: "Mar", real: 38, meta: 45 },
-            { mes: "Abr", real: selectedOkr.porcentagem, meta: 60 }
-        ],
-        "Não iniciado": [
-            { mes: "Jan", real: 0, meta: 10 },
-            { mes: "Fev", real: 0, meta: 20 },
-            { mes: "Mar", real: 0, meta: 35 },
-            { mes: "Abr", real: selectedOkr.porcentagem, meta: 50 }
-        ]
-    };
-
-    const iaAlerts = iaAlertsByStatus[selectedOkr.status] || iaAlertsByStatus["Em andamento"];
-    const warningMessage = warningByStatus[selectedOkr.status] || warningByStatus["Em andamento"];
-    const chartData = chartByStatus[selectedOkr.status] || chartByStatus["Em andamento"];
-    const statusDetail = `Oi, eu sou uma IA simples. Eu vejo a ${selectedOkr.id} com ${selectedOkr.porcentagem}% no ciclo ${selectedOkr.ciclo}/${selectedOkr.ano}. O status agora e ${selectedOkr.status}.`;
+    const krs = mockKrsByOkr[selectedOkr.id] || [
+        { id: "KR_102", status: "pendente" },
+        { id: "KR_102", status: "pendente" },
+        { id: "KR_102", status: "atraso" },
+        { id: "KR_102", status: "concluida" },
+    ];
 
     return (
         <div className="okr-details-page">
@@ -74,23 +86,20 @@ function OKRDetails() {
 
             <main className="okr-details-main">
                 <OKRRoute OKRname={selectedOkr.id} />
-                <OKRInfo
-                    title={selectedOkr.id}
-                    description={selectedOkr.descricao}
-                    cycleLabel={`${selectedOkr.ciclo}/${selectedOkr.ano}`}
-                    progress={selectedOkr.porcentagem}
-                    iaAlerts={iaAlerts}
-                />
 
-                <div className="okr-details-bottom">
-                    <div className="okr-details-warning">
-                        <Warning warningMessage={warningMessage} />
-                    </div>
-
-                    <div className="okr-details-graphics">
-                        <GraphicsPanel statusDetail={statusDetail} chartData={chartData} />
-                    </div>
+                <div className="okr-details-top">
+                    <OKRInfo
+                        okrId={selectedOkr.id}
+                        title={selectedOkr.titulo}
+                        description={selectedOkr.descricao}
+                        cycleLabel={`${selectedOkr.ciclo} ${selectedOkr.ano}`}
+                        progress={selectedOkr.porcentagem}
+                    />
+                    <StickyNote notes={notes} okrId={selectedOkr.id} />
                 </div>
+
+                <KRSquadCards squads={squads} />
+                <KRTable krs={krs} />
             </main>
         </div>
     );
