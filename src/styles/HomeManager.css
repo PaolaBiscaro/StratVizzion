@@ -2,9 +2,7 @@
     display: flex;
     height: 100vh;
     background-color: #f4f5f5;
-    /* Cor de fundo cinza bem claro */
-    font-family: 'Inter', sans-serif;
-    /* Ou a fonte do seu projeto */
+
 }
 
 .dashboard-main {
@@ -23,11 +21,6 @@
     margin-bottom: 40px;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
 
 .icon-btn {
     background: white;
