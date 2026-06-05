@@ -1,56 +1,106 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react";
 import SideBar from "../components/Sidebar/SideBar";
 import Button from "../components/Button/Button";
 import MainTitle from "../components/MainTitle/MainTitle";
-import "../styles/variables.css"
+import "../styles/variables.css";
 import FormSelect from "../components/ComponentesForm/FormSelect/FormSelect";
 import FormInput from "../components/ComponentesForm/FormInput/FormInput";
-import FormTextarea from "../components/ComponentesForm/FormTextarea/FormTextarea"
+import FormTextarea from "../components/ComponentesForm/FormTextarea/FormTextarea";
 import SearchBar from "../components/SearchBar/SearchBar";
 import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
 import { useSearch } from "../context/SearchContext";
 import Modal from "../components/ComponentesForm/Modal/modal";
+import { createOkr } from "../services/api/okrs";
+import { createCycle, getCycles } from "../services/api/cycles";
+
+const CYCLE_LABEL = { 1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4" };
 
 function NewOKR() {
   const { setBusca } = useSearch();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const managerId = user.id || null;
+
   const cycleOptions = [
-    { value: "Q1", label: "Q1" },
-    { value: "Q2", label: "Q2" },
-    { value: "Q3", label: "Q3" },
-    { value: "Q4", label: "Q4" },
+    { value: 1, label: "Q1" },
+    { value: 2, label: "Q2" },
+    { value: 3, label: "Q3" },
+    { value: 4, label: "Q4" },
   ];
 
   const [titulo, setTitulo] = useState("");
-  const [cycleTitle, setCicloTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [ciclo, setCiclo] = useState("");
+  const [tag, setTag] = useState("");
+  const [cycleId, setCycleId] = useState("");
+
+  const [cycles, setCycles] = useState([]);
+  const [cicloEnum, setCicloEnum] = useState("");
   const [ano, setAno] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const fetchCycles = async () => {
+    try {
+      const { data } = await getCycles();
+      setCycles(data);
+    } catch (error) {
+      console.error("Erro ao buscar ciclos:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCycles();
+  }, []);
 
   const limparCampos = () => {
     setTitulo("");
     setDescricao("");
-    setCiclo("");
-    setAno("");
-    setCicloTitulo("");
+    setTag("");
+    setCycleId("");
   };
 
-  const handleSave = async () => {
+  const handleCriarCiclo = async () => {
     try {
-      await criarOKR({
-        title: titulo,
-        description: descricao,
-        cycle_id: `${ciclo}-${ano}`,
+      await createCycle({
+        cyclesEnum: Number(cicloEnum),
+        year: Number(ano),
       });
-      limparCampos();
+      await fetchCycles(); // atualiza a lista após criar
+      setIsOpen(false);
+      setCicloEnum("");
+      setAno("");
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao criar ciclo:", error);
+      window.alert("Erro ao criar ciclo.");
     }
   };
 
+  const handleSave = async () => {
+    if (!cycleId) {
+      window.alert("Selecione um ciclo antes de salvar.");
+      return;
+    }
+    try {
+      await createOkr({
+        title: titulo,
+        description: descricao,
+        tag,
+        cycleId: Number(cycleId),
+        managerId,
+      });
+      limparCampos();
+    } catch (error) {
+      console.error("Erro ao criar OKR:", error);
+      window.alert("Erro ao salvar OKR.");
+    }
+  };
+
+  const cycleSelectOptions = cycles.map((c) => ({
+    value: c.id,
+    label: `${CYCLE_LABEL[c.cyclesEnum]} / ${c.year}`,
+  }));
+
   return (
     <div className="page-layout">
-      <SideBar typeUser={"Director"} nameUser={"Paulo"} />
+      <SideBar typeUser={"Director"} nameUser={user.name || "Usuário"} />
       <AutoHighlighter />
 
       <main id="content">
@@ -74,29 +124,39 @@ function NewOKR() {
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
           toolid={"titulo-okr"}
-          tooltext={"Informe o objetivo principal da OKR. Exemplo: aumentar retencao, receita ou satisfacao do cliente."}
+          tooltext={"Informe o objetivo principal da OKR."}
         />
         <FormTextarea
           title="Descrição"
-          inside="Insira o contexto e Justificativa do objetivo..."
+          inside="Insira o contexto e justificativa do objetivo..."
           tamanho="103px"
           value={descricao}
           onChange={(e) => setDescricao(e.target.value)}
           toolid={"descricao-okr"}
-          tooltext={"Descreva o contexto atual, a justificativa da meta e o resultado esperado no fim do ciclo."}
+          tooltext={"Descreva o contexto atual, a justificativa da meta e o resultado esperado."}
         />
         <FormInput
-          title="Título do Ciclo"
-          inside="EX: Ciclo Comercial 2026"
-          value={cycleTitle}
-          onChange={(e) => setCicloTitulo(e.target.value)}
-          toolid={"titulo-ciclo-principal"}
-          tooltext={"Nome do ciclo ao qual a OKR pertence. Exemplo: Ciclo de Crescimento 2026."}
+          title="Tag"
+          inside="EX: Crescimento, Produto, Financeiro"
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+          toolid={"tag-okr"}
+          tooltext={"Adicione uma tag para categorizar a OKR."}
+        />
+
+        <FormSelect
+          title="Ciclo"
+          inside="-- Selecione um ciclo --"
+          value={cycleId}
+          onChange={(e) => setCycleId(e.target.value)}
+          opcoes={cycleSelectOptions}
+          toolid={"ciclo-okr"}
+          tooltext={"Selecione o ciclo ao qual esta OKR pertence."}
         />
 
         <div className="ciclo">
           <button onClick={() => setIsOpen(true)} className="text-button">
-            Criar novo Ciclo
+            + Criar novo Ciclo
           </button>
         </div>
 
@@ -105,19 +165,11 @@ function NewOKR() {
           onClose={() => setIsOpen(false)}
           title="Criar novo Ciclo"
         >
-          <FormInput
-            title="Titulo do Ciclo"
-            inside="EX: Ciclo de Produto"
-            value={cycleTitle}
-            onChange={(e) => setCicloTitulo(e.target.value)}
-            toolid={"titulo-ciclo-modal"}
-            tooltext={"Defina um nome para identificar este ciclo. Exemplo: Ciclo de Produto 2026."}
-          />
           <FormSelect
-            title="Ciclo"
+            title="Trimestre"
             inside="-- Selecione o trimestre --"
-            value={ciclo}
-            onChange={(e) => setCiclo(e.target.value)}
+            value={cicloEnum}
+            onChange={(e) => setCicloEnum(e.target.value)}
             opcoes={cycleOptions}
             toolid={"ciclo-trimestre"}
             tooltext={"Selecione o trimestre do ciclo: Q1, Q2, Q3 ou Q4."}
@@ -128,9 +180,9 @@ function NewOKR() {
             value={ano}
             onChange={(e) => setAno(e.target.value)}
             toolid={"ano-ciclo"}
-            tooltext={"Informe o ano de referencia do ciclo. Exemplo: 2026."}
+            tooltext={"Informe o ano de referência do ciclo."}
           />
-          <Button texto="Criar novo Ciclo" />
+          <Button texto="Criar Ciclo" onClick={handleCriarCiclo} />
         </Modal>
 
         <div className="botoes-fixos">
