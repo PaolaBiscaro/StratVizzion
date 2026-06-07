@@ -8,5 +8,12 @@ services:
     environment:
       - NODE_ENV=production
     restart: unless-stopped
+    networks:
+      - minha-rede
+
+networks:
+  minha-rede:
+    external: true
+    name: rede-microsservicos
 
 # compose faz com que rode a aplicação

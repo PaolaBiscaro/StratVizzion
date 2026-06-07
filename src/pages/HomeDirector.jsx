@@ -10,6 +10,10 @@ import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
 import { useSearch } from "../context/SearchContext";
 import api from "../services/api/client";
 import { getOkrs } from "../services/api/okrs";
+import KpiCards from "../components/KPICards/KPICards";
+import LineChart from "../components/HomeDirectorLineChart/LineChart";
+import AlertsPanel from "../components/AlertsPanel/AlertsPanel";
+import FilterHome from "../components/FilterHome/FilterHome";
 
 const OKR_STATUS = {
   1: "Criado",
@@ -36,8 +40,32 @@ function Home() {
 
   fetchOkrs();
 }, []);
+}
 
+function Home() {
   const { setBusca } = useSearch();
+  const listaParaExibirOkr = getOKR();
+
+  const [mostrarConcluidas, setMostrarConcluidas] = useState(false);
+  const [ordenarMaior, setOrdenarMaior] = useState(false);
+  const [trimestre, setTrimestre] = useState("Todos");
+  const [ano, setAno] = useState("2026");
+
+  let okrsFiltradas = listaParaExibirOkr.filter((okr) => {
+    if (okr.ano !== ano) return false;
+
+    if (trimestre !== "Todos" && okr.ciclo !== trimestre) return false;
+    const isConcluida = okr.porcentagem >= 100 || okr.status === "Concluído";
+    if (mostrarConcluidas) {
+      return isConcluida;
+    } else {
+      return !isConcluida;
+    }
+  });
+
+  if (ordenarMaior) {
+    okrsFiltradas.sort((a, b) => b.porcentagem - a.porcentagem);
+  }
 
   // Dados do usuário vindos do localStorage
   const user = JSON.parse(localStorage.getItem("user") || "{}");
@@ -87,14 +115,10 @@ function Home() {
       <SideBar typeUser={userRole} nameUser={userName} />
 
       <AutoHighlighter />
-      <main id="content">
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          marginBottom: "40px"
-        }}>
+
+      <main id="content" className="home-main-content">
+
+        <div className="home-header-wrapper">
           <MainTitle
             title={`Olá, ${userName}!`}
             subtitle="Acompanhe o desenvolvimento de seus projetos"
@@ -121,6 +145,24 @@ function Home() {
               ))}
             </div>
           </div>
+
+          <aside className="home-right-sidebar">
+            <div className="home-alerts-card">
+              <h3 className="home-alerts-title">Alertas</h3>
+              <AlertsPanel />
+            </div>
+
+            <div className="home-btn-wrapper">
+              <Button
+                texto="Criar nova OKR"
+                url="/nova-okr"
+                variante="verde"
+                className="HomeDirector"
+                style={{ width: "100%", padding: "16px" }}
+              />
+            </div>
+          </aside>
+
         </div>
 
         <OKRConcluded okrs={okrsConcluidas} />
