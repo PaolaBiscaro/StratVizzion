@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { FiLock, FiMail } from "react-icons/fi";
-import { createLoginDTO } from "../utils/dtos/loginDTO";
 
 function Login() {
   const navigate = useNavigate();
@@ -12,15 +11,14 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     try {
-      const loginDTO = createLoginDTO({ email, senha });
+      console.log("Login:", { email, senha });
 
-      console.log("Login DTO:", loginDTO);
       const routeByRole = {
         Director: "/home-director",
         Manager: "/home-manager",
       };
 
-      navigate(routeByRole[loginDTO.role]);
+      // navigate(routeByRole[role]); // ajusta quando vier o retorno da API
     } catch (error) {
       window.alert(error.message);
     }
@@ -40,12 +38,12 @@ function Login() {
                   <span className="highlight">Estratégia.</span>
                 </h1>
                 <p>
-                Transforme cada pequena conquista em visão de futuro. No StratVizzion, ajudamos você a traduzir o progresso das suas KRs no sucesso das suas OKRs.
+                  Transforme cada pequena conquista em visão de futuro. No StratVizzion, ajudamos você a traduzir o progresso das suas KRs no sucesso das suas OKRs.
                 </p>
               </div>
 
               <div className="logo-area">
-                <img src="src/assets/imgs/stratvizzion.png" alt="" srcset="" />
+                <img src="src/assets/imgs/stratvizzion.png" alt="" />
               </div>
             </div>
           </div>
@@ -57,9 +55,9 @@ function Login() {
             </div>
 
             <form className="login-form" onSubmit={handleLogin}>
-              
+
               <div className="input-group">
-                <span className="input-icon"><FiMail style={{color: "#433f3f"}}/></span>
+                <span className="input-icon"><FiMail style={{ color: "#433f3f" }} /></span>
                 <input
                   type="email"
                   placeholder="E-mail"
@@ -70,7 +68,7 @@ function Login() {
               </div>
 
               <div className="input-group">
-                <span className="input-icon"><FiLock style={{color: "#433f3f"}} /></span>
+                <span className="input-icon"><FiLock style={{ color: "#433f3f" }} /></span>
                 <input
                   type="password"
                   placeholder="Senha"
@@ -84,11 +82,7 @@ function Login() {
                 Esqueceu sua senha?
               </a>
 
-              <button
-                type="submit"
-                className="btn-primary"
-                
-              >
+              <button type="submit" className="btn-primary">
                 Iniciar Sessão
               </button>
 
