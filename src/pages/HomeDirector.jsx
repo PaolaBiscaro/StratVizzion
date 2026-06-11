@@ -9,7 +9,6 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
 import { useSearch } from "../context/SearchContext";
 import api from "../services/api/client";
-import { getOkrs } from "../services/api/okrs";
 import KpiCards from "../components/KPICards/KPICards";
 import LineChart from "../components/HomeDirectorLineChart/LineChart";
 import AlertsPanel from "../components/AlertsPanel/AlertsPanel";
@@ -29,58 +28,20 @@ const CYCLE_LABEL = {
 };
 
 function Home() {
-  useEffect(() => {
-  const fetchOkrs = async () => {
-    try {
-      const { data } = await getOkrs();S
-    } catch (error) {
-      console.error("Erro ao buscar OKRs:", error);
-    }
-  };
-
-  fetchOkrs();
-}, []);
-}
-
-function Home() {
   const { setBusca } = useSearch();
-  const listaParaExibirOkr = getOKR();
 
-  const [mostrarConcluidas, setMostrarConcluidas] = useState(false);
-  const [ordenarMaior, setOrdenarMaior] = useState(false);
-  const [trimestre, setTrimestre] = useState("Todos");
-  const [ano, setAno] = useState("2026");
+  const [okrs, setOkrs] = useState([]);
+  const [cycles, setCycles] = useState({});
 
-  let okrsFiltradas = listaParaExibirOkr.filter((okr) => {
-    if (okr.ano !== ano) return false;
-
-    if (trimestre !== "Todos" && okr.ciclo !== trimestre) return false;
-    const isConcluida = okr.porcentagem >= 100 || okr.status === "Concluído";
-    if (mostrarConcluidas) {
-      return isConcluida;
-    } else {
-      return !isConcluida;
-    }
-  });
-
-  if (ordenarMaior) {
-    okrsFiltradas.sort((a, b) => b.porcentagem - a.porcentagem);
-  }
-
-  // Dados do usuário vindos do localStorage
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const userName = user.name || "Usuário";
   const userRole = user.role || "";
-
-  const [okrs, setOkrs] = useState([]);
-  const [cycles, setCycles] = useState({}); // { cycleId: { cycle, year } }
 
   useEffect(() => {
     const fetchOkrs = async () => {
       try {
         const { data } = await api.get("/okr");
 
-        // Busca os ciclos únicos referenciados pelas OKRs
         const cycleIds = [...new Set(data.map((okr) => okr.cycleId))];
         const cycleResults = await Promise.all(
           cycleIds.map((id) => api.get(`/cycles/${id}`))
@@ -117,7 +78,6 @@ function Home() {
       <AutoHighlighter />
 
       <main id="content" className="home-main-content">
-
         <div className="home-header-wrapper">
           <MainTitle
             title={`Olá, ${userName}!`}
@@ -139,7 +99,7 @@ function Home() {
                   porcentagem={okr.porcentagem ?? 0}
                   prazo={getCycleLabel(okr.cycleId)}
                   descricao={okr.description}
-                  botao={"Ver detalhes"}
+                  botao="Ver detalhes"
                   rota={`/okr-detalhada/${okr.id}`}
                 />
               ))}
@@ -162,13 +122,10 @@ function Home() {
               />
             </div>
           </aside>
-
         </div>
 
         <OKRConcluded okrs={okrsConcluidas} />
       </main>
-
-      <Button texto="Criar nova OKR" url="/nova-okr" variante="verde" className={"HomeDirector"} />
     </div>
   );
 }
