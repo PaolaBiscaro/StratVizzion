@@ -11,6 +11,7 @@ import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
 import { useSearch } from "../context/SearchContext";
 import { getOkrs } from "../services/api/okrs";
 import { createKeyResult } from "../services/api/keyresults";
+import { getJiraProjectsByUser } from "../services/api/jira"; // ← novo import
 
 function NewKR() {
   const { setBusca } = useSearch();
@@ -27,6 +28,11 @@ function NewKR() {
 
   const [okrs, setOkrs] = useState([]);
 
+  // ← estados Jira
+  const [jiraProjects, setJiraProjects] = useState([]);
+  const [jiraProjectId, setJiraProjectId] = useState("");
+  const [jiraLoading, setJiraLoading] = useState(false);
+
   useEffect(() => {
     const fetchOkrs = async () => {
       try {
@@ -39,9 +45,34 @@ function NewKR() {
     fetchOkrs();
   }, []);
 
+  // ← busca projetos Jira pelo userId
+  useEffect(() => {
+    if (!user?.id) return;
+
+    const fetchJiraProjects = async () => {
+      setJiraLoading(true);
+      try {
+        const { data } = await getJiraProjectsByUser(user.id);
+        setJiraProjects(data);
+      } catch (error) {
+        console.error("Erro ao buscar projetos Jira:", error);
+      } finally {
+        setJiraLoading(false);
+      }
+    };
+
+    fetchJiraProjects();
+  }, [user?.id]);
+
   const okrOptions = okrs.map((okr) => ({
     value: okr.id,
     label: okr.title,
+  }));
+
+  // ← monta as opções do select igual ao de OKR
+  const jiraOptions = jiraProjects.map((project) => ({
+    value: project.id,
+    label: `${project.name} (${project.key})`,
   }));
 
   const limparCampos = () => {
@@ -53,6 +84,7 @@ function NewKR() {
     setValorAtual("");
     setUnidade("");
     setLimitDate("");
+    setJiraProjectId(""); // ← limpa o Jira também
   };
 
   const handleSave = async () => {
@@ -61,22 +93,22 @@ function NewKR() {
       return;
     }
     try {
-    await createKeyResult({
-  okrId: Number(okrId),
-  jiraProjectId: 0,  
-  title: titulo,
-  initialValue: Number(valorInicial),
-  goalValue: Number(meta),
-  currentValue: Number(valorAtual),
-  unit: unidade,
-  limitDate: limitDate ? new Date(limitDate).toISOString() : null,
-  description: descricao,
-});
+      await createKeyResult({
+        okrId: Number(okrId),
+        jiraProjectId: jiraProjectId ? Number(jiraProjectId) : 0, // ← usa o valor real
+        title: titulo,
+        initialValue: Number(valorInicial),
+        goalValue: Number(meta),
+        currentValue: Number(valorAtual),
+        unit: unidade,
+        limitDate: limitDate ? new Date(limitDate).toISOString() : null,
+        description: descricao,
+      });
       limparCampos();
-} catch (error) {
-  console.log("Erro detalhado:", JSON.stringify(error.response?.data));
-  window.alert("Erro ao salvar Key Result.");
-}
+    } catch (error) {
+      console.log("Erro detalhado:", JSON.stringify(error.response?.data));
+      window.alert("Erro ao salvar Key Result.");
+    }
   };
 
   return (
@@ -107,6 +139,17 @@ function NewKR() {
           onChange={(e) => setOkrId(e.target.value)}
           toolid={"select-okr"}
           tooltext={"Selecione a OKR à qual este Key Result pertence."}
+        />
+
+        {/* ← campo Jira, mesmo padrão do FormSelect de OKR */}
+        <FormSelect
+          opcoes={jiraOptions}
+          title={jiraLoading ? "Projeto Jira (carregando...)" : "Projeto Jira"}
+          inside="-- Selecionar projeto --"
+          value={jiraProjectId}
+          onChange={(e) => setJiraProjectId(e.target.value)}
+          toolid={"select-jira"}
+          tooltext={"Vincule este Key Result a um projeto no Jira (opcional)."}
         />
 
         <FormInput
