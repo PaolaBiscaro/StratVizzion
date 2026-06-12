@@ -16,7 +16,7 @@ const GenerateReport = () => {
 
     return (
         <div className="page-layout">
-            <SideBar typeUser={"Director"} nameUser={"Paulo"}/>
+            <SideBar/>
 
             <AutoHighlighter />
             <main id="content">

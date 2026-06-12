@@ -87,7 +87,7 @@ function Home() {
 
   return (
     <div className="page-layout">
-      <SideBar typeUser={userRole} nameUser={userName} />
+      <SideBar />
 
       <AutoHighlighter />
 

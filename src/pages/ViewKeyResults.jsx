@@ -107,7 +107,7 @@ const ViewKeyResults = () => {
 
     return (
         <div className="page-layout">
-            <SideBar typeUser="Manager" nameUser={"Paulo"} />
+            <SideBar/>
             <main id="content" className="view-kr-container">
                 <div className="header-section">
                     <MainTitle 

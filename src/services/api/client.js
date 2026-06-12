@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: 'http://localhost:5120',
   headers: { 'Content-Type': 'application/json' }
 });
 
@@ -14,11 +14,14 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Redireciona pro login se o token expirar
+// Redireciona pro login se o token expirar (mas ignora a tentativa de login)
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    // Verifica se a requisição que deu erro foi a de login
+    const isLoginRoute = error.config.url.includes('/login');
+
+    if (error.response?.status === 401 && !isLoginRoute) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';

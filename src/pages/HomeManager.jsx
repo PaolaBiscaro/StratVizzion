@@ -143,7 +143,7 @@ const HomeManager = () => {
 
   return (
     <div className="dashboard-layout">
-      <SideBar typeUser={userData?.role || ""} nameUser={userData?.name || ""} />
+      <SideBar />
 
       <main className="dashboard-main">
         <AutoHighlighter />

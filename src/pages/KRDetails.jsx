@@ -115,7 +115,7 @@ export default function KRDetails() {
 
     return (
         <div className="page-layout">
-            <SideBar typeUser={userData?.role || "Manager"} nameUser={userData?.name || ""} />
+            <SideBar />
             <AutoHighlighter />
             <main id="content">
                 <div style={{

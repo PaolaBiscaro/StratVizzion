@@ -36,7 +36,7 @@ function NewKR() {
 
     return (
         <div className="page-layout">
-            <SideBar typeUser={"Manager"} nameUser={"Kaio"}/>
+            <SideBar/>
             <AutoHighlighter />
 
             <main id="content" style={{ paddingBottom: "100px" }}>

@@ -39,23 +39,33 @@ export default function ProfileConfiguration() {
         
         setIsSaving(true);
         try {
+            // 1. Envia os dados novos para o C# salvar
             await updateUser(userData.id, userData);
+            
+            // 2. BUSCA OS DADOS FRESQUINHOS DO BANCO
+            // Isso garante que o React tenha a versão mais atualizada possível do C#
+            const response = await getUsers();
+            const usuarioAtualizado = response.data;
+            
+            // 3. Atualiza os estados e o localStorage com o dado real e confirmado
+            setUserData(usuarioAtualizado);
+            localStorage.setItem("user", JSON.stringify(usuarioAtualizado));
+            
+            // 4. Grita pra SideBar atualizar a foto e o nome
+            window.dispatchEvent(new Event("userProfileUpdated"));
             
             alert("Perfil atualizado com sucesso!");
         } catch (error) {
-            console.error("Erro ao atualizar o perfil:", error);
-            alert("Ocorreu um erro ao salvar as alterações. Tente novamente.");
+            console.error("Erro ao atualizar o perfil na segunda tentativa:", error);
+            alert("Ocorreu um erro ao salvar as alterações. Dê uma olhada no console (F12).");
         } finally {
             setIsSaving(false);
         }
-    };;
+    };     
 
     return (
         <div className="page-layout">
-            <SideBar 
-                typeUser={userData?.role || ""} 
-                nameUser={userData?.name || "Usuário"}
-            />
+            <SideBar/>
 
             <AutoHighlighter />
             <main id="content">

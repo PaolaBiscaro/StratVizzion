@@ -6,21 +6,19 @@ import { loginUser } from "../services/api/auth";
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [jiraEmail, setjiraEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
     setErro("");
 
     try {
       setLoading(true);
-      const { data } = await loginUser({ email, password: senha });
-
-      // Salva token e dados do usuário no localStorage
-      localStorage.setItem("token", data.token);
+      const { data } = await loginUser({ jiraEmail: jiraEmail, password: password });
+      localStorage.setItem("token", data.accessToken); 
       localStorage.setItem("user", JSON.stringify(data.user));
 
       const routeByRole = {
@@ -31,7 +29,7 @@ function Login() {
       navigate(routeByRole[data.user.role] || "/");
     } catch (error) {
       setErro("E-mail ou senha inválidos.");
-      console.error(error);
+      console.error("Erro no login:", error);
     } finally {
       setLoading(false);
     }
@@ -74,8 +72,8 @@ function Login() {
                 <input
                   type="email"
                   placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={jiraEmail}
+                  onChange={(e) => setjiraEmail(e.target.value)}
                   required
                 />
               </div>
@@ -85,8 +83,8 @@ function Login() {
                 <input
                   type="password"
                   placeholder="Senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
