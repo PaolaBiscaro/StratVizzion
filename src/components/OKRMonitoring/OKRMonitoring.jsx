@@ -3,7 +3,7 @@ import "./OKRMonitoring.css";
 import { useNavigate } from "react-router-dom";
 
 
-const OKRMonitoring = ({ id, porcentagem, prazo, descricao, botao, rota }) => {
+const OKRMonitoring = ({ id, titulo, porcentagem, prazo, descricao, botao, rota }) => {
   const navigate = useNavigate();
 
  
@@ -18,7 +18,7 @@ const OKRMonitoring = ({ id, porcentagem, prazo, descricao, botao, rota }) => {
           <span className="percent-text-okr">{porcentagem}%</span>
         </div>
       </div>
-      <h3 className="id-text-okr">{id}</h3>
+      <h3 className="id-text-okr">{id}{titulo}</h3>
       <p className="deadline-okr">Prazo: {prazo}</p>
       <p className="description-okr">{descricao}</p>
       <button 

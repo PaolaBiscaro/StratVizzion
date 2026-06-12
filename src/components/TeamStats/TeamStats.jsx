@@ -8,6 +8,14 @@ const TeamStats = ({ equipeNome, okrs, selectedOkrId, setSelectedOkrId }) => {
     const [metrics, setMetrics] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    // NOVO: Efeito para auto-selecionar a primeira OKR quando a lista carregar
+    useEffect(() => {
+        if (okrs && okrs.length > 0 && !selectedOkrId) {
+            setSelectedOkrId(okrs[0].id);
+        }
+    }, [okrs, selectedOkrId, setSelectedOkrId]);
+
+    // O seu efeito de buscar métricas continua igualzinho!
     useEffect(() => {
         if (!selectedOkrId) {
             setMetrics(null);
@@ -51,7 +59,9 @@ const TeamStats = ({ equipeNome, okrs, selectedOkrId, setSelectedOkrId }) => {
                     value={selectedOkrId} 
                     onChange={(e) => setSelectedOkrId(e.target.value)}
                 >
-                    <option value="">Selecionar OKR</option>
+                    {/* Mantemos uma opção padrão de fallback caso o usuário não tenha OKRs */}
+                    <option value="" disabled>Selecionar OKR</option>
+                    
                     {okrs && okrs.map(okr => (
                         <option key={okr.id} value={okr.id}>
                             {okr.title || okr.descricao || "Sem Nome"}

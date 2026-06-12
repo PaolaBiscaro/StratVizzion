@@ -191,11 +191,11 @@ const HomeManager = () => {
                     return (
                       <OKRMonitoring
                         key={okr.id}
-                        id={okr.id}
                         porcentagem={Math.round(okr.progressPercentage || 0)}
                         prazo={`${traduzirCiclo(okr.cycleId)}/${okr.createdAt ? String(okr.createdAt).substring(0, 4) : '2026'}`}
-                        descricao={okr.title || "OKR sem título"}
+                        descricao={okr.description || "OKR sem descrição"}
                         botao="Ver detalhes"
+                        titulo={okr.title || "OKR sem título"}
                       />
                     );
                   })
@@ -209,13 +209,6 @@ const HomeManager = () => {
           <div className="dashboard-right-column">
             <MembersPanel okrId={selectedOkrId} />
             <div className="home-btn-wrapper">
-              <Button
-                texto="Criar nova OKR"
-                url="/nova-okr"
-                variante="verde"
-                className="HomeDirector"
-                style={{ width: "100%", padding: "16px", marginTop: "20px" }}
-              />
             </div>
           </div>
         </div>

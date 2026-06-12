@@ -51,18 +51,6 @@ export default function ProfileConfig({ data, onChange }) {
                             />
                         </div>
                     </div>
-
-                    <div className="row3">
-                        <div className="coluna1">
-                            <label htmlFor="cargo">Cargo</label>
-                            <input
-                                type="text"
-                                id="cargo"
-                                value={data.role || ""}
-                                onChange={(e) => onChange('role', e.target.value)}
-                            />
-                        </div>
-                    </div>
                 </div>
 
                 <div className="integracaoJira">
