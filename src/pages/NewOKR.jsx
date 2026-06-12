@@ -12,13 +12,13 @@ import { useSearch } from "../context/SearchContext";
 import Modal from "../components/ComponentesForm/Modal/modal";
 import { createOkr } from "../services/api/okrs";
 import { createCycle, getCycles } from "../services/api/cycles";
+import api from "../services/api/client";
 
 const CYCLE_LABEL = { 1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4" };
 
 function NewOKR() {
   const { setBusca } = useSearch();
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const managerId = user.id || null;
 
   const cycleOptions = [
     { value: 1, label: "Q1" },
@@ -31,8 +31,10 @@ function NewOKR() {
   const [descricao, setDescricao] = useState("");
   const [tag, setTag] = useState("");
   const [cycleId, setCycleId] = useState("");
+  const [managerId, setManagerId] = useState(user.id || null);
 
   const [cycles, setCycles] = useState([]);
+  const [managers, setManagers] = useState([]);
   const [cicloEnum, setCicloEnum] = useState("");
   const [ano, setAno] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -46,8 +48,20 @@ function NewOKR() {
     }
   };
 
+  const fetchManagers = async () => {
+    try {
+      const { data } = await api.get("/user");
+  
+      const onlyManagers = data.filter((u) => u.role?.Number() === 2);
+      setManagers(onlyManagers.length > 0 ? onlyManagers : data);
+    } catch (error) {
+      console.error("Erro ao buscar managers:", error);
+    }
+  };
+
   useEffect(() => {
     fetchCycles();
+    fetchManagers();
   }, []);
 
   const limparCampos = () => {
@@ -55,6 +69,7 @@ function NewOKR() {
     setDescricao("");
     setTag("");
     setCycleId("");
+    setManagerId(user.id || null);
   };
 
   const handleCriarCiclo = async () => {
@@ -63,7 +78,7 @@ function NewOKR() {
         cyclesEnum: Number(cicloEnum),
         year: Number(ano),
       });
-      await fetchCycles(); // atualiza a lista após criar
+      await fetchCycles();
       setIsOpen(false);
       setCicloEnum("");
       setAno("");
@@ -78,13 +93,17 @@ function NewOKR() {
       window.alert("Selecione um ciclo antes de salvar.");
       return;
     }
+    if (!managerId) {
+      window.alert("Selecione um manager antes de salvar.");
+      return;
+    }
     try {
       await createOkr({
         title: titulo,
         description: descricao,
         tag,
         cycleId: Number(cycleId),
-        managerId,
+        managerId: Number(managerId),
       });
       limparCampos();
     } catch (error) {
@@ -96,6 +115,11 @@ function NewOKR() {
   const cycleSelectOptions = cycles.map((c) => ({
     value: c.id,
     label: `${CYCLE_LABEL[c.cyclesEnum]} / ${c.year}`,
+  }));
+
+  const managerSelectOptions = managers.map((m) => ({
+    value: m.id,
+    label: m.name,
   }));
 
   return (
@@ -159,6 +183,16 @@ function NewOKR() {
             + Criar novo Ciclo
           </button>
         </div>
+
+        <FormSelect
+          title="Atribuir Manager"
+          inside="-- Selecione um manager --"
+          value={managerId}
+          onChange={(e) => setManagerId(e.target.value)}
+          opcoes={managerSelectOptions}
+          toolid={"manager-okr"}
+          tooltext={"Selecione o manager responsável por esta OKR."}
+        />
 
         <Modal
           isOpen={isOpen}
