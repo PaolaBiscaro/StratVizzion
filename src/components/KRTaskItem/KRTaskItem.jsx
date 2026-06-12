@@ -20,7 +20,11 @@ function TaskItem({ squad, title, initialStatus, userInitials }) {
     return (
         <div className={`task-item ${isCompleted ? "task-completed" : ""}`}>
             <div className="task-left">
-                <button onClick={toggleComplete} className="checkbox-btn">
+                <button
+                    disabled
+                    className="checkbox-btn"
+                    style={{ cursor: "not-allowed", opacity: 0.6 }}
+                >
                     {isCompleted ? <FiCheckSquare className="icon-checked" /> : <FiSquare />}
                 </button>
                 <span className="dot" style={{ backgroundColor: isCompleted ? "#A0A0A0" : "#F27457" }}></span>

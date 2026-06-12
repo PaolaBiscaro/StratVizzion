@@ -226,7 +226,7 @@ const ViewKeyResults = () => {
                                             name={`0${kr.id}`} 
                                             title={kr.title || "Sem título"} 
                                             okr={`OKR00${kr.okrId}`} 
-                                            onClick={() => navigate(`/kr-detalhada`)}
+                                            onClick={() => navigate(`/kr-detalhada/${kr.id}`)}
                                         />
                                         <KRSubTag 
                                             deadline="30 Jun 2026" 
