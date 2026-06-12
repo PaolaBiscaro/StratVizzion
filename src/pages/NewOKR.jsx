@@ -48,16 +48,15 @@ function NewOKR() {
     }
   };
 
-  const fetchManagers = async () => {
-    try {
-      const { data } = await api.get("/user");
-  
-      const onlyManagers = data.filter((u) => u.role?.Number() === 2);
-      setManagers(onlyManagers.length > 0 ? onlyManagers : data);
-    } catch (error) {
-      console.error("Erro ao buscar managers:", error);
-    }
-  };
+const fetchManagers = async () => {
+  try {
+    const { data } = await api.get("/user");
+    const onlyManagers = data.filter((u) => u.role === 2);
+    setManagers(onlyManagers);
+  } catch (error) {
+    console.error("Erro ao buscar managers:", error);
+  }
+};
 
   useEffect(() => {
     fetchCycles();
@@ -89,28 +88,33 @@ function NewOKR() {
   };
 
   const handleSave = async () => {
-    if (!cycleId) {
-      window.alert("Selecione um ciclo antes de salvar.");
-      return;
-    }
-    if (!managerId) {
-      window.alert("Selecione um manager antes de salvar.");
-      return;
-    }
-    try {
-      await createOkr({
-        title: titulo,
-        description: descricao,
-        tag,
-        cycleId: Number(cycleId),
-        managerId: Number(managerId),
-      });
-      limparCampos();
-    } catch (error) {
-      console.error("Erro ao criar OKR:", error);
-      window.alert("Erro ao salvar OKR.");
-    }
+  if (!cycleId) {
+    window.alert("Selecione um ciclo antes de salvar.");
+    return;
+  }
+  if (!managerId) {
+    window.alert("Selecione um manager antes de salvar.");
+    return;
+  }
+
+  const payload = {
+    title: titulo,
+    description: descricao,
+    tag,
+    cycleId: Number(cycleId),
+    managerId: managerId,
   };
+
+  console.log("Payload enviado:", payload); 
+
+  try {
+    await createOkr(payload);
+    limparCampos();
+  } catch (error) {
+    console.error("Erro ao criar OKR:", error.response?.data); // ← mostra o erro do backend
+    window.alert("Erro ao salvar OKR.");
+  }
+};
 
   const cycleSelectOptions = cycles.map((c) => ({
     value: c.id,

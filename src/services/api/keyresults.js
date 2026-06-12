@@ -8,6 +8,7 @@ export const getKeyResultsByOkr = (okrId) => api.get(`/keyresults/okr/${okrId}`)
 
 export const createKeyResult = (body) => api.post('/keyresults', {
   okrId: body.okrId,
+  jiraProjectId: body.jiraProjectId,
   title: body.title,
   initialValue: body.initialValue,
   goalValue: body.goalValue,

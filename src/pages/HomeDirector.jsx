@@ -2,54 +2,26 @@ import React, { useState, useEffect } from "react";
 import SideBar from "../components/Sidebar/SideBar";
 import OKRConcluded from "../components/OKRConcluded/OKRConcluded";
 import OKRMonitoring from "../components/OKRMonitoring/OKRMonitoring.jsx";
-import ArcChart from "../components/OKRChart/OKRChart";
 import Button from "../components/Button/Button";
 import MainTitle from "../components/MainTitle/MainTitle";
 import SearchBar from "../components/SearchBar/SearchBar";
 import AutoHighlighter from "../components/Highlighter/AutoHighlighter";
 import { useSearch } from "../context/SearchContext";
 import api from "../services/api/client";
-import KpiCards from "../components/KPICards/KPICards";
-import LineChart from "../components/HomeDirectorLineChart/LineChart";
 import AlertsPanel from "../components/AlertsPanel/AlertsPanel";
-import FilterHome from "../components/FilterHome/FilterHome";
 
-const OKR_STATUS = {
-  1: "Criado",
-  2: "Ativo",
-  3: "Concluido",
-};
-
-const CYCLE_LABEL = {
-  1: "Q1",
-  2: "Q2",
-  3: "Q3",
-  4: "Q4",
-};
-
-// function Home() {
-//   useEffect(() => {
-//   const fetchOkrs = async () => {
-//     try {
-//       const { data } = await getOkrs();S
-//     } catch (error) {
-//       console.error("Erro ao buscar OKRs:", error);
-//     }
-//   };
-
-//   fetchOkrs();
-// }, []);
-// }
+const OKR_STATUS = { 1: "Criado", 2: "Ativo", 3: "Concluido" };
+const CYCLE_LABEL = { 1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4" };
 
 function Home() {
   const { setBusca } = useSearch();
 
   const [okrs, setOkrs] = useState([]);
   const [cycles, setCycles] = useState({});
+  const [selectedOkrId, setSelectedOkrId] = useState(null);
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const userName = user.name || "Usuário";
-  const userRole = user.role || "";
 
   useEffect(() => {
     const fetchOkrs = async () => {
@@ -79,6 +51,10 @@ function Home() {
   const okrsConcluidas = okrs.filter((okr) => okr.status === 3);
   const okrsEmMonitoramento = okrs.filter((okr) => okr.status !== 3);
 
+  const okrsFiltradas = selectedOkrId
+    ? okrsEmMonitoramento.filter((okr) => okr.id === Number(selectedOkrId))
+    : okrsEmMonitoramento;
+
   const getCycleLabel = (cycleId) => {
     const cycle = cycles[cycleId];
     if (!cycle) return "—";
@@ -88,7 +64,6 @@ function Home() {
   return (
     <div className="page-layout">
       <SideBar />
-
       <AutoHighlighter />
 
       <main id="content" className="home-main-content">
@@ -102,21 +77,64 @@ function Home() {
 
         <div className="monitoring-container-okr">
           <div className="header-okr">
-            <h3 className="title-card">OKR - Objetivos e Resultados-Chave</h3>
+            <h3 className="title-card">OKR — Objetivos e Resultados-Chave</h3>
+
+            {/* SELECT DE FILTRO */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}>
+              <label style={{
+                fontSize: "13px",
+                color: "var(--color-text-secondary)",
+                whiteSpace: "nowrap",
+              }}>
+                Filtrar OKR
+              </label>
+              <select
+                value={selectedOkrId ?? ""}
+                onChange={(e) => setSelectedOkrId(e.target.value || null)}
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: "10px",
+                  border: "1px solid #D9E0E6",
+                  fontSize: "13px",
+                  background: "#fff",
+                  color: "#333",
+                  cursor: "pointer",
+                  minWidth: "200px",
+                }}
+              >
+                <option value="">Todas as OKRs</option>
+                {okrsEmMonitoramento.map((okr) => (
+                  <option key={okr.id} value={okr.id}>
+                    {okr.title || okr.description || `OKR #${okr.id}`}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
+
           <div className="content-wrapper-okr">
             <div className="cards-row-okr">
-              {okrsEmMonitoramento.map((okr) => (
-                <OKRMonitoring
-                  key={okr.id}
-                  id={okr.id}
-                  porcentagem={okr.porcentagem ?? 0}
-                  prazo={getCycleLabel(okr.cycleId)}
-                  descricao={okr.description}
-                  botao="Ver detalhes"
-                  rota={`/okr-detalhada/${okr.id}`}
-                />
-              ))}
+              {okrsFiltradas.length > 0 ? (
+                okrsFiltradas.map((okr) => (
+                  <OKRMonitoring
+                    key={okr.id}
+                    id={okr.id}
+                    porcentagem={okr.porcentagem ?? 0}
+                    prazo={getCycleLabel(okr.cycleId)}
+                    descricao={okr.description}
+                    botao="Ver detalhes"
+                    rota={`/okr-detalhada/${okr.id}`}
+                  />
+                ))
+              ) : (
+                <p style={{ color: "var(--color-text-secondary)", fontSize: "14px" }}>
+                  Nenhuma OKR encontrada.
+                </p>
+              )}
             </div>
           </div>
 
@@ -125,7 +143,6 @@ function Home() {
               <h3 className="home-alerts-title">Alertas</h3>
               <AlertsPanel />
             </div>
-
             <div className="home-btn-wrapper">
               <Button
                 texto="Criar nova OKR"

@@ -11,22 +11,25 @@ function Login() {
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setErro("");
 
     try {
       setLoading(true);
       const { data } = await loginUser({ jiraEmail: jiraEmail, password: password });
-      localStorage.setItem("token", data.accessToken); 
+
+      localStorage.setItem("token", data.accessToken);
       localStorage.setItem("user", JSON.stringify(data.user));
+
+      console.log("Usuário logado:", data.user);
 
       const routeByRole = {
         1: "/home-director",
         2: "/home-manager",
       };
 
-      navigate(routeByRole[data.user.role] || "/");
+      navigate(routeByRole[data.user?.role] || "/");
     } catch (error) {
       setErro("E-mail ou senha inválidos.");
       console.error("Erro no login:", error);
