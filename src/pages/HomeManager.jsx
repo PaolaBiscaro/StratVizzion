@@ -196,6 +196,7 @@ const HomeManager = () => {
                         descricao={okr.description || "OKR sem descrição"}
                         botao="Ver detalhes"
                         titulo={okr.title || "OKR sem título"}
+                        rota={`/okr-detalhada/${okr.id}`}
                       />
                     );
                   })
