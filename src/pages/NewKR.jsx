@@ -65,6 +65,7 @@ function NewKR() {
     try {
       await createKeyResult({
         okrId: Number(okrId),
+        jiraProjectId: 1,
         title: titulo,
         initialValue: Number(valorInicial),
         goalValue: Number(meta),

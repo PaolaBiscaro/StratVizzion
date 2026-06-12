@@ -5,12 +5,14 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function AlertsPanel() {
+function AlertsPanel({ totalTasks = 0, completedTasks = 0, delayedTasks = 0 }) {
+    const pendingTasks = Math.max(0, totalTasks - completedTasks - delayedTasks);
+
     const data = {
-        labels: ['Positivas', 'Atenção', 'Negativas'],
+        labels: ['Concluídas', 'Em andamento', 'Atrasadas'],
         datasets: [
             {
-                data: [50, 20, 16],
+                data: [completedTasks, pendingTasks, delayedTasks],
                 backgroundColor: ['#0F9D58', '#FBBC04', '#EA4335'],
                 borderWidth: 0,
                 cutout: '80%',
@@ -28,9 +30,9 @@ function AlertsPanel() {
     };
 
     const legendItems = [
-        { label: 'Positivas', color: '#0F9D58' },
-        { label: 'Atenção', color: '#FBE85A' },
-        { label: 'Negativas', color: '#EA4335' }
+        { label: 'Concluídas', color: '#0F9D58', value: completedTasks },
+        { label: 'Em andamento', color: '#FBE85A', value: pendingTasks },
+        { label: 'Atrasadas', color: '#EA4335', value: delayedTasks }
     ];
 
     return (
@@ -39,7 +41,7 @@ function AlertsPanel() {
             <div className="alerts-chart-wrapper">
                 <Doughnut data={data} options={options} />
                 <div className="alerts-chart-text">
-                    <h2>86</h2>
+                    <h2>{totalTasks}</h2>
                     <span>Total</span>
                 </div>
             </div>
@@ -53,14 +55,10 @@ function AlertsPanel() {
                             className="alerts-legend-color"
                             style={{ backgroundColor: item.color }}
                         ></div>
-                        <span className="alerts-legend-text">{item.label}</span>
+                        <span className="alerts-legend-text">{item.label}: {item.value}</span>
                     </div>
                 ))}
             </div>
-
-            <select className="alerts-select">
-                <option>Selecionar OKR</option>
-            </select>
 
         </div>
     );

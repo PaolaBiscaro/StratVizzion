@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   // Ajustado para a porta 5000 que vimos nos logs do seu .NET
-  baseURL: 'http://localhost:5000', 
+  baseURL: 'http://localhost:5120', 
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
