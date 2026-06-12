@@ -9,7 +9,6 @@ function Cadastro() {
   const navigate = useNavigate();
 
   const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [role, setRole] = useState("1");
@@ -33,7 +32,7 @@ function Cadastro() {
       name: nome,
       password: senha,
       role: parseInt(role),
-      directorEmail: directorEmail,
+      directorEmail: directorEmail || null,
       jiraEmail: jiraEmail,
       jiraApiTokenEnc: jiraApiToken,
       jiraBaseUrl: jiraBaseUrl,
@@ -75,17 +74,11 @@ function Cadastro() {
             </div>
 
             <form className="cadastro-form" onSubmit={handleCadastro}>
-
               <div className="cadastro-grid">
 
                 <div className="cadastro-input-group">
                   <span className="cadastro-input-icon"><FiUser style={{ color: "#433f3f" }} /></span>
                   <input type="text" placeholder="Nome completo" value={nome} onChange={(e) => setNome(e.target.value)} required />
-                </div>
-
-                <div className="cadastro-input-group">
-                  <span className="cadastro-input-icon"><FiMail style={{ color: "#433f3f" }} /></span>
-                  <input type="email" placeholder="E-mail corporativo" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
 
                 <div className="cadastro-input-group">
@@ -110,7 +103,7 @@ function Cadastro() {
 
                 <div className="cadastro-input-group">
                   <span className="cadastro-input-icon"><FiMail style={{ color: "#433f3f" }} /></span>
-                  <input type="email" placeholder="E-mail do Director" value={directorEmail} onChange={(e) => setDirectorEmail(e.target.value)} required />
+                  <input type="email" placeholder="E-mail do Director (opcional)" value={directorEmail} onChange={(e) => setDirectorEmail(e.target.value)} />
                 </div>
 
                 <div className="cadastro-input-group">
