@@ -2,25 +2,38 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { FiLock, FiMail } from "react-icons/fi";
+import { loginUser } from "../services/api/auth";
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setErro("");
+
     try {
-      console.log("Login:", { email, senha });
+      setLoading(true);
+      const { data } = await loginUser({ email, password: senha });
+
+      // Salva token e dados do usuário no localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       const routeByRole = {
-        Director: "/home-director",
-        Manager: "/home-manager",
+        1: "/home-director",
+        2: "/home-manager",
       };
 
-      // navigate(routeByRole[role]); // ajusta quando vier o retorno da API
+      navigate(routeByRole[data.user.role] || "/");
     } catch (error) {
-      window.alert(error.message);
+      setErro("E-mail ou senha inválidos.");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,8 +95,10 @@ function Login() {
                 Esqueceu sua senha?
               </a>
 
-              <button type="submit" className="btn-primary">
-                Iniciar Sessão
+              {erro && <p style={{ color: "red", fontSize: "14px" }}>{erro}</p>}
+
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Entrando..." : "Iniciar Sessão"}
               </button>
 
               <button
@@ -93,6 +108,7 @@ function Login() {
               >
                 Cadastrar-se
               </button>
+
             </form>
           </div>
 
