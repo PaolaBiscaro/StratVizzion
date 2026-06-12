@@ -24,7 +24,6 @@ function NewKR() {
   const [valorAtual, setValorAtual] = useState("");
   const [unidade, setUnidade] = useState("");
   const [limitDate, setLimitDate] = useState("");
-  const [valorType, setValorType] = useState("number");
 
   const [okrs, setOkrs] = useState([]);
 
@@ -54,7 +53,6 @@ function NewKR() {
     setValorAtual("");
     setUnidade("");
     setLimitDate("");
-    setValorType("number");
   };
 
   const handleSave = async () => {
@@ -63,21 +61,22 @@ function NewKR() {
       return;
     }
     try {
-      await createKeyResult({
-        okrId: Number(okrId),
-        title: titulo,
-        initialValue: Number(valorInicial),
-        goalValue: Number(meta),
-        currentValue: Number(valorAtual),
-        unit: unidade,
-        limitDate: limitDate || null,
-        description: descricao,
-      });
+    await createKeyResult({
+  okrId: Number(okrId),
+  jiraProjectId: 0,  
+  title: titulo,
+  initialValue: Number(valorInicial),
+  goalValue: Number(meta),
+  currentValue: Number(valorAtual),
+  unit: unidade,
+  limitDate: limitDate ? new Date(limitDate).toISOString() : null,
+  description: descricao,
+});
       limparCampos();
-    } catch (error) {
-      console.error("Erro ao criar Key Result:", error);
-      window.alert("Erro ao salvar Key Result.");
-    }
+} catch (error) {
+  console.log("Erro detalhado:", JSON.stringify(error.response?.data));
+  window.alert("Erro ao salvar Key Result.");
+}
   };
 
   return (
@@ -130,7 +129,7 @@ function NewKR() {
         />
 
         <div className="row" style={{ display: "flex", gap: 16 }}>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <div style={{ flex: 1 }}>
             <FormInput
               title="Valor Inicial"
               inside="EX: 0"
@@ -139,33 +138,7 @@ function NewKR() {
               toolid={"valor-inicial"}
               tooltext={"Valor atual ou ponto de partida do indicador."}
             />
-
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8 }}>
-              <span style={{ fontSize: 14, color: "#4A4A4D" }}>Tipo:</span>
-              {[
-                { key: "number", label: "Número" },
-                { key: "percent", label: "%" },
-                { key: "date", label: "Data" },
-              ].map(({ key, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setValorType(key)}
-                  aria-pressed={valorType === key}
-                  style={{
-                    padding: "6px 10px",
-                    borderRadius: 8,
-                    border: valorType === key ? "2px solid #18B273" : "1px solid #D9E0E6",
-                    background: valorType === key ? "#E9FBF0" : "#fff",
-                    cursor: "pointer",
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
           </div>
-
           <div style={{ flex: 1 }}>
             <FormInput
               title="Meta"
@@ -178,7 +151,7 @@ function NewKR() {
           </div>
         </div>
 
-        <div className="row" style={{ display: "flex", gap: 16, marginTop: 16 }}>
+        <div className="row" style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
           <div style={{ flex: 1 }}>
             <FormInput
               title="Valor Atual"
@@ -200,15 +173,17 @@ function NewKR() {
             />
           </div>
           <div style={{ flex: 1 }}>
-            <FormInput
-              title="Data Limite"
-              inside=""
-              type="date"
-              value={limitDate}
-              onChange={(e) => setLimitDate(e.target.value)}
-              toolid={"data-limite-kr"}
-              tooltext={"Data limite para atingir este Key Result."}
-            />
+            <div className="float-menu-formInput">
+              <div>
+                <label className="label-formInput">Data Limite</label>
+              </div>
+              <input
+                type="date"
+                value={limitDate}
+                onChange={(e) => setLimitDate(e.target.value)}
+                className="input-formInput"
+              />
+            </div>
           </div>
         </div>
       </main>
