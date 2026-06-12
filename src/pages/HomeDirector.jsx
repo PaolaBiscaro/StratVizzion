@@ -27,6 +27,20 @@ const CYCLE_LABEL = {
   4: "Q4",
 };
 
+// function Home() {
+//   useEffect(() => {
+//   const fetchOkrs = async () => {
+//     try {
+//       const { data } = await getOkrs();S
+//     } catch (error) {
+//       console.error("Erro ao buscar OKRs:", error);
+//     }
+//   };
+
+//   fetchOkrs();
+// }, []);
+// }
+
 function Home() {
   const { setBusca } = useSearch();
 
@@ -73,7 +87,7 @@ function Home() {
 
   return (
     <div className="page-layout">
-      <SideBar typeUser={userRole} nameUser={userName} />
+      <SideBar />
 
       <AutoHighlighter />
 

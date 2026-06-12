@@ -81,7 +81,7 @@ function OKRDetails() {
 
   return (
     <div className="okr-details-page">
-      <SideBar typeUser={user.role || "Director"} nameUser={user.name || "Usuário"} />
+      <SideBar/>
 
       <main className="okr-details-main">
         <OKRRoute OKRname={okr.title} />

@@ -124,7 +124,7 @@ function NewOKR() {
 
   return (
     <div className="page-layout">
-      <SideBar typeUser={"Director"} nameUser={user.name || "Usuário"} />
+      <SideBar />
       <AutoHighlighter />
 
       <main id="content">

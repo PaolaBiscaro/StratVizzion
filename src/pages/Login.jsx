@@ -2,25 +2,36 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { FiLock, FiMail } from "react-icons/fi";
+import { loginUser } from "../services/api/auth";
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [jiraEmail, setjiraEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [erro, setErro] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
+    setErro("");
+
     try {
-      console.log("Login:", { email, senha });
+      setLoading(true);
+      const { data } = await loginUser({ jiraEmail: jiraEmail, password: password });
+      localStorage.setItem("token", data.accessToken); 
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       const routeByRole = {
-        Director: "/home-director",
-        Manager: "/home-manager",
+        1: "/home-director",
+        2: "/home-manager",
       };
 
-      // navigate(routeByRole[role]); // ajusta quando vier o retorno da API
+      navigate(routeByRole[data.user.role] || "/");
     } catch (error) {
-      window.alert(error.message);
+      setErro("E-mail ou senha inválidos.");
+      console.error("Erro no login:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,8 +72,8 @@ function Login() {
                 <input
                   type="email"
                   placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={jiraEmail}
+                  onChange={(e) => setjiraEmail(e.target.value)}
                   required
                 />
               </div>
@@ -72,8 +83,8 @@ function Login() {
                 <input
                   type="password"
                   placeholder="Senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
@@ -82,8 +93,10 @@ function Login() {
                 Esqueceu sua senha?
               </a>
 
-              <button type="submit" className="btn-primary">
-                Iniciar Sessão
+              {erro && <p style={{ color: "red", fontSize: "14px" }}>{erro}</p>}
+
+              <button type="submit" className="btn-primary" disabled={loading}>
+                {loading ? "Entrando..." : "Iniciar Sessão"}
               </button>
 
               <button
@@ -93,6 +106,7 @@ function Login() {
               >
                 Cadastrar-se
               </button>
+
             </form>
           </div>
 

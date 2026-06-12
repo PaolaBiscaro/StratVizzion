@@ -28,7 +28,7 @@ function App() {
         <Route path="/meu-perfil" element={<ProfileConfiguration />} />
         <Route path="/relatorio" element={<GenerateReport />} />
         <Route path="/visualizar-kr" element={<ViewKeyResults />} />
-        <Route path="/kr-detalhada" element={<KRDetails />} />
+        <Route path="/kr-detalhada/:id" element={<KRDetails />} />
         <Route path="/okr-detalhada/:okrId" element={<OKRDetails />} />
       </Routes>
     </BrowserRouter>
