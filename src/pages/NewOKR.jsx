@@ -48,16 +48,15 @@ function NewOKR() {
     }
   };
 
-  const fetchManagers = async () => {
-    try {
-      const { data } = await api.get("/user");
-  
-      const onlyManagers = data.filter((u) => u.role?.Number() === 2);
-      setManagers(onlyManagers.length > 0 ? onlyManagers : data);
-    } catch (error) {
-      console.error("Erro ao buscar managers:", error);
-    }
-  };
+const fetchManagers = async () => {
+  try {
+    const { data } = await api.get("/user");
+    const onlyManagers = data.filter((u) => u.role === 2);
+    setManagers(onlyManagers);
+  } catch (error) {
+    console.error("Erro ao buscar managers:", error);
+  }
+};
 
   useEffect(() => {
     fetchCycles();
