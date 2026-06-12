@@ -4,7 +4,8 @@ import { getAllProjetos } from "../../services/data/api_mock.js";
 import { getOkrListRaw, getJiraProjectsRaw } from "../../services/filtersGenerateReport.js"; 
 import './FilterPopoverContent.css'
 
-function FilterPopoverContent({ tipo, onSelectProject, valorAtual, tituloCustomizado }) {
+// 🔥 Adicionamos a prop 'managerId' na assinatura do componente
+function FilterPopoverContent({ tipo, onSelectProject, valorAtual, tituloCustomizado, managerId }) {
     // Estado para guardar as OKRs reais vindas da API
     const [okrsReais, setOkrsReais] = useState([]);
     const [carregando, setCarregando] = useState(false);
@@ -31,13 +32,14 @@ function FilterPopoverContent({ tipo, onSelectProject, valorAtual, tituloCustomi
         }
     }, [tipo]);
 
-    // Efeito para buscar as equipes do Jira assim que o componente de Equipes for aberto
+    // 🔥 Efeito corrigido para escutar o 'managerId' e atualizar a lista de equipes
     useEffect(() => {
         if (tipo === 'equipes') {
             const carregarEquipesJira = async () => {
                 setCarregandoJira(true);
                 try {
-                    const dados = await getJiraProjectsRaw();
+                    // 🔥 Passamos o managerId dinâmico (ID da Paola) para a rota do service
+                    const dados = await getJiraProjectsRaw(managerId);
                     setProjetosJira(dados || []);
                 } catch (error) {
                     console.error("Erro ao carregar projetos do Jira no popover", error);
@@ -47,7 +49,7 @@ function FilterPopoverContent({ tipo, onSelectProject, valorAtual, tituloCustomi
             };
             carregarEquipesJira();
         }
-    }, [tipo]);
+    }, [tipo, managerId]); // 🔥 Adicionado 'managerId' aqui como dependência obrigatória!
     
     const handleChange = (e) => {
         if (onSelectProject) {
@@ -80,7 +82,6 @@ function FilterPopoverContent({ tipo, onSelectProject, valorAtual, tituloCustomi
             case 'okr_geral': {
                 return (
                     <div className="popover-inner">
-                        {/* 🔥 Exibe o título customizado se ele existir, senão usa o padrão do projeto */}
                         <p className="title-popover">
                             {tituloCustomizado || "Configuração de OKR"}
                         </p>
