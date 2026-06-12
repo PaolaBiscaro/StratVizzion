@@ -40,10 +40,7 @@ function App() {
         <Route path="/visualizar-kr" element={<ViewKeyResults />} />
         <Route path="/kr-detalhada" element={<KRDetails />} />
         <Route path="/okr-detalhada/:okrId" element={<OKRDetails />} />
-
-
       </Routes>
-
     </BrowserRouter>
   );
 }
