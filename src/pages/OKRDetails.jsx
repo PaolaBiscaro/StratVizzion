@@ -6,9 +6,12 @@ import OKRInfo from "../components/OKRInfo/OKRInfo";
 import StickyNote from "../components/StickyNote/StickyNote";
 import KRSquadCards from "../components/KRSquadCards/KRSquadCards";
 import KRTable from "../components/KRTable/KRTable";
+import OKRProgressHistory from "../components/OKRProgressHistory/OKRProgressHistory";
+import TaskStatsCard from "../components/TaskStatsCard/TaskStatsCard";
 import "../styles/OKRDetails.css";
 import { getOkrById } from "../services/api/okrs";
 import { getKeyResultsByOkr } from "../services/api/keyresults";
+import { getOkrMetrics, getOkrTeam } from "../services/api/manager";
 
 const OKR_STATUS = { 1: "Criado", 2: "Ativo", 3: "Concluido" };
 const CYCLE_LABEL = { 1: "Q1", 2: "Q2", 3: "Q3", 4: "Q4" };
@@ -28,7 +31,10 @@ function OKRDetails() {
 
   const [okr, setOkr] = useState(null);
   const [krs, setKrs] = useState([]);
+  const [progress, setProgress] = useState(0);
   const [cycle, setCycle] = useState(null);
+  const [squads, setSquads] = useState([]);
+  const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -39,6 +45,46 @@ function OKRDetails() {
 
         const { data: krsData } = await getKeyResultsByOkr(okrId);
         setKrs(krsData);
+
+        // Busca o progresso da API, similar ao HomeManager
+        try {
+          const historyResponse = await getOkrMetrics(okrId);
+          const historico = historyResponse.data && historyResponse.data.length > 0
+            ? historyResponse.data[0]
+            : null;
+          
+          const progressPercentage = historico ? historico.progressPercentage : 0;
+          setProgress(progressPercentage);
+
+          // Armazena todo o histórico para o gráfico
+          const historicoCompleto = historyResponse.data && Array.isArray(historyResponse.data)
+            ? historyResponse.data
+            : [];
+          setHistory(historicoCompleto);
+        } catch (error) {
+          console.error(`Erro ao buscar métricas da OKR ${okrId}:`, error);
+          setProgress(0);
+          setHistory([]);
+        }
+
+        // Busca squads (projetos Jira) com membros agrupados por projeto
+        try {
+          const teamResponse = await getOkrTeam(okrId);
+          
+          // Monta squads com dados já estruturados pelo backend
+          const squadsComMembros = teamResponse.data && Array.isArray(teamResponse.data)
+            ? teamResponse.data.map((squad) => ({
+                jiraProjectId: squad.jiraProjectId,
+                members: squad.members || [],
+                kr: krsData.length > 0 ? krsData[0].title : ""
+              }))
+            : [];
+
+          setSquads(squadsComMembros);
+        } catch (error) {
+          console.error("Erro ao buscar squads e membros:", error);
+          setSquads([]);
+        }
       } catch (error) {
         console.error("Erro ao buscar dados da OKR:", error);
       } finally {
@@ -58,12 +104,6 @@ function OKRDetails() {
 
   const notes = stickyNotesByStatus[okr.status] || stickyNotesByStatus[2];
 
-  const squads = [
-    { squad: "Minha equipe de software", kr: krs[0]?.title || "" },
-    { squad: "Minha equipe de software", kr: krs[1]?.title || "" },
-    { squad: "Minha equipe de software", kr: krs[2]?.title || "" },
-  ];
-
   const krsForTable = krs.map((kr) => ({
     id: kr.id,
     title: kr.title,
@@ -74,10 +114,6 @@ function OKRDetails() {
     status: kr.currentValue >= kr.goalValue ? "concluida" : 
             new Date(kr.limitDate) < new Date() ? "atraso" : "pendente",
   }));
-
-  const progress = krs.length > 0
-    ? Math.round(krs.reduce((acc, kr) => acc + (kr.currentValue / kr.goalValue) * 100, 0) / krs.length)
-    : 0;
 
   return (
     <div className="okr-details-page">
@@ -98,7 +134,9 @@ function OKRDetails() {
         </div>
 
         <KRSquadCards squads={squads} />
+        <TaskStatsCard history={history} />
         <KRTable krs={krsForTable} />
+        <OKRProgressHistory data={history} />
       </main>
     </div>
   );

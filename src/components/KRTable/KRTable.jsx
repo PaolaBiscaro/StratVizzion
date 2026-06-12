@@ -22,17 +22,12 @@ function KRTable({ krs = [] }) {
                 <thead>
                     <tr>
                         <th className="kr-table-col-id"></th>
-                        <th>TOTAL</th>
-                        <th>PENDENTES</th>
-                        <th>ATRASO</th>
-                        <th>CONCLUIDAS</th>
-                    </tr>
-                    <tr className="kr-table-summary">
-                        <td></td>
-                        <td>{total}</td>
-                        <td>{pendentes}</td>
-                        <td>{atraso}</td>
-                        <td>{concluidas}</td>
+                        <th>ID</th>
+                        <th>TÍTULO</th>
+                        <th>VALOR ATUAL</th>
+                        <th>META</th>
+                        <th>PRAZO</th>
+                        <th>STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
