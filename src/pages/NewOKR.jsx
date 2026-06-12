@@ -105,7 +105,7 @@ const fetchManagers = async () => {
     managerId: managerId,
   };
 
-  console.log("Payload enviado:", payload); // ← vê o que sai aqui
+  console.log("Payload enviado:", payload); 
 
   try {
     await createOkr(payload);
